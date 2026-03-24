@@ -1,0 +1,19 @@
+# Nested git repos (independent projects)
+apps/butts-puzzle-next
+apps/butts-cards-next
+apps/butts-clients-next
+clients/portal
+clients/latarence_template
+clients/buttsstudios_template
+clients/runwae_template
+games/portal
+games/puzzle
+games/cards
+games/glb
+production/film
+production/the-signal
+production/animation
+website
+
+# OS files
+.DS_Store

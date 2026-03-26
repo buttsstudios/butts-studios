@@ -15,5 +15,54 @@ production/the-signal
 production/animation
 website
 
-# OS files
+# ─────────────────────────────────────────
+# API Keys & Secrets - NEVER COMMIT
+# ─────────────────────────────────────────
+.env
+.env.*
+.env.local
+.env.development
+.env.production
+*.local.env
+**/config/local*.js
+**/config/secret*.js
+**/keys/*.json
+**/credentials/*.json
+**/service-accounts/*.json
+*.pem
+*.key
+credentials.json
+secrets.json
+keys.json
+tokens.json
+
+# ─────────────────────────────────────────
+# Environment Config with Real Values
+# ─────────────────────────────────────────
+**/env.js
+**/config.js
+**/firebase-config.js
+**/stripe-config.js
+
+# ─────────────────────────────────────────
+# Dependencies
+# ─────────────────────────────────────────
+node_modules/
+package-lock.json
+yarn.lock
+
+# ─────────────────────────────────────────
+# OS Files
+# ─────────────────────────────────────────
 .DS_Store
+Thumbs.db
+*.swp
+*~
+
+# ─────────────────────────────────────────
+# Build Output
+# ─────────────────────────────────────────
+dist/
+build/
+.vercel/
+.next/

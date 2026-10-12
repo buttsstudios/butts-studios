@@ -1,6 +1,6 @@
 # Butts Studios - Coordination
 
-**Domain**: butts-studios.com | **Contact**: hello@butts-studios.com | **Location**: `/Users/latarencebutts/buttsstudios`
+**Domain**: buttsstudios.com | **Contact**: hello@buttsstudios.com | **Location**: `/Users/latarencebutts/buttsstudios`
 
 **Quick Links**: [Master Hub](file:///Users/latarencebutts/latarence/LATARENCE_COORDINATION.md) | [Entities](file:///Users/latarencebutts/latarence/coordination/entities.yaml) | [Resources](file:///Users/latarencebutts/latarence/coordination/resources.yaml) | [Clients](file:///Users/latarencebutts/latarence/coordination/clients.yaml)
 
@@ -11,22 +11,22 @@
 ### Basic Information
 - **Name**: Butts Studios
 - **Tagline**: "Creating Stories, Building Worlds"
-- **Domain**: butts-studios.com
+- **Domain**: buttsstudios.com
 - **Services**: 
   - Animation production
   - Film production
   - Novel writing & publishing
   - Creative consulting
   - Client creative projects
-- **Contact**: hello@butts-studios.com
+- **Contact**: hello@buttsstudios.com
 - **Status**: Active
 
 ### Subdomains
-- **butts-studios.com** - Main portfolio site
-- **animation.butts-studios.com** - Animation showcase
-- **film.butts-studios.com** - Film projects
-- **novels.butts-studios.com** - Writing portfolio
-- **clients.butts-studios.com** - Client portal
+- **buttsstudios.com** - Main portfolio site
+- **animation.buttsstudios.com** - Animation showcase
+- **film.buttsstudios.com** - Film projects
+- **novels.buttsstudios.com** - Writing portfolio
+- **clients.buttsstudios.com** - Client portal
 
 ### Branding
 - **Primary Color**: #9C27B0 (Purple)
@@ -128,18 +128,18 @@ See full details in: `/Users/latarencebutts/latarence/coordination/clients.yaml`
 services:
   portfolio_site:
     port: 3001
-    domain: butts-studios.com
+    domain: buttsstudios.com
     status: development
     framework: Next.js
     
   client_portal:
     port: 3002
-    domain: clients.butts-studios.com
+    domain: clients.buttsstudios.com
     status: planned
     
   animation_showcase:
     port: 3003
-    domain: animation.butts-studios.com
+    domain: animation.buttsstudios.com
     status: planned
 ```
 
@@ -191,18 +191,18 @@ butts_studios:
 ```yaml
 # Entity API for coordination (planned)
 endpoints:
-  - url: "https://butts-studios.com/api/status"
+  - url: "https://buttsstudios.com/api/status"
     method: GET
     auth: JWT
     purpose: Health check and service status
     
-  - url: "https://butts-studios.com/api/projects"
+  - url: "https://buttsstudios.com/api/projects"
     method: GET
     auth: JWT
     purpose: List all active creative projects
     returns: [project_id, name, type, status, deadline]
     
-  - url: "https://butts-studios.com/api/portfolio"
+  - url: "https://buttsstudios.com/api/portfolio"
     method: GET
     auth: JWT
     purpose: Get portfolio items
@@ -323,26 +323,26 @@ vim /Users/latarencebutts/latarence/coordination/clients.yaml
 **Client Work**
 - Location: `/Users/latarencebutts/buttsstudios/clients`
 - Projects tracked in: `/Users/latarencebutts/latarence/coordination/clients.yaml`
-- Portal: clients.butts-studios.com (planned)
+- Portal: clients.buttsstudios.com (planned)
 
 ---
 
 ## Contact & Support
 
 ### Primary Contacts
-- **General Inquiries**: hello@butts-studios.com
-- **Client Work**: clients@butts-studios.com
-- **Portfolio Requests**: portfolio@butts-studios.com
+- **General Inquiries**: hello@buttsstudios.com
+- **Client Work**: clients@buttsstudios.com
+- **Portfolio Requests**: portfolio@buttsstudios.com
 
 ### Support Channels
 - **JARVIS Chat**: Via latarence.ai/chat
-- **Email**: hello@butts-studios.com
-- **Client Portal**: clients.butts-studios.com (planned)
+- **Email**: hello@buttsstudios.com
+- **Client Portal**: clients.buttsstudios.com (planned)
 
 ### Emergency Contacts
 - **Project Issues**: Alert JARVIS (automated monitoring)
 - **Resource Conflicts**: Via coordination/resources.yaml
-- **Client Issues**: clients@butts-studios.com
+- **Client Issues**: clients@buttsstudios.com
 
 ---
 
@@ -371,7 +371,7 @@ vim /Users/latarencebutts/latarence/coordination/clients.yaml
 ## Metrics & Monitoring
 
 ### Health Checks
-- **Portfolio Site**: https://butts-studios.com (in development)
+- **Portfolio Site**: https://buttsstudios.com (in development)
 - **Uptime Target**: 99.9%
 - **Monitoring**: JARVIS
 

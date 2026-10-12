@@ -81,7 +81,7 @@ See full details in: `/Users/latarencebutts/latarence/coordination/clients.yaml`
 
 **Example**: ABC Media Group
 - **Studios Scope**: Animated series pilot ($50,000)
-- **Independent project**: No other entity involvement
+- **Standalone project**: No other entity involvement
 - **Timeline**: Delivery Apr 1
 
 ---

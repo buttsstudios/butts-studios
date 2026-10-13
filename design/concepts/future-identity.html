@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Future Identity Concepts</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400&family=Lexend+Exa:wght@200;300&family=Outfit:wght@200;300&family=Red+Hat+Display:wght@300;400&display=swap" rel="stylesheet">
+<style>
+  /* Concept sheet: alternate "future vibe" identity for Butts Studios.
+     Refs: design/references/2026-10-13_future_vibe/ (Future Observatory signage). Not the approved identity. */
+  :root {
+    --paper: #f4f3ef;
+    --ink: #111111;
+    --muted: #6b6a66;
+    --night: #1d1e1b;
+    --night-ink: #dcd9cf;
+    --moss: #5f7d3e;
+    --moss-deep: #46602c;
+    --rule: #d8d6cf;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--paper); color: var(--ink); font-family: "Jost", system-ui, sans-serif; font-weight: 300; }
+  header, section { max-width: 1180px; margin: 0 auto; padding: 40px 16px; }
+  header h1 { font-weight: 300; letter-spacing: .08em; text-transform: uppercase; font-size: 28px; margin: 0 0 8px; }
+  header p { color: var(--muted); max-width: 60ch; line-height: 1.5; margin: 0; }
+  h2 { font-weight: 400; font-size: 13px; letter-spacing: .16em; text-transform: uppercase; color: var(--muted); margin: 0 0 18px; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 16px; }
+  .card { border: 1px solid var(--rule); background: #fff; padding: 28px 24px 18px; }
+  .card.dark { background: var(--night); border-color: #34362f; color: var(--night-ink); }
+  .card.moss { background: var(--moss); border-color: var(--moss-deep); color: #f3f2ea; }
+  .lockup { display: flex; align-items: center; gap: 18px; min-height: 96px; }
+  .lockup svg { flex: none; width: 72px; height: 72px; }
+  .word { text-transform: uppercase; line-height: 1.02; font-size: 34px; letter-spacing: .06em; }
+  .word span { display: block; }
+  .meta { margin-top: 18px; font-size: 12px; letter-spacing: .06em; color: var(--muted); border-top: 1px solid var(--rule); padding-top: 10px; }
+  .dark .meta { color: #8f8d85; border-color: #34362f; }
+  .moss .meta { color: #dfe6d3; border-color: var(--moss-deep); }
+  .f-jost { font-family: "Jost"; font-weight: 300; }
+  .f-lexend { font-family: "Lexend Exa"; font-weight: 200; font-size: 28px; letter-spacing: .02em; }
+  .f-outfit { font-family: "Outfit"; font-weight: 200; letter-spacing: .08em; }
+  .f-redhat { font-family: "Red Hat Display"; font-weight: 300; letter-spacing: .07em; }
+  .marks { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 16px; }
+  .marks .card { display: grid; place-items: center; padding: 28px 12px 14px; }
+  .marks svg { width: 88px; height: 88px; }
+  .marks .meta { width: 100%; text-align: center; }
+  .panel { background: var(--night); color: var(--night-ink); border: 1px solid #34362f; padding: 36px 28px; }
+  .panel .big { font-family: "Jost"; font-weight: 300; text-transform: uppercase; font-size: clamp(30px, 6vw, 56px); letter-spacing: .04em; margin: 0 0 18px; }
+  .panel .cols { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 28px; line-height: 1.5; }
+  .panel .green { color: var(--moss); font-family: "Jost"; text-transform: uppercase; font-size: 30px; letter-spacing: .06em; margin: 28px 0 8px; }
+  .panel hr { border: 0; border-top: 1px solid #4a4c44; margin: 22px 0; }
+  .swatches { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 8px; }
+  .sw { width: 120px; border: 1px solid var(--rule); background: #fff; font-size: 12px; }
+  .sw div { height: 56px; }
+  .sw p { margin: 6px 8px; }
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <!-- A: thin outline box + full X -->
+    <symbol id="m-a" viewBox="0 0 100 100"><g fill="none" stroke="currentColor" stroke-width="4"><rect x="8" y="8" width="84" height="84"/><path d="M8 8 L92 92 M92 8 L8 92"/></g></symbol>
+    <!-- B: heavy stroke box + X -->
+    <symbol id="m-b" viewBox="0 0 100 100"><g fill="none" stroke="currentColor" stroke-width="10" stroke-linejoin="miter"><rect x="10" y="10" width="80" height="80"/><path d="M10 10 L90 90 M90 10 L10 90"/></g></symbol>
+    <!-- C: X floats inside the box (gap) -->
+    <symbol id="m-c" viewBox="0 0 100 100"><g fill="none" stroke="currentColor" stroke-width="5"><rect x="8" y="8" width="84" height="84"/><path d="M26 26 L74 74 M74 26 L26 74"/></g></symbol>
+    <!-- D: solid box, X knocked out -->
+    <symbol id="m-d" viewBox="0 0 100 100"><mask id="kx"><rect width="100" height="100" fill="#fff"/><path d="M8 8 L92 92 M92 8 L8 92" stroke="#000" stroke-width="9"/></mask><rect x="8" y="8" width="84" height="84" fill="currentColor" mask="url(#kx)"/></symbol>
+    <!-- E: box + X, rounded terminals (softer) -->
+    <symbol id="m-e" viewBox="0 0 100 100"><g fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="82" height="82" rx="4"/><path d="M9 9 L91 91 M91 9 L9 91"/></g></symbol>
+    <!-- F: striped box echoing the Future Observatory roundel; X as the stripe gaps -->
+    <symbol id="m-f" viewBox="0 0 100 100"><g fill="none" stroke="currentColor" stroke-width="5"><rect x="8" y="8" width="84" height="84"/><path d="M8 8 L92 92 M92 8 L8 92"/><path d="M8 50 L50 8 M50 92 L92 50" stroke-width="3"/></g></symbol>
+  </defs>
+</svg>
+
+<header>
+  <h1>Butts Studios · future identity</h1>
+  <p>Concepts for an alternate identity, from the Future Observatory references: a light, wide, all-caps sans, stacked, beside a simple box with an X through it. Black on white first, with the muted greens as a variant. The approved 2021 gold-on-black identity is unchanged.</p>
+</header>
+
+<section>
+  <h2>Wordmark + mark: black on white</h2>
+  <div class="grid">
+    <div class="card"><div class="lockup"><svg><use href="#m-a"/></svg><div class="word f-jost"><span>Butts</span><span>Studios</span></div></div><p class="meta">1 · Jost Light + mark A (thin box, full X)</p></div>
+    <div class="card"><div class="lockup"><svg><use href="#m-c"/></svg><div class="word f-redhat"><span>Butts</span><span>Studios</span></div></div><p class="meta">2 · Red Hat Display Light + mark C (floating X)</p></div>
+    <div class="card"><div class="lockup"><svg><use href="#m-b"/></svg><div class="word f-outfit"><span>Butts</span><span>Studios</span></div></div><p class="meta">3 · Outfit ExtraLight + mark B (heavy)</p></div>
+    <div class="card"><div class="lockup"><svg><use href="#m-d"/></svg><div class="word f-lexend"><span>Butts</span><span>Studios</span></div></div><p class="meta">4 · Lexend Exa ExtraLight (wide) + mark D (knockout)</p></div>
+  </div>
+</section>
+
+<section>
+  <h2>The greens</h2>
+  <div class="grid">
+    <div class="card dark"><div class="lockup" style="color:var(--moss)"><svg><use href="#m-a"/></svg><div class="word f-jost" style="color:var(--night-ink)"><span>Butts</span><span>Studios</span></div></div><p class="meta">5 · Moss mark, bone type on near-black (the panel)</p></div>
+    <div class="card moss"><div class="lockup"><svg><use href="#m-c"/></svg><div class="word f-redhat"><span>Butts</span><span>Studios</span></div></div><p class="meta">6 · Reversed out of moss</p></div>
+    <div class="card"><div class="lockup" style="color:var(--moss-deep)"><svg><use href="#m-a"/></svg><div class="word f-jost" style="color:var(--ink)"><span>Butts</span><span>Studios</span></div></div><p class="meta">7 · Moss mark, black type on white</p></div>
+  </div>
+</section>
+
+<section>
+  <h2>Mark options</h2>
+  <div class="marks">
+    <div class="card"><svg><use href="#m-a"/></svg><p class="meta">A · thin, full X</p></div>
+    <div class="card"><svg><use href="#m-b"/></svg><p class="meta">B · heavy</p></div>
+    <div class="card"><svg><use href="#m-c"/></svg><p class="meta">C · floating X</p></div>
+    <div class="card"><svg><use href="#m-d"/></svg><p class="meta">D · knockout</p></div>
+    <div class="card"><svg><use href="#m-e"/></svg><p class="meta">E · rounded</p></div>
+    <div class="card"><svg><use href="#m-f"/></svg><p class="meta">F · X + diagonals</p></div>
+  </div>
+</section>
+
+<section>
+  <h2>In use: a gallery-panel page</h2>
+  <div class="panel">
+    <div class="lockup" style="margin-bottom:26px;color:var(--moss)"><svg><use href="#m-a"/></svg><div class="word f-jost" style="color:var(--night-ink);font-size:26px"><span>Butts</span><span>Studios</span></div></div>
+    <p class="big">Old drafts. New tools.</p>
+    <div class="cols">
+      <p>A small studio finishing the work it started: novels, comics, channels and art, released as working drafts, each one labeled with its stage.</p>
+      <p>Each release names its stage. You're buying the work in progress, from first-draft manuscript to finished edition.</p>
+    </div>
+    <hr>
+    <p class="green">The slate</p>
+    <p>1. Us Against the World &nbsp;·&nbsp; 2. Talon &nbsp;·&nbsp; 3. The Channels &nbsp;·&nbsp; 4. The Little Things</p>
+  </div>
+</section>
+
+<section>
+  <h2>Palette</h2>
+  <div class="swatches">
+    <div class="sw"><div style="background:#111111"></div><p>Ink #111111</p></div>
+    <div class="sw"><div style="background:#f4f3ef"></div><p>Paper #F4F3EF</p></div>
+    <div class="sw"><div style="background:#1d1e1b"></div><p>Night #1D1E1B</p></div>
+    <div class="sw"><div style="background:#dcd9cf"></div><p>Bone #DCD9CF</p></div>
+    <div class="sw"><div style="background:#5f7d3e"></div><p>Moss #5F7D3E</p></div>
+    <div class="sw"><div style="background:#46602c"></div><p>Deep moss #46602C</p></div>
+  </div>
+</section>
+
+</body>
+</html>

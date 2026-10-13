@@ -1,0 +1,21 @@
+# Butts Studios: design directions
+
+Directions the Principal wants kept on file. They're **stored, not adopted**: nothing here replaces the current identity
+until the Principal says so.
+
+## 1 · "Future" identity: light wordmark + X-box mark (stored 2026-10-13)
+- **Status:** design direction for now (Principal, 2026-10-13: "store is as a design direction for now"). He likes it.
+  The live identity stays the approved 2021 gold-on-black logo.
+- **Origin (verbatim):** "in a different or future vibe butts studios may be written in font like this with a icon that
+  is simple like a box with an x through it just black ext on a  white background or something.  maybe even using
+  similar greens"
+- **References:** `references/2026-10-13_future_vibe/` (Design Museum "Future Observatory" signage + "Tools for
+  Transition" panel).
+- **Pick so far:** "somewher between the first and second one both with dfotn and icon". The three blends are at the
+  top of `concepts/future-identity.html`: 1·2a Jost + X inset slightly, 1·2b Figtree + X at the midpoint (Bridge's
+  recommendation), 1·2c Manrope + X floating.
+- **Spec:** "BUTTS / STUDIOS" stacked, light all caps, wide tracking; a square with an X, stroke about 4.5/100; black on
+  white first; green variant moss #5F7D3E / deep moss #46602C on night #1D1E1B with bone #DCD9CF type.
+- **Bridge notes:** the X-box is the designer's "image goes here" placeholder, which fits selling working drafts. Pair
+  it with the wordmark (alone, it can read as a missing image). If adopted, the drafts store is the natural first use,
+  with finished releases keeping the gold.

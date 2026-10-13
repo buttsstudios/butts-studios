@@ -1,0 +1,27 @@
+/* Butts Studios archive bar: sits on top of preserved landing pages. Scoped with .bs-ab so the old page's CSS can't reach it. */
+.bs-ab, .bs-ab * { box-sizing: border-box; margin: 0; padding: 0; font: inherit; letter-spacing: normal; text-transform: none; }
+.bs-ab {
+  position: fixed; left: 50%; bottom: 16px; transform: translateX(-50%); z-index: 2147483647;
+  width: max-content; max-width: calc(100vw - 32px);
+  display: flex; align-items: center; gap: 10px 16px; flex-wrap: wrap; justify-content: center;
+  padding: 10px 12px 10px 16px; border: 1px solid #3a3631; border-radius: 999px;
+  background: rgba(5,7,7,.92); color: #EDE7DB; -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px);
+  font: 600 12px/1.3 "Archivo", "Helvetica Neue", Arial, sans-serif; letter-spacing: .04em;
+  box-shadow: 0 8px 28px -12px rgba(0,0,0,.6);
+}
+.bs-ab .bs-ab-dot { width: 8px; height: 8px; background: #E8B521; flex: none; display: inline-block; }
+.bs-ab .bs-ab-txt { display: inline-flex; align-items: center; gap: 8px; text-align: left; }
+.bs-ab .bs-ab-txt span { color: #9A948A; font-weight: 600; }
+.bs-ab a.bs-ab-back {
+  color: #050707; background: #EDE7DB; text-decoration: none; border: 1px solid #EDE7DB; border-radius: 999px;
+  padding: 7px 12px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; font-size: 11px; white-space: nowrap;
+}
+.bs-ab a.bs-ab-back:hover { background: #E8B521; border-color: #E8B521; }
+@media (max-width: 560px) {
+  .bs-ab { bottom: 10px; padding: 8px 8px 8px 12px; gap: 10px; flex-wrap: nowrap; }
+  .bs-ab .bs-ab-txt { font-size: 11px; }
+  .bs-ab .bs-ab-txt span { display: none; }
+  .bs-ab a.bs-ab-back { padding: 7px 10px; font-size: 10px; }
+}
+/* links on the preserved page that led to pages we didn't keep */
+.bs-inert { cursor: default !important; }

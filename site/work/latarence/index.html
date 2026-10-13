@@ -1,0 +1,403 @@
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="robots" content="noindex">
+    <meta name="description" content="My name is Latarence Butts. I'm a designer and an engineer.">
+    <meta name="author" content="Latarence Butts">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Latarence · archived landing page · Butts Studios</title>
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no" name="viewport">
+    <!--     Fonts and icons     -->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200|Open+Sans+Condensed:700" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <!-- CSS Files -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/now-ui-kit.css?v=1.2.0" rel="stylesheet">
+    <link href="css/demo.css" rel="stylesheet">
+    <link href="css/mycss.css" rel="stylesheet">
+    <link href="css/socialize.css" rel="stylesheet">
+    <script src="js/jquery.min.js"></script>
+    <style>
+        .grid {
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            pointer-events: none
+        }
+
+        .grid.off--ready .grid__line {
+            transform: scaleY(1)
+        }
+
+        .grid.off--ready .grid__logo {
+            opacity: 1;
+            transform: translate(-50%, -50%)
+        }
+
+        .grid.off .grid__fill {
+            transform: scaleX(0)
+        }
+
+        .grid.off .grid__logo {
+            opacity: 0;
+            transform: translate(-50%, -70%);
+            transition-delay: .1s
+        }
+
+        .grid__logo {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 250px;
+            height: 250px;
+            transform: translate(-50%, -40%);
+            opacity: 0;
+            z-index: 50;
+            transition: all .4s;
+            background-size: contain;
+            background-position: center center;
+            background-repeat: no-repeat;
+            background-image: url(./../images/svg/logo.svg)
+        }
+
+        .grid__col {
+            position: relative;
+            width: 25%;
+            flex-basis: 25%;
+            height: 100%
+        }
+
+        .grid__col:nth-child(2) .grid__fill {
+            transition-delay: .1s
+        }
+
+        .grid__col:nth-child(2) .grid__line {
+            transition-delay: .1s
+        }
+
+        .grid__col:nth-child(3) .grid__fill {
+            transition-delay: .2s
+        }
+
+        .grid__col:nth-child(3) .grid__line {
+            transition-delay: .2s
+        }
+
+        .grid__col:nth-child(4) .grid__fill {
+            transition-delay: .3s
+        }
+
+        .grid__col:nth-child(4) .grid__line {
+            transition-delay: .3s
+        }
+
+        .grid__col:nth-child(5) .grid__fill {
+            transition-delay: .4s
+        }
+
+        .grid__col:nth-child(5) .grid__line {
+            transition-delay: .4s
+        }
+
+        .grid__fill {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #1A1818;
+            transform-origin: center right;
+            transition: all .4s cubic-bezier(0.42, 0, 1, 1)
+        }
+
+        .grid__line {
+            position: absolute;
+            right: 0;
+            width: 1px;
+            height: 100%;
+            background-color: rgba(74, 74, 74, 0.1);
+            transform: scaleY(0);
+            transform-origin: center top;
+            transition: all .5s cubic-bezier(0.42, 0, 1, 1)
+        }
+
+        .vs-section {
+            position: fixed;
+            top: 0;
+            right: 0;
+            left: 0;
+            width: 100%;
+            height: auto;
+            margin: auto;
+            will-change: transform
+        }
+
+        .touch .vs-section {
+            position: static
+        }
+
+        .is-virtual-scroll {
+            overflow: hidden
+        }
+
+        .is-native-scroll.y-scroll {
+            overflow-y: scroll;
+            overflow-x: hidden
+        }
+
+        .is-native-scroll.x-scroll {
+            overflow-y: hidden;
+            overflow-x: scroll
+        }
+
+        .vs-scrollbar {
+            display: block;
+            position: absolute;
+            transition: transform .6s
+        }
+
+        .vs-scrollbar.vs-vertical {
+            top: 0;
+            right: -5px;
+            bottom: 0;
+            width: 15px;
+            height: 100%;
+            transform: translate3d(5px, 0, 0)
+        }
+
+        .vs-scrollbar.vs-horizontal {
+            bottom: -5px;
+            left: 0;
+            right: 0;
+            width: 100%;
+            height: 15px;
+            transform: translate3d(0, 5px, 0)
+        }
+
+        .is-dragging .vs-scrollbar.vs-horizontal,
+        .is-dragging .vs-scrollbar.vs-vertical,
+        .vs-scrollbar.vs-horizontal:hover,
+        .vs-scrollbar.vs-vertical:hover {
+            transform: none
+        }
+
+        .vs-scrollbar .vs-scrolldrag {
+            width: 100%;
+            height: auto;
+            background: #ccc;
+            cursor: pointer
+        }
+
+        .vs-scroll-view {
+            position: relative;
+            width: 1px
+        }
+
+        .cookie {
+            display: none
+        }
+
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg)
+            }
+        }
+
+    </style>
+    <!--<link href="https://cdn.vapid.site/sites/19ccfeae-ac18-45d6-9ff3-55017a6c34cf/stylesheets/site-f2236c59a461e317ac15731c7b029fff.css" rel="stylesheet">-->
+    
+
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700&display=swap" rel="stylesheet"><link rel="stylesheet" href="../archive-bar.css">
+</head>
+
+<body class="presentation-page">
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg bg-white fixed-top navbar-transparent" color-on-scroll="500">
+        <div class="container">
+
+
+            <div class="navbar-translate">
+                <a class="navbar-brand" href="index.html" aria-disabled="true" rel="tooltip" title="" data-placement="bottom" data-original-title="Latarence Butts"><img src="img/butts.png" height="40px" width="65px">
+			</a>
+
+                <a href="index.html" aria-disabled="true"><button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
+		   		<span class="navbar-toggler-bar bar1"></span>
+				<span class="navbar-toggler-bar bar2"></span>
+				<span class="navbar-toggler-bar bar3"></span>
+                     </button></a>
+            </div>
+
+            <div class="collapse navbar-collapse" data-color="orange" data-nav-image="img/blurred-image-1.jpg" style="">
+                <ul class="navbar-nav ml-auto">
+
+
+
+
+                    <li class="nav-item dropdown">
+                        <a href="index.html" aria-disabled="true" class="nav-link" id="" data-toggle="dropdown">
+                            <i class="fa fa-grav" aria-hidden="true"></i>
+
+                        </a>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a href="index.html" aria-disabled="true" class="nav-link" id="" data-toggle="dropdown">
+                            <i class="fa fa-ravelry" aria-hidden="true"></i>
+
+                        </a>
+
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- End Navbar -->
+
+
+
+    <div class="wrapper">
+
+        <div class="page-header clear-filter">
+
+
+
+
+
+            <div class="rellax-header rellax-header-sky" data-rellax-speed="-4" style="transform: translate3d(0px, 90px, 0px) translate3d(0px, 0px, 0px) translate3d(0px, 108px, 0px) translate3d(0px, 0px, 0px);">
+                <!--<div class="page-header-image" style="background-image: url('img/nuk-pro-back-sky.jpg')">
+                </div>-->
+            </div>
+
+            <div class="rellax-header rellax-header-buildings" data-rellax-speed="0" style="transform: translate3d(0px, 0px, 0px) translate3d(0px, 0px, 0px) translate3d(0px, 0px, 0px) translate3d(0px, 0px, 0px);">
+                <div class="page-header-image page-header-city" style="background-image: url('./img/mountains.webp')">
+                </div>
+            </div>
+
+
+            <div class="rellax-text-container rellax-text" style="transform: translate3d(0px, 42px, 0px) translate3d(0px, 0px, 0px) translate3d(0px, 41px, 0px) translate3d(0px, 0px, 0px);">
+                <!--<h1 class="h1-seo" data-rellax-speed="-1">Now UI Kit</h1>
+                <div class="pro">PRO</div> -->
+                <div style="background-image: url('img/latarence.webp')">
+                </div>
+                <img src="img/latarence.webp" alt="Latarence">
+            </div>
+
+
+
+
+
+
+            <h3 class="category category-absolute rellax-text" data-rellax-speed="-1" style="transform: translate3d(0px, 29px, 0px) translate3d(0px, 0px, 0px) translate3d(0px, 43px, 0px) translate3d(0px, 0px, 0px);">
+                <div class="icons center-block"><span class="fa fa-facebook fa-2x"></span>
+                    <a href="index.html" aria-disabled="true"><span class="fa fa-instagram fa-2x"></span></a>
+                    <a href="index.html" aria-disabled="true"> <span class="fa fa-linkedin fa-2x"></span></a>
+                    <br><br>
+                    <br><br><br><br>
+
+                </div>
+            </h3>
+
+
+        </div>
+
+
+
+
+            </div>
+<footer class="footer " data-background-color="black">
+
+
+        <div class="container">
+            <nav>
+                <ul>
+                    <li>
+                        <a href="index.html" aria-disabled="true">
+                        <img src="img/butts.png" height="40px" width="65px">
+                    </a>
+                    </li>
+                    <li>
+                        <a href="index.html" aria-disabled="true">
+                       Runwae
+                    </a>
+                    </li>
+                </ul>
+            </nav>
+            <div class="copyright">
+                ©
+                &nbsp; Made with Bootstrap
+            </div>
+        </div>
+
+
+    </footer>
+
+
+
+
+    <!-- Library for parallax, used just in Presentation Page -->
+    <script src="js/rellax.min.js" type="text/javascript"></script>
+
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            if ($(window).width() >= 991) {
+
+                setTimeout(function() {
+                    var rellax = new Rellax('.rellax', {
+                        center: true
+                    });
+                }, 5000);
+
+                var rellaxHeader = new Rellax('.rellax-header');
+                var rellaxText = new Rellax('.rellax-text');
+            }
+
+        });
+
+        jQuery(document).ready(function() {
+            jQuery('.skillbar').each(function() {
+                jQuery(this).find('.skillbar-bar').animate({
+                    width: jQuery(this).attr('data-percent')
+                }, 3000);
+            });
+        });
+
+    </script>
+
+    <!-- script>
+  var linkElement = document.createElement("link");
+  linkElement.rel = "stylesheet";
+  linkElement.href = "/stylesheets/site.css";
+  var siteHead = document.head || document.getElementsByTagName("head")[0];
+  siteHead.appendChild(linkElement);
+</script> -->
+    
+
+    <script>
+        $(document).mousemove(function() {
+            $("body").css("cursor", "default");
+        });
+
+    </script>
+
+
+
+
+
+
+
+
+
+
+<!-- Butts Studios archive bar -->
+<div class="bs-ab" role="note" aria-label="Archive notice"><span class="bs-ab-txt"><i class="bs-ab-dot" aria-hidden="true"></i>Archived landing page · designed by Butts Studios <span>· the earlier latarence.com landing, rebuilt from its source files</span></span><a class="bs-ab-back" href="../../partnerships.html">← Back to Butts Studios</a></div>
+</body>
+
+</html>

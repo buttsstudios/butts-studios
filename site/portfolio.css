@@ -1,0 +1,126 @@
+/* Butts Studios design portfolio (exploratory, 2026-10-13). Layered on styles.css tokens; no edits to the shared sheet. */
+
+/* ---------- shared pieces ---------- */
+.pf-shot { margin: 0; }
+.pf-shot .pf-frame {
+  border: 1px solid var(--line); border-radius: 6px; overflow: hidden; background: #0b0b0b;
+}
+.pf-shot img { width: 100%; height: auto; display: block; }
+.pf-shot figcaption { margin-top: 10px; font-size: 13px; color: var(--muted); line-height: 1.4; }
+.pf-shot figcaption b { color: var(--fg); font-weight: 700; }
+.pf-tag {
+  display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase;
+  color: var(--muted); border: 1px solid var(--line); border-radius: 999px; padding: 4px 10px;
+}
+
+.swatches { display: flex; flex-wrap: wrap; gap: 10px; margin: 0; padding: 0; list-style: none; }
+.swatches li { display: grid; gap: 6px; font-size: 11px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
+.swatches i { display: block; width: 56px; height: 56px; border-radius: 4px; border: 1px solid var(--line); }
+
+.pf-note { font-size: 13px; color: var(--muted); max-width: 70ch; }
+
+/* ---------- option A: case-study rows ---------- */
+.pf-switch { display: inline-flex; gap: 6px; margin-top: 28px; flex-wrap: wrap; }
+.pf-switch a {
+  text-decoration: none; font-size: 12px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase;
+  border: 1.5px solid var(--line); border-radius: 999px; padding: 8px 14px;
+}
+.pf-switch a[aria-current] { border-color: var(--fg); background: var(--fg); color: var(--bg); }
+.pf-switch a:not([aria-current]):hover { border-color: var(--fg); }
+
+.case { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.65fr); gap: clamp(28px, 5vw, 72px); align-items: start;
+  padding-block: clamp(48px, 7vw, 88px); border-bottom: 1px solid var(--line); }
+.case:last-child { border-bottom: 0; }
+.case-info { display: grid; gap: 18px; position: sticky; top: 24px; }
+.case-no { font-weight: 800; font-size: 14px; color: var(--muted); }
+.case h2 { font-size: clamp(34px, 4.6vw, 60px); font-weight: 800; line-height: .96; letter-spacing: -.035em; }
+.case .kind { font-size: 13px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); font-weight: 700; margin: 0; }
+.case p.desc { margin: 0; font-family: var(--serif); font-size: 19px; line-height: 1.5; max-width: 40ch; }
+.case dl { margin: 0; display: grid; gap: 14px; }
+.case dt { font-size: 11px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+.case dd { margin: 6px 0 0; font-size: 15px; }
+.case-media { display: grid; gap: 16px; grid-template-columns: repeat(6, minmax(0, 1fr)); }
+.case-media > * { grid-column: span 6; }
+.case-media .half { grid-column: span 3; }
+.case-media .third { grid-column: span 2; }
+.case-media .two-thirds { grid-column: span 4; }
+
+/* logo plates: brand marks shown on their own grounds */
+.plate { border: 1px solid var(--line); border-radius: 6px; display: grid; place-items: center; padding: clamp(20px, 4vw, 48px); min-height: 180px; height: 100%; }
+.plate img { max-width: 100%; max-height: 120px; width: auto; height: auto; }
+.plate.ha { background: #1f1f1d; }
+.plate.ha-light { background: #F1ECE2; }
+.plate.dat-ink { background: #1a1916; }
+.plate.dat-paper { background: #f5f3ee; }
+.plate.rwa { background: #1f1f1f; }
+.plate.rwa img { max-height: 150px; }
+.plate .plate-cap { margin: 14px 0 0; font-size: 11px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: #9A948A; text-align: center; }
+.plate.ha-light .plate-cap, .plate.dat-paper .plate-cap { color: #6B655B; }
+
+/* phone shots */
+.phone { border: 1px solid var(--line); border-radius: 22px; overflow: hidden; background: #0b0b0b; max-width: 260px; margin-inline: auto; }
+.phone img { width: 100%; height: auto; display: block; }
+.phones { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 16px; align-items: start; }
+
+/* product screens grid (A) */
+.screens { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(20px, 3vw, 36px) clamp(16px, 2.4vw, 28px); }
+.screens .pf-shot.wide { grid-column: span 2; }
+
+/* archive strip */
+.archive-list { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 2px; background: var(--line); border: 2px solid var(--line); border-radius: 4px; overflow: hidden; }
+.archive-list a { background: var(--bg); padding: 22px 18px; text-decoration: none; display: grid; gap: 6px; transition: background .2s; }
+.archive-list a:hover { background: var(--surface); }
+.archive-list b { font-size: 20px; font-weight: 800; letter-spacing: -.02em; }
+.archive-list span { font-size: 12px; color: var(--muted); letter-spacing: .06em; text-transform: uppercase; font-weight: 600; }
+
+/* ---------- option B: masonry wall ---------- */
+.wall { columns: 3 320px; column-gap: clamp(14px, 2vw, 24px); }
+.wall > * { break-inside: avoid; margin: 0 0 clamp(14px, 2vw, 24px); }
+.wall .pf-shot figcaption { margin-top: 8px; }
+.wall .plate { min-height: 220px; }
+.wall .phone { max-width: none; }
+.wall-card {
+  border: 1px solid var(--line); border-radius: 6px; padding: 22px; display: grid; gap: 12px; background: var(--surface);
+}
+.wall-card h3 { font-size: 26px; font-weight: 800; letter-spacing: -.03em; line-height: 1; }
+.wall-card p { margin: 0; font-family: var(--serif); font-size: 17px; line-height: 1.45; }
+.wall-card .swatches i { width: 40px; height: 40px; }
+.wall-filters { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 28px; padding: 0; list-style: none; }
+.wall-filters button {
+  appearance: none; background: none; color: inherit; cursor: pointer; font: 700 12px/1 var(--display); letter-spacing: .08em; text-transform: uppercase;
+  border: 1.5px solid var(--line); border-radius: 999px; padding: 9px 14px;
+}
+.wall-filters button[aria-pressed="true"] { background: var(--fg); color: var(--bg); border-color: var(--fg); }
+.wall [hidden] { display: none !important; }
+
+/* ---------- partnerships: open the archived site ---------- */
+.open-site {
+  display: inline-flex; align-items: center; gap: 8px; margin-top: 12px; text-decoration: none;
+  font-size: 12px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase;
+  border: 1.5px solid var(--fg); border-radius: 999px; padding: 8px 14px;
+}
+.open-site:hover { background: var(--fg); color: var(--bg); }
+.open-site small { font-size: 11px; font-weight: 600; letter-spacing: .04em; text-transform: none; color: var(--muted); }
+.open-site:hover small { color: inherit; }
+.archive-note { font-size: 13px; color: var(--muted); margin: 18px 0 0; max-width: 70ch; }
+
+/* ---------- responsive ---------- */
+@media (max-width: 1000px) {
+  .screens { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .archive-list { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+@media (max-width: 900px) {
+  .case { grid-template-columns: minmax(0, 1fr); }
+  .case-info { position: static; }
+}
+@media (max-width: 600px) {
+  .screens { grid-template-columns: minmax(0, 1fr); }
+  .screens .pf-shot.wide { grid-column: auto; }
+  .case-media .half, .case-media .third, .case-media .two-thirds { grid-column: span 6; }
+  .case-media .third.keep { grid-column: span 3; }
+  .archive-list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .swatches i { width: 44px; height: 44px; }
+}
+.plate img.ha-logo { width: min(420px, 100%); max-height: none; }
+.wall-card .pf-tag { justify-self: start; }
+@media (max-width: 600px) { .site-head nav a[href="index.html#how"] { display: none; } }

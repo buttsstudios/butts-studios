@@ -1,0 +1,77 @@
+@-webkit-keyframes Gradient {
+    0% {
+        background-position: 0% 50%
+    }
+    50% {
+        background-position: 100% 50%
+    }
+    100% {
+        background-position: 0% 50%
+    }
+}
+
+@-moz-keyframes Gradient {
+    0% {
+        background-position: 0% 50%
+    }
+    50% {
+        background-position: 100% 50%
+    }
+    100% {
+        background-position: 0% 50%
+    }
+}
+
+@keyframes Gradient {
+    0% {
+        background-position: 0% 50%
+    }
+    50% {
+        background-position: 100% 50%
+    }
+    100% {
+        background-position: 0% 50%
+    }
+}
+
+.headding {
+    margin-bottom: 40px;
+}
+
+h1 {
+    font-size: 66px;
+    font-weight: 300;
+}
+
+.icons {
+    text-align: center;
+    max-width: 500px;
+    max-height: 300px;
+    cursor: pointer
+}
+
+.fa-2x {
+    border: 1px solid;
+    border-radius: 50%;
+    color: #fff;
+    width: 80px;
+    height: 80px;
+    text-align: center;
+    padding-top: 10px;
+    margin: 10px;
+    -webkit-transition: all .5s ease 0s;
+    -moz-transition: all .5s ease 0s;
+    -o-transition: all .5s ease 0s;
+    transition: all .5s ease 0s;
+}
+
+span:hover {
+    background: rgba(10, 10, 10, 0.1);
+    border-color: rgba(10, 10, 10, 0.1);
+}
+
+h6 a,
+h6 a:hover {
+    text-decoration: none;
+    color: #fff;
+}

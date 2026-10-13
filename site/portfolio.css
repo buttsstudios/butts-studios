@@ -124,3 +124,4 @@
 .plate img.ha-logo { width: min(420px, 100%); max-height: none; }
 .wall-card .pf-tag { justify-self: start; }
 @media (max-width: 600px) { .site-head nav a[href="index.html#how"] { display: none; } }
+.open-site + .open-site { margin-left: 8px; margin-top: 8px; }

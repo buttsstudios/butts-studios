@@ -226,3 +226,71 @@ a.title-row:hover { background: var(--surface); }
 .offer-when { margin: 0; font-size: 12px; color: var(--muted); letter-spacing: .04em; }
 .row-offer { font-size: 12px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--fg); margin-top: 4px; display: flex; align-items: center; gap: 8px; }
 .row-offer::before { content: ""; width: 8px; height: 8px; background: var(--gold); flex: none; }
+
+/* ---------- point of sale: working-version products (2026-10-13) ---------- */
+.stage-badge {
+  display: inline-flex; align-items: center; gap: 8px; margin: 0; width: fit-content;
+  padding: 6px 12px; border: 1.5px solid var(--fg); border-radius: 999px;
+  font: 700 12px/1.2 var(--display); letter-spacing: .1em; text-transform: uppercase; color: var(--fg);
+}
+.stage-badge::before { content: ""; width: 8px; height: 8px; background: var(--gold); flex: none; }
+.t-hero-meta { display: flex; align-items: center; gap: 12px 18px; flex-wrap: wrap; margin-top: 22px; }
+.t-hero-meta .kind { margin: 0; }
+
+.offer .stage-badge { margin-bottom: 4px; }
+.offer-stage { margin: 4px 0 0; font-family: var(--serif); font-size: 16px; line-height: 1.45; color: var(--muted); }
+.offer-stage b { color: var(--fg); font-weight: 400; font-style: italic; }
+.includes { list-style: none; padding: 0; margin: 6px 0 0; display: grid; gap: 8px; font-size: 15px; line-height: 1.4; }
+.includes li { display: flex; gap: 10px; align-items: baseline; }
+.includes li::before { content: ""; flex: none; width: 8px; height: 8px; background: var(--fg); transform: translateY(-1px); }
+.specs { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px 20px; margin: 8px 0 0; padding-block: 14px; border-block: 1px solid var(--line); }
+.specs div { min-width: 0; }
+.specs dt { font-size: 11px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+.specs dd { margin: 3px 0 0; font-size: 15px; font-weight: 600; }
+.price small { font-size: 12px; font-weight: 700; letter-spacing: .08em; color: var(--muted); margin-left: 4px; }
+.offer-legal { margin: 0; font-size: 12px; color: var(--muted); letter-spacing: .04em; }
+.offer-legal a { color: var(--muted); text-underline-offset: 3px; }
+.offer-legal a:hover { color: var(--fg); }
+
+/* large panel: the product page's main buy block */
+.offer-lg { padding: clamp(20px, 3vw, 32px); gap: 12px; }
+.offer-lg h2 { font-size: clamp(28px, 3.4vw, 40px); font-weight: 800; line-height: 1.02; }
+.offer-lg .eyebrow { margin: 0 0 6px; }
+.offer-lg .offer-row { margin-top: 10px; }
+.offer-lg .price { font-size: 34px; }
+.offer-lg .buy { flex: 1 1 220px; padding: 16px 22px; font-size: 14px; }
+
+.product { display: grid; grid-template-columns: minmax(0, .85fr) minmax(0, 1.15fr); gap: clamp(28px, 5vw, 72px); align-items: start; padding-bottom: clamp(48px, 7vw, 88px); border-bottom: 1px solid var(--line); margin-bottom: clamp(48px, 7vw, 88px); }
+.cover-fig { margin: 0; }
+.cover {
+  /* typographic cover for the working draft; same ink object in both themes */
+  aspect-ratio: 2 / 3; max-width: 440px; background: #050707; color: #F1ECE2; border: 1px solid #2B2824; border-radius: 3px;
+  box-shadow: 0 1px 2px rgba(0,0,0,.18), 0 18px 40px -18px rgba(0,0,0,.45);
+  padding: clamp(16px, 2.2vw, 26px); display: grid;
+}
+.cover-in {
+  border: 1px solid rgba(232,181,33,.55); padding: clamp(18px, 2.6vw, 30px);
+  display: grid; grid-template-rows: auto 1fr auto; gap: 12px;
+}
+.cover-top, .cover-foot { font: 700 clamp(9px, 1vw, 11px)/1.3 var(--display); letter-spacing: .18em; text-transform: uppercase; color: #9A948A; display: flex; justify-content: space-between; gap: 8px; }
+.cover-title { align-self: center; font: 800 clamp(34px, 4.4vw, 60px)/.92 var(--display); letter-spacing: -.035em; color: #E8B521; margin: 0; }
+.cover-sub { display: block; margin-top: 14px; font: italic 400 clamp(15px, 1.6vw, 19px)/1.3 var(--serif); letter-spacing: 0; color: #F1ECE2; }
+.cover-foot .who { color: #F1ECE2; }
+.cover-fig figcaption { margin-top: 12px; font-size: 13px; color: var(--muted); max-width: 440px; }
+@media (max-width: 900px) {
+  .product { grid-template-columns: minmax(0, 1fr); }
+  .cover, .cover-fig figcaption { max-width: 340px; }
+}
+@media (max-width: 600px) {
+  .specs { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+  .cover, .cover-fig figcaption { max-width: 280px; }
+}
+
+/* ---------- plain policy pages ---------- */
+.policy { padding-block: clamp(40px, 8vw, 96px) clamp(56px, 8vw, 104px); }
+.policy h1 { font-size: clamp(40px, 6vw, 72px); font-weight: 800; letter-spacing: -.035em; line-height: .95; margin: 18px 0 32px; }
+.policy .prose ul { padding-left: 1.1em; margin: 0 0 1em; }
+.policy .prose li { margin-bottom: .4em; }
+.offer-lg .buy:disabled { color: var(--fg); border-color: var(--muted); border-style: dashed; }
+.row-offer { align-items: flex-start; }
+.row-offer::before { margin-top: 3px; }

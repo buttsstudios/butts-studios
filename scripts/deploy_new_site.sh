@@ -14,6 +14,8 @@ SRC="$ROOT/site"
 ORG_ID="team_WMhVBeGTHA1CgDK9llwAmQd9"
 PROJECT_ID="prj_J7pK4Ph2b6AVt03X6Pl7w0rNrU8W"
 STAGE="$(mktemp -d)"
+TOK=()
+[ -n "${VERCEL_TOKEN:-}" ] && TOK=(--token "$VERCEL_TOKEN")
 
 # Stage: the site folder only (no repo history, scripts or design sources). Archived pages and assets ride along.
 rsync -a --exclude '_check*.html' --exclude '_open.html' --exclude '.DS_Store' "$SRC/" "$STAGE/"
@@ -37,15 +39,15 @@ done
 [ $missing = 0 ] || { echo "BLOCKED: missing assets"; exit 1; }
 echo "pre-flight OK"
 
-vercel whoami >/dev/null 2>&1 || { echo "Not logged in to Vercel. Run: vercel login"; exit 1; }
-echo "vercel user: $(vercel whoami 2>/dev/null)"
+vercel whoami "${TOK[@]}" >/dev/null 2>&1 || { echo "Not logged in to Vercel. Run: vercel login"; exit 1; }
+echo "vercel user: $(vercel whoami "${TOK[@]}" 2>/dev/null)"
 
 # Remember the current production deployment for rollback.
-PREV=$(VERCEL_ORG_ID=$ORG_ID VERCEL_PROJECT_ID=$PROJECT_ID vercel ls --prod 2>/dev/null | grep -oE 'https://[a-z0-9.-]+\.vercel\.app' | head -1 || true)
+PREV=$(VERCEL_ORG_ID=$ORG_ID VERCEL_PROJECT_ID=$PROJECT_ID vercel ls --prod "${TOK[@]}" 2>/dev/null | grep -oE 'https://[a-z0-9.-]+\.vercel\.app' | head -1 || true)
 echo "current production deployment (rollback target): ${PREV:-unknown}"
 
 # If the project's Root Directory is still "website" (the old site's folder), nest the upload to match.
-RD=$(cd "$STAGE" && vercel project inspect 2>/dev/null | grep -iE 'Root Directory' | awk '{print $NF}' || true)
+RD=$(cd "$STAGE" && vercel project inspect "${TOK[@]}" 2>/dev/null | grep -iE 'Root Directory' | awk '{print $NF}' || true)
 echo "project root directory: ${RD:-.}"
 if [ -n "${RD:-}" ] && [ "$RD" != "." ] && [ "$RD" != "/" ]; then
   mkdir -p "$STAGE/__up/$RD" && (cd "$STAGE" && find . -mindepth 1 -maxdepth 1 ! -name __up ! -name .vercel -exec mv {} "__up/$RD/" \;)
@@ -57,7 +59,7 @@ if [ "$GO" != "--go" ]; then echo "DRY RUN: add --go to deploy"; exit 0; fi
 
 # Project settings may still point at the old "website" root directory or a build step; this deploy is a static
 # upload of the staged folder, so override to no framework / no build.
-URL=$(cd "$STAGE" && vercel deploy --prod --yes 2>/dev/null | tail -1)
+URL=$(cd "$STAGE" && vercel deploy --prod --yes "${TOK[@]}" 2>/dev/null | tail -1)
 echo "deployed: $URL"
 
 sleep 20

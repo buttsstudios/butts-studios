@@ -298,8 +298,6 @@ a.title-row:hover { background: var(--surface); }
 .row-offer { align-items: flex-start; }
 .row-offer::before { margin-top: 3px; }
 
-/* phones: keep the nav on one line now that Portfolio is in every nav */
-@media (max-width: 600px) { .site-head nav a[href$="#how"], .site-head nav a[href$="how-we-work.html"] { display: none; } }
 
 /* principles on light (non-ink) sections: readable ink text, gold reserved for dark bands */
 .section:not(.ink) .principles h3 { color: var(--fg); }
@@ -308,3 +306,27 @@ a.title-row:hover { background: var(--surface); }
 /* partnership card: phone recording set into the corner of the desktop shot */
 .work .frame { position: relative; }
 .work .frame video.frame-phone { position: absolute; right: 5%; bottom: 7%; width: 21%; height: auto; object-fit: contain; border: 4px solid #111; border-radius: 12px; background: #111; box-shadow: 0 8px 24px rgba(0,0,0,.3); }
+
+/* ---------- phone menu (theme.js adds .menu-toggle) ---------- */
+.menu-toggle { display: none; appearance: none; background: none; border: 1.5px solid var(--line); border-radius: 999px; color: inherit;
+  cursor: pointer; width: 34px; height: 34px; place-items: center; padding: 0; }
+.menu-toggle:hover { border-color: var(--fg); }
+.menu-toggle svg { width: 18px; height: 18px; }
+.menu-toggle path { transition: transform .2s, opacity .2s; transform-origin: 12px 12px; }
+.site-head.menu-open .menu-toggle .l1 { transform: translateY(5px) rotate(45deg); }
+.site-head.menu-open .menu-toggle .l2 { opacity: 0; }
+.site-head.menu-open .menu-toggle .l3 { transform: translateY(-5px) rotate(-45deg); }
+.nav-links { display: contents; }
+@media (max-width: 700px) {
+  .site-head { position: relative; }
+  .site-head nav { gap: 10px; flex-wrap: nowrap; }
+  .menu-toggle { display: inline-grid; }
+  .nav-links { display: none; }
+  .site-head.menu-open .nav-links {
+    display: flex; flex-direction: column; position: absolute; top: 100%; left: 0; right: 0; z-index: 50;
+    background: var(--bg); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line);
+    box-shadow: 0 16px 32px rgba(0,0,0,.12);
+  }
+  .site-head.menu-open .nav-links a { padding: 16px var(--gutter); font-size: 16px; }
+  .site-head.menu-open .nav-links a + a { border-top: 1px solid var(--line); }
+}

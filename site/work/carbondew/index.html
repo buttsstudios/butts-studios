@@ -15,11 +15,14 @@
     main { padding: 24px 16px 96px; }
     
   }
+  main { position: relative; }
+  .phone-vid { position: absolute; right: 4%; bottom: 6%; width: min(22vw, 260px); height: auto; border: 6px solid #111; border-radius: 22px; box-shadow: 0 12px 40px rgba(0,0,0,.35); background: #111; }
+  @media (max-width: 700px) { img.cap { display: none; } .phone-vid { position: static; display: block; width: 100%; max-width: 340px; margin: 0 auto; border: 0; border-radius: 0; box-shadow: none; } }
 </style>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700&display=swap" rel="stylesheet"><link rel="stylesheet" href="../archive-bar.css">
 </head>
 <body>
-<main><img class="cap" src="carbondew-landing.webp" alt="Carbondew landing page: the DV signature on lavender, with The Vault, The Cellar and The Lab in the nav"></main>
+<main><img class="cap" src="carbondew-landing.webp" alt="Carbondew landing page: the DV signature on lavender, with The Vault, The Cellar and The Lab in the nav"><video class="phone-vid" autoplay muted loop playsinline poster="../../assets/video/dwhitemobile-poster.jpg" aria-label="Carbondew landing page on a phone, recorded for the original studio site"><source src="../../assets/video/dwhitemobile-transcode.webm" type="video/webm"><source src="../../assets/video/dwhitemobile-transcode.mp4" type="video/mp4"></video></main>
 
 <!-- Butts Studios archive bar -->
 <div class="bs-ab" role="note" aria-label="Archive notice"><span class="bs-ab-txt"><i class="bs-ab-dot" aria-hidden="true"></i>Archived landing page · designed by Butts Studios <span>· from a February 2021 screen capture</span></span><a class="bs-ab-back" href="../../partnerships.html">← Back to Butts Studios</a></div>

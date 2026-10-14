@@ -185,6 +185,8 @@ def build():
     src = open(os.path.join(SITE, 'portfolio.html')).read()
     copy = json.load(open(os.path.join(ROOT, 'scripts', 'portfolio_copy.json')))
     extra = json.load(open(os.path.join(ROOT, 'scripts', 'portfolio_extra_images.json')))
+    vids_path = os.path.join(ROOT, 'scripts', 'portfolio_videos.json')
+    videos = json.load(open(vids_path)) if os.path.exists(vids_path) else {}
     os.makedirs(OUT, exist_ok=True)
     infos = []
     for slug, url, made in ITEMS:
@@ -252,6 +254,20 @@ def build():
       <div class="pi-gallery">
 {figs}
       </div>
+    </section>
+''')
+        vids = videos.get(slug, [])
+        if vids:
+            vs = []
+            for base, form, cap in vids:
+                v = f'../assets/video/{base}'
+                assert os.path.exists(os.path.join(SITE, 'assets', 'video', base + '-transcode.mp4')), base
+                vs.append(f'        <figure class="pi-film {form}"><video autoplay muted loop playsinline preload="metadata" poster="{v}-poster.jpg" aria-label="{E(cap)}">'
+                          f'<source src="{v}-transcode.webm" type="video/webm"><source src="{v}-transcode.mp4" type="video/mp4"></video>'
+                          f'<figcaption>{E(cap)}</figcaption></figure>')
+            out.append(f'''    <section class="pi-section" aria-labelledby="film-h">
+      <div class="section-head"><h2 id="film-h">From the original studio site</h2><p>A short screen recording from the first Butts Studios site.</p></div>
+{chr(10).join(vs)}
     </section>
 ''')
         arts = c.get('articles') or []

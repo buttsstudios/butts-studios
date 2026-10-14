@@ -62,3 +62,9 @@
   .pi-pager { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
   .pi-pager .all { grid-column: 1 / -1; grid-row: 2; }
 }
+
+/* original-site screen recordings */
+.pi-film { margin: 0; }
+.pi-film video { display: block; width: 100%; height: auto; border: 1px solid var(--line); border-radius: 6px; background: #0b0b0b; }
+.pi-film.mobile video { max-width: 360px; }
+.pi-film figcaption { margin-top: 8px; font-size: 13px; color: var(--muted); }

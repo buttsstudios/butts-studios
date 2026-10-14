@@ -190,3 +190,8 @@ html.lb-open { overflow: hidden; }
   .lb-stage img { max-height: calc(100dvh - 84px); }
 }
 .wall-card .open-site { justify-self: start; }
+
+/* ---------- The Signals Institute plates (2026-10-13) ---------- */
+.plate.tsi-ink { background: #0A0A0A; }
+.plate.tsi-paper { background: #F5F3EE; }
+.plate.tsi-paper .plate-cap { color: #6B655B; }

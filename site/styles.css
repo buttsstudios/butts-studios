@@ -299,4 +299,8 @@ a.title-row:hover { background: var(--surface); }
 .row-offer::before { margin-top: 3px; }
 
 /* phones: keep the nav on one line now that Portfolio is in every nav */
-@media (max-width: 600px) { .site-head nav a[href$="#how"] { display: none; } }
+@media (max-width: 600px) { .site-head nav a[href$="#how"], .site-head nav a[href$="how-we-work.html"] { display: none; } }
+
+/* principles on light (non-ink) sections: readable ink text, gold reserved for dark bands */
+.section:not(.ink) .principles h3 { color: var(--fg); }
+.section:not(.ink) .principles p { color: var(--fg); opacity: .82; }

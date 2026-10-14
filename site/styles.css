@@ -297,3 +297,6 @@ a.title-row:hover { background: var(--surface); }
 .offer-lg .buy:disabled { color: var(--fg); border-color: var(--muted); border-style: dashed; }
 .row-offer { align-items: flex-start; }
 .row-offer::before { margin-top: 3px; }
+
+/* phones: keep the nav on one line now that Portfolio is in every nav */
+@media (max-width: 600px) { .site-head nav a[href$="#how"] { display: none; } }

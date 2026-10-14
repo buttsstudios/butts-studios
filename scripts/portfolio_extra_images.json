@@ -43,6 +43,12 @@
    "page-ridgefield-about",
    "About",
    "Ridgefield about page: Designed to Perform, with Defense rigor, commercial velocity"
+  ],
+  [
+   "mobile-ridgefield",
+   "Homepage, phone",
+   "Ridgefield on a phone: Systems that perform under real-world conditions, in monospace capitals",
+   "phone"
   ]
  ],
  "signals-institute": [
@@ -55,6 +61,12 @@
    "page-signals-institute-events",
    "Events page",
    "The Signals Institute events page: Where we show up, with youth programs in a blue-keyed row"
+  ],
+  [
+   "mobile-signals-institute",
+   "Homepage, phone",
+   "The Signals Institute on a phone: Strength Through Connection, with Explore and Connect buttons",
+   "phone"
   ]
  ],
  "landslide": [
@@ -79,6 +91,16 @@
    "page-runwae-faqs",
    "FAQs",
    "Runwae frequently asked questions, grouped into getting started, posts, gigs, interests, followers and favorites"
+  ],
+  [
+   "runwae-brand-card",
+   "Brand card: Fast Influencer Marketing (2021)",
+   "A white Runwae card: RUNWAE above Fast Influencer Marketing in violet, runwae.com below"
+  ],
+  [
+   "runwae-mark",
+   "Flower mark on black (2021)",
+   "A white rounded flower mark on black, from the Runwae section of the original studio site"
   ]
  ],
  "boltzmann": [
@@ -91,6 +113,12 @@
    "page-boltzmann-research",
    "Research",
    "Boltzmann research page: a technical overview of Technology CAD (TCAD)"
+  ],
+  [
+   "mobile-boltzmann",
+   "Landing, phone",
+   "Boltzmann on a phone: Multiphysics Simulation, Reinvented for Teams, on violet",
+   "phone"
   ]
  ],
  "chrona": [
@@ -192,6 +220,12 @@
    "page-chief-open-source",
    "Open source",
    "Chief open source page: Our Path to Open Source"
+  ],
+  [
+   "mobile-chief",
+   "Landing, phone",
+   "Chief on a phone: Smart Card Programming Made Simple, with Get Started and Try Card Studio",
+   "phone"
   ]
  ],
  "document-scanner": [
@@ -209,6 +243,27 @@
    "page-document-scanner-stories",
    "Stories",
    "Document Scanner stories page with a featured post on document processing"
+  ],
+  [
+   "mobile-document-scanner",
+   "Landing, phone",
+   "Document Scanner on a phone: Documents to Data, with Start Scanning and View Demo",
+   "phone"
+  ],
+  [
+   "document-scanner-wordmark",
+   "Wordmark (2021)",
+   "The Document Scanner wordmark: a slanted DS mark beside the name in blue"
+  ],
+  [
+   "document-scanner-mark-blue",
+   "DS mark, blue on white (2021)",
+   "The DS mark: blue italic letters on a white parallelogram"
+  ],
+  [
+   "document-scanner-mark-ink",
+   "DS mark, white on ink (2021)",
+   "The DS mark: white italic letters on a black parallelogram"
   ]
  ],
  "rigor": [
@@ -286,6 +341,12 @@
    "page-tillio-research",
    "Research",
    "Tillio research page: What we're studying, with attribution and evaluation questions"
+  ],
+  [
+   "mobile-tillio",
+   "Landing, phone",
+   "Tillio on a phone: Agree the split. Track what gets built, above a live equity table",
+   "phone"
   ]
  ],
  "sentinel": [
@@ -303,6 +364,43 @@
    "page-sentinel-stories",
    "Stories",
    "Sentinel stories page: resources and guides filtered by topic"
+  ]
+ ],
+ "runwae-apparel": [
+  [
+   "runwae-apparel-mobile",
+   "Store, phone (2021)",
+   "The Runwae Apparel store on a phone: free-shipping bar, Issue No. 1, gold frames and a Shop Now button",
+   "phone"
+  ],
+  [
+   "runwae-apparel-pave-hoodie",
+   "Pave Hoodie · embroidery supplier mockup",
+   "Mockup render of a gold hoodie with an embroidered PAVE chest graphic, from an embroidery supplier"
+  ]
+ ],
+ "latarence": [
+  [
+   "latarence-2021-desktop",
+   "Earlier site, desktop (2021)",
+   "The earlier latarence.com landing: a black-and-white portrait over heat-mapped mountains on orange"
+  ],
+  [
+   "latarence-l2-mark",
+   "L² mark from the earlier site",
+   "The hand-drawn L squared mark in charcoal on paper"
+  ],
+  [
+   "latarence-2021-mobile",
+   "Earlier site, phone (2021)",
+   "The earlier latarence.com on a phone: the L squared mark above a hand-lettered menu on cream",
+   "phone"
+  ],
+  [
+   "mobile-latarence",
+   "Homepage, phone",
+   "latarence.com on a phone: the L squared mark and a signature on black",
+   "phone"
   ]
  ]
 }

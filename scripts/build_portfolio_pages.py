@@ -185,6 +185,8 @@ def build():
     src = open(os.path.join(SITE, 'portfolio.html')).read()
     copy = json.load(open(os.path.join(ROOT, 'scripts', 'portfolio_copy.json')))
     extra = json.load(open(os.path.join(ROOT, 'scripts', 'portfolio_extra_images.json')))
+    mock_path = os.path.join(ROOT, 'scripts', 'portfolio_mockups.json')
+    mockups = json.load(open(mock_path)) if os.path.exists(mock_path) else {}
     vids_path = os.path.join(ROOT, 'scripts', 'portfolio_videos.json')
     videos = json.load(open(vids_path)) if os.path.exists(vids_path) else {}
     os.makedirs(OUT, exist_ok=True)
@@ -201,10 +203,11 @@ def build():
         for img in info['images']:
             img['short'] = short_caption(name, img['caption'])
             imgs.append(img)
-        for base, cap, alt in extra.get(slug, []):
+        for row in extra.get(slug, []):
+            base, cap, alt = row[:3]
             href = f'assets/portfolio/{base}.webp'
             assert os.path.exists(os.path.join(SITE, href)), href
-            imgs.append({'href': href, 'short': cap, 'alt': alt, 'kind': 'shot'})
+            imgs.append({'href': href, 'short': cap, 'alt': alt, 'kind': row[3] if len(row) > 3 else 'shot'})
         lead = next(x for x in imgs if x['kind'] == 'shot')
         rest = [x for x in imgs if x is not lead]
         rest.sort(key=lambda x: {'shot': 0, 'plate': 1, 'phone': 2}[x['kind']])
@@ -214,12 +217,22 @@ def build():
 
         out = [HEAD.format(title=E(name), desc=E(f'{name}: {tagline} Designed by Butts Studios.'))]
         out.append('<main>\n  <div class="wrap">\n')
-        out.append(f'''    <section class="pi-hero">
+        mock = mockups.get(slug)
+        mock_fig = ''
+        if mock:
+            mhref = f'assets/portfolio/{mock[0]}.webp'
+            assert os.path.exists(os.path.join(SITE, mhref)), mhref
+            m = {'href': mhref, 'short': 'Mockup: ' + mock[1], 'alt': mock[2]}
+            mock_fig = (f'\n      <figure class="pi-mock">{zoom(m, slug, name, "(max-width: 900px) 100vw, 55vw")}'
+                        f'<figcaption><span class="mock-tag">Mockup</span> {E(mock[1])}</figcaption></figure>')
+        out.append(f'''    <section class="pi-hero{' has-mock' if mock else ''}">
+      <div class="pi-hero-text">
       <p class="pi-crumb"><a href="../portfolio.html">← Portfolio</a></p>
       <h1 class="display">{E(name)}</h1>
       <p class="kind">{E(kind)}</p>
       <p class="lede">{E(tagline)}</p>
       {visit}
+      </div>{mock_fig}
     </section>
 ''')
         out.append(f'    <figure class="pf-shot pi-lead"><div class="pf-frame">{zoom(lead, slug, name, "(max-width: 1400px) 100vw, 1360px")}</div>'

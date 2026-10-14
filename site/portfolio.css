@@ -226,3 +226,16 @@ a.pf-name:hover { text-decoration: underline; text-decoration-thickness: 2px; te
   .pf-featured .product-gallery > .f3, .pf-featured .product-gallery > .f4 { grid-column: span 12; }
   .pf-featured .product-gallery > .f2 { grid-column: span 6; }
 }
+
+/* "Mockup" label: device-frame composites are marked as mockups wherever they appear (2026-10-14) */
+.mock-tag { display: inline-block; font-size: 10px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--fg); border: 1px solid var(--line); border-radius: 999px; padding: 3px 8px; margin-right: 6px; vertical-align: 1px; }
+/* partnership cards: mockup in the frame, real captures as zoomable thumbs below */
+.work .frame.mock { background: var(--surface); }
+.work .frame.mock a.zoom { display: block; position: absolute; inset: 0; }
+.work .frame.mock img { object-fit: contain; padding: 4% 3%; box-sizing: border-box; }
+.work .frame .mock-tag { position: absolute; left: 12px; top: 12px; background: var(--bg); margin: 0; z-index: 1; }
+.work .frame > a.zoom { display: block; position: absolute; inset: 0; }
+.work .thumbs { display: flex; flex-wrap: wrap; gap: 8px; margin: 10px 0 0; padding: 0; list-style: none; }
+.work .thumbs a { display: block; height: 64px; border: 1px solid var(--line); border-radius: 4px; overflow: hidden; background: var(--surface); transition: border-color .2s; }
+.work .thumbs a:hover, .work .thumbs a:focus-visible { border-color: var(--fg); }
+.work .thumbs img { display: block; height: 100%; width: auto; }

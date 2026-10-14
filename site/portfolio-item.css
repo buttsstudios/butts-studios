@@ -68,3 +68,13 @@
 .pi-film video { display: block; width: 100%; height: auto; border: 1px solid var(--line); border-radius: 6px; background: #0b0b0b; }
 .pi-film.mobile video { max-width: 360px; }
 .pi-film figcaption { margin-top: 8px; font-size: 13px; color: var(--muted); }
+
+/* hero mockup: our own laptop + phone frames around real captures (2026-10-14) */
+.pi-hero.has-mock { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: clamp(24px, 4vw, 56px); align-items: center; }
+.pi-mock { margin: 0; background: var(--surface); border: 1px solid var(--line); border-radius: 8px; padding: clamp(14px, 2.4vw, 32px); }
+.pi-mock a.zoom { display: block; }
+.pi-mock img { display: block; width: 100%; height: auto; max-height: 560px; object-fit: contain; }
+.pi-mock figcaption { margin-top: 12px; font-size: 13px; color: var(--muted); }
+@media (max-width: 900px) {
+  .pi-hero.has-mock { grid-template-columns: minmax(0, 1fr); }
+}

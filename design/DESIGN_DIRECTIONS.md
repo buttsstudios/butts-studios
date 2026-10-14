@@ -36,3 +36,27 @@ until the Principal says so.
   `currentColor`, so it's black in light mode and bone in dark mode. The favicon is the C5 mark, black on white
   (`site/favicon.png`). The old blob files (`assets/logo.png`, `logo-white.png`) are kept, but the nav doesn't use them.
 - "For now": revisit when the Principal calls it.
+
+## 2 · Design philosophy (Principal, 2026-10-14)
+- **Verbatim:** "and what is butts studios deisgn philosophy. thoughtful advanced technical measured  kind ofl ike ahl or huntington applied and ridgefield"
+- **The philosophy: thoughtful · advanced · technical · measured.** The same lineage as Huntington Applied and
+  Ridgefield (internal reference: the lab's product sites). In public copy, name only Huntington Applied and
+  Ridgefield, never the internal codename.
+  1. **Thoughtful:** every element earns its place. Fewer, better pieces; nothing decorative without a reason.
+  2. **Advanced:** modern tools used with real craft. New technology finishes the work, it doesn't replace the hand.
+  3. **Technical:** precise grids, exact spacing, monospace details and labels, real captures and real numbers.
+     Show the working (stages, versions, specs) the way an engineering firm shows its systems.
+  4. **Measured:** restraint. One accent colour, calm type, quiet motion, gallery-label copy. No hype, no fake scarcity.
+- **How it shows up:**
+  - the C5 mark (a precise square and X)
+  - ink/bone with one gold accent
+  - Archivo + Newsreader, with mono for metadata
+  - stage bars and version labels on every product
+  - honest captions ("Mockup", "Working draft · v0.1")
+  - full even borders
+- **Shared with the family:**
+  - Huntington Applied: one landing system across every product, a topographic line field
+  - Ridgefield: monospace voice, terrain contours, olive + ember-orange signal
+  - Butts Studios is the studio arm of the same sensibility: storytelling built with an engineer's care.
+- **Applies to:** the studio site, the four apparel shops' shared core (brand layouts may be louder, but stay
+  measured), and every Butts Studios release.

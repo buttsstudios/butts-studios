@@ -60,3 +60,7 @@ until the Principal says so.
   - Butts Studios is the studio arm of the same sensibility: storytelling built with an engineer's care.
 - **Applies to:** the studio site, the four apparel shops' shared core (brand layouts may be louder, but stay
   measured), and every Butts Studios release.
+
+### The mark, read as architecture (Principal, 2026-10-14)
+- **Verbatim:** "thebutts studios icon almost reminds me of architecture. and in a wa yit accuraly refelcts our methodical and precsise natrue with design."
+- **Meaning to carry:** the square-and-X is how architects and engineers draw **cross-bracing**: the member that keeps a frame square and holds the structure true. The C5 mark is the studio's method in one shape: methodical, precise, built to hold. (It's also the designer's "image goes here" frame, which suits a studio that fills it with stories.)

@@ -54,5 +54,14 @@ Concrete nouns over adjectives. One idea per section.
 - **Footer line** → "Butts Studios · A design studio since 2018".
 - **Apparel line** (store.buttsstudios.com) → "Good design you can wear."
 
+
+## The mark as the method (Principal, 2026-10-14)
+> "thebutts studios icon almost reminds me of architecture. and in a wa yit accuraly refelcts our methodical and precsise natrue with design."
+
+The square-and-X reads as **cross-bracing**: what architects draw to keep a frame square and a structure true. That
+gives the storyline its image: **stories, built like architecture: methodical, precise, made to hold.**
+- About / How we work line: "Our mark is a braced frame, the part of a structure that keeps it true. It's how we work: methodical, precise, made to hold."
+- Optional homepage lede variant **D** (under "Made of Story."): "Butts Studios designs the way architects build: methodically, precisely, to hold. Books, comics, channels, clothing and products, all to one standard: good design."
+
 ## Recommendation
 **Option A** for the homepage (it says what the studio is in one sentence), plus the four pillars on How we work.

@@ -1,109 +1,308 @@
 {
  "huntington-applied": [
-  ["page-huntington-applied-about", "About page", "Huntington Applied about page: About Huntington Applied in terracotta above Who We Are"],
-  ["page-huntington-applied-models", "Models page", "Huntington Applied models page: published neural-net surrogate weights with project filters"],
-  ["page-huntington-applied-stories", "Stories page", "Huntington Applied stories page with a featured post on simulation and training as one loop"]
+  [
+   "page-huntington-applied-about",
+   "About page",
+   "Huntington Applied about page: About Huntington Applied in terracotta above Who We Are"
+  ],
+  [
+   "page-huntington-applied-models",
+   "Models page",
+   "Huntington Applied models page: published neural-net surrogate weights with project filters"
+  ],
+  [
+   "page-huntington-applied-stories",
+   "Stories page",
+   "Huntington Applied stories page with a featured post on simulation and training as one loop"
+  ]
  ],
  "dailyaitoll": [
-  ["page-dailyaitoll-about", "About page", "Daily AI Toll about page set as a long essay with a red drop cap"],
-  ["page-dailyaitoll-methodology", "Methodology", "Daily AI Toll methodology page: data collection, inclusion criteria and causality classification in monospace"]
+  [
+   "page-dailyaitoll-about",
+   "About page",
+   "Daily AI Toll about page set as a long essay with a red drop cap"
+  ],
+  [
+   "page-dailyaitoll-methodology",
+   "Methodology",
+   "Daily AI Toll methodology page: data collection, inclusion criteria and causality classification in monospace"
+  ]
  ],
  "ridgefield": [
-  ["page-ridgefield-products", "Products", "Ridgefield products page: Modular RF systems for operations and experimentation, in monospace capitals"],
-  ["page-ridgefield-simulation", "Simulation", "Ridgefield simulation page: computational modeling from circuit to environment scale"],
-  ["page-ridgefield-about", "About", "Ridgefield about page: Designed to Perform, with Defense rigor, commercial velocity"]
+  [
+   "page-ridgefield-products",
+   "Products",
+   "Ridgefield products page: Modular RF systems for operations and experimentation, in monospace capitals"
+  ],
+  [
+   "page-ridgefield-simulation",
+   "Simulation",
+   "Ridgefield simulation page: computational modeling from circuit to environment scale"
+  ],
+  [
+   "page-ridgefield-about",
+   "About",
+   "Ridgefield about page: Designed to Perform, with Defense rigor, commercial velocity"
+  ]
  ],
  "signals-institute": [
-  ["page-signals-institute-about", "About page", "The Signals Institute about page: Building pathways into research and engineering ecosystems from the community up"],
-  ["page-signals-institute-events", "Events page", "The Signals Institute events page: Where we show up, with youth programs in a blue-keyed row"]
+  [
+   "page-signals-institute-about",
+   "About page",
+   "The Signals Institute about page: Building pathways into research and engineering ecosystems from the community up"
+  ],
+  [
+   "page-signals-institute-events",
+   "Events page",
+   "The Signals Institute events page: Where we show up, with youth programs in a blue-keyed row"
+  ]
  ],
  "landslide": [
-  ["page-landslide-research", "Research", "Landslide research page: Cross-Domain Monte Carlo and Tail Risk"],
-  ["page-landslide-developers", "Developers", "Landslide developers page: Build with Landslide API, with RESTful and SDK cards"]
+  [
+   "page-landslide-research",
+   "Research",
+   "Landslide research page: Cross-Domain Monte Carlo and Tail Risk"
+  ],
+  [
+   "page-landslide-developers",
+   "Developers",
+   "Landslide developers page: Build with Landslide API, with RESTful and SDK cards"
+  ]
  ],
  "runwae": [
-  ["page-runwae-blog", "Blog", "Runwae blog index: a violet header above illustrated post cards"],
-  ["page-runwae-faqs", "FAQs", "Runwae frequently asked questions, grouped into getting started, posts, gigs, interests, followers and favorites"]
+  [
+   "page-runwae-blog",
+   "Blog",
+   "Runwae blog index: a violet header above illustrated post cards"
+  ],
+  [
+   "page-runwae-faqs",
+   "FAQs",
+   "Runwae frequently asked questions, grouped into getting started, posts, gigs, interests, followers and favorites"
+  ]
  ],
  "boltzmann": [
-  ["page-boltzmann-features", "Features", "Boltzmann features page: Platform Features, Simulation Reinvented, with ML-enabled and four-domain cards"],
-  ["page-boltzmann-research", "Research", "Boltzmann research page: a technical overview of Technology CAD (TCAD)"]
+  [
+   "page-boltzmann-features",
+   "Features",
+   "Boltzmann features page: Platform Features, Simulation Reinvented, with ML-enabled and four-domain cards"
+  ],
+  [
+   "page-boltzmann-research",
+   "Research",
+   "Boltzmann research page: a technical overview of Technology CAD (TCAD)"
+  ]
  ],
  "chrona": [
-  ["page-chrona-features", "Features", "Chrona features page: RF Scenario Intelligence and Discovery"],
-  ["page-chrona-research", "Research", "Chrona research page: a technical overview of RF geolocation"],
-  ["app-chrona-onboarding", "Studio · onboarding", "Chrona onboarding: Who are you? with roles for RF engineers, localization researchers, lab managers and reviewers"]
+  [
+   "page-chrona-features",
+   "Features",
+   "Chrona features page: RF Scenario Intelligence and Discovery"
+  ],
+  [
+   "page-chrona-research",
+   "Research",
+   "Chrona research page: a technical overview of RF geolocation"
+  ]
  ],
  "blacklab": [
-  ["page-blacklab-features", "Features", "Blacklab features page in yellow on black: decentralized multi-sensor perception and inference"],
-  ["page-blacklab-research", "Research", "Blacklab research page: a technical overview of multi-sensor perception"],
-  ["app-blacklab-onboarding", "Studio · onboarding", "Blacklab onboarding: Who are you? with roles for compute-node operators, simulation researchers, reviewers and explorers"]
+  [
+   "page-blacklab-features",
+   "Features",
+   "Blacklab features page in yellow on black: decentralized multi-sensor perception and inference"
+  ],
+  [
+   "page-blacklab-research",
+   "Research",
+   "Blacklab research page: a technical overview of multi-sensor perception"
+  ]
  ],
  "raphael": [
-  ["page-raphael-features", "Features", "Raphael features page: Research Intelligence, Reinvented, with ensemble and long-horizon cards"],
-  ["page-raphael-research", "Research", "Raphael research page: The Science of Science"],
-  ["app-raphael-onboarding", "Studio · onboarding", "Raphael onboarding: Who are you? with roles for researchers, ecosystem designers, analysts and lab admins"]
+  [
+   "page-raphael-features",
+   "Features",
+   "Raphael features page: Research Intelligence, Reinvented, with ensemble and long-horizon cards"
+  ],
+  [
+   "page-raphael-research",
+   "Research",
+   "Raphael research page: The Science of Science"
+  ]
  ],
  "sage": [
-  ["page-sage-features", "Features", "Sage features page in green: research-grade multi-scale biological simulation"],
-  ["page-sage-research", "Research", "Sage research page: a technical overview of biomolecular simulation"],
-  ["app-sage-onboarding", "Studio · onboarding", "Sage onboarding: Who are you? with roles for computational biologists, protein designers, lab PIs and contributors"]
+  [
+   "page-sage-features",
+   "Features",
+   "Sage features page in green: research-grade multi-scale biological simulation"
+  ],
+  [
+   "page-sage-research",
+   "Research",
+   "Sage research page: a technical overview of biomolecular simulation"
+  ]
  ],
  "farad": [
-  ["page-farad-applications", "Applications", "Farad applications page: worked cyber-defense scenarios as cards, each with an application note"],
-  ["page-farad-features", "Features", "Farad features page in blue: Cyber Defense, Reinvented"],
-  ["page-farad-models", "Models", "Farad models page: Run a model in two lines"],
-  ["page-farad-benchmarking", "Benchmarking", "Farad benchmarking page: The Threat-Detection Benchmark"]
+  [
+   "page-farad-applications",
+   "Applications",
+   "Farad applications page: worked cyber-defense scenarios as cards, each with an application note"
+  ],
+  [
+   "page-farad-features",
+   "Features",
+   "Farad features page in blue: Cyber Defense, Reinvented"
+  ],
+  [
+   "page-farad-models",
+   "Models",
+   "Farad models page: Run a model in two lines"
+  ],
+  [
+   "page-farad-benchmarking",
+   "Benchmarking",
+   "Farad benchmarking page: The Threat-Detection Benchmark"
+  ]
  ],
  "tiffany": [
-  ["page-tiffany-features", "Features", "Tiffany features page: Enterprise-Grade Monitoring Infrastructure"],
-  ["page-tiffany-about", "About", "Tiffany about page: central monitoring and DevOps for research infrastructure"],
-  ["app-tiffany-onboarding", "Studio · onboarding", "Tiffany onboarding: Who are you? with roles for SREs, engineering managers, FinOps planners and admins"]
+  [
+   "page-tiffany-features",
+   "Features",
+   "Tiffany features page: Enterprise-Grade Monitoring Infrastructure"
+  ],
+  [
+   "page-tiffany-about",
+   "About",
+   "Tiffany about page: central monitoring and DevOps for research infrastructure"
+  ]
  ],
  "nods": [
-  ["page-nods-features", "Features", "NODS features page in green: One Tool, Every Terminal"],
-  ["page-nods-resources", "Resources", "NODS resources page: ready-to-use workspace templates"]
+  [
+   "page-nods-features",
+   "Features",
+   "NODS features page in green: One Tool, Every Terminal"
+  ],
+  [
+   "page-nods-resources",
+   "Resources",
+   "NODS resources page: ready-to-use workspace templates"
+  ]
  ],
  "chief": [
-  ["page-chief-open-source", "Open source", "Chief open source page: Our Path to Open Source"]
+  [
+   "page-chief-open-source",
+   "Open source",
+   "Chief open source page: Our Path to Open Source"
+  ]
  ],
  "document-scanner": [
-  ["page-document-scanner-services", "Features", "Document Scanner features page: Enterprise Document Scanning and OCR Platform"],
-  ["page-document-scanner-developers", "Developers", "Document Scanner developers page: Three Ways to Build, with REST API and CLI cards"],
-  ["page-document-scanner-stories", "Stories", "Document Scanner stories page with a featured post on document processing"]
+  [
+   "page-document-scanner-services",
+   "Features",
+   "Document Scanner features page: Enterprise Document Scanning and OCR Platform"
+  ],
+  [
+   "page-document-scanner-developers",
+   "Developers",
+   "Document Scanner developers page: Three Ways to Build, with REST API and CLI cards"
+  ],
+  [
+   "page-document-scanner-stories",
+   "Stories",
+   "Document Scanner stories page with a featured post on document processing"
+  ]
  ],
  "rigor": [
-  ["page-rigor-features", "Features", "Rigor features page: Built for clear reasoning, with interactive argument maps"],
-  ["page-rigor-developers", "Developers", "Rigor developers page: Build with Rigor API"],
-  ["app-rigor-onboarding", "Studio · onboarding", "Rigor onboarding: Who are you? with roles for moderators, debaters, analysts and org admins"]
+  [
+   "page-rigor-features",
+   "Features",
+   "Rigor features page: Built for clear reasoning, with interactive argument maps"
+  ],
+  [
+   "page-rigor-developers",
+   "Developers",
+   "Rigor developers page: Build with Rigor API"
+  ]
  ],
  "kitch": [
-  ["page-kitch-features", "Features", "Kitch features page in violet: Built for Real Results, with creator discovery"],
-  ["page-kitch-developers", "Developers", "Kitch developers page: Build with Kitch API"],
-  ["app-kitch-onboarding", "Studio · onboarding", "Kitch onboarding: Who are you? with roles for brands, creators, agencies and admins"]
+  [
+   "page-kitch-features",
+   "Features",
+   "Kitch features page in violet: Built for Real Results, with creator discovery"
+  ],
+  [
+   "page-kitch-developers",
+   "Developers",
+   "Kitch developers page: Build with Kitch API"
+  ]
  ],
  "fasci": [
-  ["page-fasci-features", "Features", "Fasci features page in amber: Built for Real Impact"],
-  ["page-fasci-stories", "Stories", "Fasci stories gallery filtered by collective action, organizing, governance and civic technology"],
-  ["page-fasci-about", "About", "Fasci about page: Empowering communities through civic engagement"],
-  ["page-fasci-developers", "Developers", "Fasci developers page: Build with Fasci API"],
-  ["app-fasci-onboarding", "Studio · onboarding", "Fasci onboarding: Who are you? with roles for activists, organizers, advocates and admins"]
+  [
+   "page-fasci-features",
+   "Features",
+   "Fasci features page in amber: Built for Real Impact"
+  ],
+  [
+   "page-fasci-about",
+   "About",
+   "Fasci about page: Empowering communities through civic engagement"
+  ],
+  [
+   "page-fasci-developers",
+   "Developers",
+   "Fasci developers page: Build with Fasci API"
+  ]
  ],
  "good-tea": [
-  ["page-good-tea-features", "Features", "Good Tea features page: Everything You Need in One Place"],
-  ["page-good-tea-about", "About", "Good Tea about page with YouTube and Twitch source cards"]
+  [
+   "page-good-tea-features",
+   "Features",
+   "Good Tea features page: Everything You Need in One Place"
+  ],
+  [
+   "page-good-tea-about",
+   "About",
+   "Good Tea about page with YouTube and Twitch source cards"
+  ]
  ],
  "prophet": [
-  ["page-prophet-features", "Features", "Prophet features page: Developer Engagement Infrastructure"],
-  ["page-prophet-about", "About", "Prophet about page: Our Mission, with multi-platform and REST API cards"]
+  [
+   "page-prophet-features",
+   "Features",
+   "Prophet features page: Developer Engagement Infrastructure"
+  ],
+  [
+   "page-prophet-about",
+   "About",
+   "Prophet about page: Our Mission, with multi-platform and REST API cards"
+  ]
  ],
  "tillio": [
-  ["page-tillio-features", "Features", "Tillio features page: Everything you need to run an honest ledger, on charcoal and cream"],
-  ["page-tillio-research", "Research", "Tillio research page: What we're studying, with attribution and evaluation questions"]
+  [
+   "page-tillio-features",
+   "Features",
+   "Tillio features page: Everything you need to run an honest ledger, on charcoal and cream"
+  ],
+  [
+   "page-tillio-research",
+   "Research",
+   "Tillio research page: What we're studying, with attribution and evaluation questions"
+  ]
  ],
  "sentinel": [
-  ["page-sentinel-features", "Features", "Sentinel features page: One Engine, Every Surface"],
-  ["page-sentinel-resources", "Resources", "Sentinel resources page: step-by-step workflow recipes"],
-  ["page-sentinel-stories", "Stories", "Sentinel stories page: resources and guides filtered by topic"]
+  [
+   "page-sentinel-features",
+   "Features",
+   "Sentinel features page: One Engine, Every Surface"
+  ],
+  [
+   "page-sentinel-resources",
+   "Resources",
+   "Sentinel resources page: step-by-step workflow recipes"
+  ],
+  [
+   "page-sentinel-stories",
+   "Stories",
+   "Sentinel stories page: resources and guides filtered by topic"
+  ]
  ]
 }

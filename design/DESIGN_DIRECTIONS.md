@@ -29,3 +29,10 @@ until the Principal says so.
 - **Bridge note:** this is the bridge between the gold identity and the future direction. It keeps the recognisable
   type and colour and swaps the blob for the X-box. C1 (stroke 10, X inset) holds up best at nav and favicon size.
 - **Status:** stored with §1. Nothing ships until the Principal adopts it.
+
+### Decision (2026-10-13 ~13:10 ET): C5 adopted for now
+- **Verbatim:** "C5 at nav size lets go with this for now"
+- **Now live in the site source (local):** every page's nav uses the C5 lockup as inline SVG + Archivo Bold text in
+  `currentColor`, so it's black in light mode and bone in dark mode. The favicon is the C5 mark, black on white
+  (`site/favicon.png`). The old blob files (`assets/logo.png`, `logo-white.png`) are kept, but the nav doesn't use them.
+- "For now": revisit when the Principal calls it.

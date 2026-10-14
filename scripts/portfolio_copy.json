@@ -1,0 +1,940 @@
+{
+ "huntington-applied": {
+  "tagline": "Software, simulation systems and secure infrastructure for teams doing advanced research and engineering.",
+  "about": [
+   "Huntington Applied builds software and systems for advanced research: platforms, tools and infrastructure for organizations doing complex scientific and engineering work. Its stated aim is to shorten the path from research to systems people can use.",
+   "Its work spans simulation and modeling, security infrastructure for research environments, development tooling and research operations. The featured platform is Boltzmann, a collaborative multiphysics simulation platform that pairs forward simulation with inverse device design.",
+   "Engagements are limited to software and simulation development: custom research infrastructure, simulation platforms, platform licensing and research partnerships. The work is carried out by the members who build and maintain the company's own platforms.",
+   "Membership is lifetime and invite-only, with new members approved unanimously by existing members. A Models page catalogs open neural-net surrogate weights published across its research projects."
+  ],
+  "studio": "Butts Studios designed the identity and the website.",
+  "articles": [
+   {
+    "title": "Models",
+    "url": "https://huntingtonapplied.com/models",
+    "desc": "Catalog of open surrogate model weights and cards across research projects"
+   },
+   {
+    "title": "Scaling simulation and training as one continuous loop",
+    "url": "https://huntingtonapplied.com/stories/5",
+    "desc": "How simulation and model training run as one fleet architecture"
+   },
+   {
+    "title": "A single telemetry platform watches the whole lab",
+    "url": "https://huntingtonapplied.com/stories/6",
+    "desc": "One telemetry and detection platform shared by every research project"
+   },
+   {
+    "title": "Treating traction as a forecastable signal",
+    "url": "https://huntingtonapplied.com/stories/7",
+    "desc": "Measuring and forecasting the reach of published research work"
+   },
+   {
+    "title": "Sensor fusion is becoming an infrastructure layer",
+    "url": "https://huntingtonapplied.com/stories/0",
+    "desc": "Why combining camera, LiDAR and radar signals now matters most"
+   },
+   {
+    "title": "Simulating the electromagnetic spectrum at scale",
+    "url": "https://huntingtonapplied.com/stories/1",
+    "desc": "Notes on virtual RF test ranges and timing precision in simulation"
+   }
+  ]
+ },
+ "runwae-apparel": {
+  "tagline": "A streetwear label that treats each piece as a work of art, under the line \"Everybody Influences\".",
+  "about": [
+   "Runwae Apparel is a streetwear brand built around the line \"Everybody Influences\". Its first magazine, Issue No. 1, published October 2020, placed the garments inside gilt-framed Renaissance and Baroque paintings.",
+   "That idea carries through the brand: a dripping-R seal in coral on charcoal, the full Runwae Apparel name set in a serif face, and gilt used for frames and rules.",
+   "The apparel comes in two lines. Fall '21 is the original line, with tees and hoodies such as Crafting, True Grit, Poison and Pave. The Little Things is a hand-drawn line built on the idea that in life, it's all about the little things."
+  ],
+  "studio": "Butts Studios designed the identity, the print pieces and the product imagery.",
+  "articles": []
+ },
+ "dailyaitoll": {
+  "tagline": "A daily, sourced record of job cuts that public reporting links to AI adoption.",
+  "about": [
+   "Daily AI Toll keeps a running record of publicly reported job displacement linked to artificial intelligence. It aggregates the events, verifies them where possible and presents the count plainly, updated daily.",
+   "Collection is automated: an AI system scans public news sources each night, and every entry carries a source link, an excerpt, a causality class (direct, contributing or inferred) and a confidence score.",
+   "The methodology describes the figures as a lower-bound estimate, since many AI-related job losses go unreported or are attributed to other causes. The site asks readers to verify the data before relying on it.",
+   "Trends charts the cumulative and monthly totals, and the full event dataset is available as a licensed CSV for research or commercial use."
+  ],
+  "studio": "Butts Studios designed the identity and the data site.",
+  "articles": [
+   {
+    "title": "Methodology",
+    "url": "https://dailyaitoll.com/methodology",
+    "desc": "How events are collected, classified by AI causality and scored for confidence"
+   },
+   {
+    "title": "Trends",
+    "url": "https://dailyaitoll.com/trends",
+    "desc": "Cumulative and monthly charts of AI-linked job displacement over time"
+   },
+   {
+    "title": "Data Downloads",
+    "url": "https://dailyaitoll.com/data",
+    "desc": "Dataset fields, preview and license tiers for the full event CSV"
+   },
+   {
+    "title": "September 15, 2026",
+    "url": "https://dailyaitoll.com/2026/09/15",
+    "desc": "Daily ledger entry listing three companies with sourced excerpts and confidence"
+   }
+  ]
+ },
+ "latarence": {
+  "tagline": "The one-page personal site of Latarence Butts, PhD.",
+  "about": [
+   "Latarence is the personal site of Latarence Butts, PhD. It is a single page that carries his name, a hand-drawn mark and a link to his LinkedIn profile.",
+   "In light mode the page shows a pen portrait on paper; in dark mode it swaps in the L² mark drawn in chalk on ink. The name is set in handwriting above a small monospace footer."
+  ],
+  "studio": "Butts Studios designed the identity and the website.",
+  "articles": []
+ },
+ "ridgefield": {
+  "tagline": "An engineering firm for hardware, software, simulation and AI systems built to perform under real-world conditions.",
+  "about": [
+   "Ridgefield is an engineering firm for systems that have to perform under real-world conditions. It works across five areas: hardware, software, simulation, AI and operations.",
+   "The hardware practice covers RF front-ends, antenna arrays, LTCC multilayer packaging and radar. Software spans embedded firmware, signal processing and full-stack platforms, and the simulation work covers device, site and propagation modeling.",
+   "Engagements start with a system assessment that looks for where systems or operations underperform, followed by design, build and ongoing technical advisory. Ridgefield describes itself as working at the seam between defense and commercial engineering, based in West Palm Beach, Florida.",
+   "Its Demos page runs two of its systems in the browser: Vantage Echo, a reflective metasurface you can steer, and Covey, a replay of a distributed radar swarm imaging a city block in simulation."
+  ],
+  "studio": "Butts Studios designed the identity and the website.",
+  "articles": [
+   {
+    "title": "Systems You Can Steer",
+    "url": "https://ridgefieldtech.com/demos/",
+    "desc": "Index of two interactive browser demos: metasurface steering and SAR swarm"
+   },
+   {
+    "title": "Vantage Echo: Beam Steering Demo",
+    "url": "https://ridgefieldtech.com/demos/vantage-echo.html",
+    "desc": "Steer a 1-bit reflectarray design model and read live beam metrics"
+   },
+   {
+    "title": "Covey: Distributed Sensing Demo",
+    "url": "https://ridgefieldtech.com/demos/covey.html",
+    "desc": "Navigable 3D replay of a simulated radar swarm imaging a city"
+   },
+   {
+    "title": "Performance",
+    "url": "https://ridgefieldtech.com/performance.html",
+    "desc": "Representative engagements across defense, commercial, research and residential work"
+   }
+  ]
+ },
+ "signals-institute": {
+  "tagline": "Building long-term pathways into advanced technology, engineering and scientific fields, based in West Palm Beach.",
+  "about": [
+   "The Signals Institute is building long-term pathways into advanced technology, engineering and scientific fields. Based in West Palm Beach, it works through youth engagement, veteran transition and community programs.",
+   "Its approach rests on three pillars: engagement, exposure and transition. The Institute plans to build consistent relationships within schools, community organizations and faith-based networks, introduce participants to new fields and mentors, and support real transitions into advanced training and careers.",
+   "The name comes from its founding idea: signals are indicators of change, need and opportunity. The Institute is looking to partner with libraries, schools, community centers and city facilities that can host its programs."
+  ],
+  "studio": "Butts Studios designed the identity and the website.",
+  "articles": []
+ },
+ "landslide": {
+  "tagline": "Stochastic simulation that couples weather, financial, population, sentiment and physical domains to model how shocks cascade.",
+  "about": [
+   "Landslide is a stochastic simulation platform that links five domains (weather, financial, population, sentiment and physical) through Monte Carlo coupling, so a disruption in one can be traced into the others.",
+   "It was built around what the site calls the prediction paradox, where forecasts change behavior and so change the outcomes being forecast. Extreme value theory is used to model rare, high-impact tail events.",
+   "Automated findings stream alongside each run and mark prediction stalls and distribution hotspots on the map. The live demo uses an approximate AI surrogate on sample scenarios, which the page labels as an estimate rather than a full simulation.",
+   "Landslide publishes trained surrogate models with model cards, an open benchmark with a public leaderboard, and a desktop app for macOS and Linux."
+  ],
+  "studio": "Butts Studios designed the landing site and the product interface.",
+  "articles": [
+   {
+    "title": "Cross-Domain Monte Carlo & Tail Risk",
+    "url": "https://landslide.global/research",
+    "desc": "Technical overview of domain coupling, extreme value theory and cascade models"
+   },
+   {
+    "title": "The Domain-Coupling Forecast Benchmark",
+    "url": "https://landslide.global/benchmarking",
+    "desc": "Open benchmark task, scoring rules and reference leaderboard for surrogates"
+   },
+   {
+    "title": "Models",
+    "url": "https://landslide.global/models",
+    "desc": "Surrogate weights, model cards and accuracy charts for Landslide models"
+   },
+   {
+    "title": "AI Sentiment: What Landslide's Model Predicts vs. What's Actually Happening",
+    "url": "https://landslide.global/stories/7",
+    "desc": "Public scorecard comparing model forecasts with AI opinion polling"
+   },
+   {
+    "title": "Benchmarking a Surrogate for Monte Carlo Risk Is About the Tails",
+    "url": "https://landslide.global/stories/6",
+    "desc": "Why average accuracy misleads when scoring risk surrogates"
+   },
+   {
+    "title": "Extreme Value Theory and the Mathematics of Rare Events",
+    "url": "https://landslide.global/stories/1",
+    "desc": "Explainer on modeling the tail of a distribution directly"
+   }
+  ],
+  "made": "Landing site · Product interface"
+ },
+ "runwae": {
+  "tagline": "A platform for agreements between brands and influencers, from proposal to verified post to payment.",
+  "about": [
+   "Runwae is a platform for agreements between brands and influencers. Brands post marketing opportunities with a set budget, and influencers find opportunities from brands in their industry and send proposals.",
+   "Each gig follows one agreement process: the influencer submits a proposal, the brand accepts it, the influencer posts the agreed content, the brand verifies the post, and the influencer is paid.",
+   "Agreements, brand-to-creator messaging and payments sit in one place, with a profile that holds all of a creator's gigs. The Runwae blog carries guides on pricing and finding influencers alongside interviews with creators."
+  ],
+  "studio": "Butts Studios designed the landing site.",
+  "articles": [
+   {
+    "title": "AI and Authenticity in Influencer Marketing",
+    "url": "https://runwae.com/blog/AIandAuthenticity-2026",
+    "desc": "How AI content tools affect trust between brands, creators and audiences"
+   },
+   {
+    "title": "The Rise of the Micro-Creator Economy",
+    "url": "https://runwae.com/blog/MicroCreatorEconomy-2026",
+    "desc": "Why marketing budgets are shifting toward smaller, more engaged creators"
+   },
+   {
+    "title": "Short Form Video Strategy for Brands",
+    "url": "https://runwae.com/blog/ShortFormVideoStrategy-2026",
+    "desc": "Building creator partnerships across TikTok, Reels and YouTube Shorts"
+   },
+   {
+    "title": "How To Price An Influencer Agreement (2026 Update)",
+    "url": "https://runwae.com/blog/HowToPriceAnInfluencerAgreement-2026",
+    "desc": "Updated guide to rates and compensation models for influencer deals"
+   },
+   {
+    "title": "A Sit Down With Malc Show",
+    "url": "https://runwae.com/blog/ASitDownWithMalcShow",
+    "desc": "Interview with an artist, videographer, DJ and barber on creative influence"
+   },
+   {
+    "title": "Notes With Niya",
+    "url": "https://runwae.com/blog/NotesWithNiya",
+    "desc": "Interview with a fashion and wellness creator on building community"
+   }
+  ],
+  "made": "Landing site"
+ },
+ "boltzmann": {
+  "tagline": "Collaborative multiphysics simulation with ML-accelerated solving, inverse device design and real-time 3D visualization.",
+  "about": [
+   "Boltzmann is a collaborative multiphysics simulation platform covering electromagnetic, thermal, mechanical and semiconductor physics in one place. Simulations run in the cloud from the browser, with real-time 3D visualization.",
+   "Alongside forward simulation, Boltzmann offers inverse device design: describe target specifications and it generates a device architecture with regions, contacts, materials and boundary conditions, ready to simulate.",
+   "The Simulation Studio shows convergence, fields and solver status while a run is in progress, and a browser-based IDE edits device configurations with side-by-side 3D viewers. Teams can publish interactive results and track how they are used.",
+   "Trained neural surrogates give fast estimates of device fields. The live demo generates a silicon PN diode and runs those surrogates over it, labeled on the page as an approximation of a full physics solve."
+  ],
+  "studio": "Butts Studios designed the landing site and the product interface.",
+  "articles": [
+   {
+    "title": "Technology CAD (TCAD)",
+    "url": "https://boltzmann.app/research",
+    "desc": "Technical overview of device simulation, surrogate modeling and inverse design"
+   },
+   {
+    "title": "The TCAD Electromagnetic-Field Benchmark",
+    "url": "https://boltzmann.app/benchmarking",
+    "desc": "Open benchmark and reference leaderboard for device-field surrogate models"
+   },
+   {
+    "title": "Models",
+    "url": "https://boltzmann.app/models",
+    "desc": "Inference package, model cards and accuracy for Boltzmann surrogates"
+   },
+   {
+    "title": "API Documentation",
+    "url": "https://boltzmann.app/developers",
+    "desc": "REST API, SDKs and quick-start for running simulations programmatically"
+   },
+   {
+    "title": "The history of device simulation",
+    "url": "https://boltzmann.app/stories/5",
+    "desc": "Long-form history of semiconductor device simulation and its methods"
+   },
+   {
+    "title": "Inverse design turns TCAD data into a design engine",
+    "url": "https://boltzmann.app/stories/1",
+    "desc": "How simulation data can drive device design from target specs"
+   }
+  ],
+  "made": "Landing site · Product interface"
+ },
+ "chrona": {
+  "tagline": "Realtime RF and SAR scenario simulation in 3D, with AI-driven RF intelligence and inverse scenario design.",
+  "about": [
+   "Chrona builds dynamic RF and SAR scenarios that run in realtime and in full 3D. Users compose terrain, platforms and emitters, then watch propagation, returns and geometry change as the scenario plays out.",
+   "Scenarios can be wargamed with AI in the loop or run in reverse: start from the outcome you want and let Chrona optimize the scenarios that reach it. Propagation is terrain-based, using ITU-R P.2001 with multipath and atmospheric effects.",
+   "Chrona also pairs emulated scenarios with real RF receivers for hardware-in-the-loop testing of localization algorithms in repeatable conditions. Its live demo predicts a received-power coverage field from a trained model, offered as a preview before a full electromagnetic solve."
+  ],
+  "studio": "Butts Studios designed the landing site.",
+  "articles": [
+   {
+    "title": "RF Geolocation",
+    "url": "https://chronarf.com/research",
+    "desc": "Technical overview of TDOA, AoA, propagation modeling and estimation limits"
+   },
+   {
+    "title": "The RF Coverage Benchmark",
+    "url": "https://chronarf.com/benchmarking",
+    "desc": "Open benchmark and reference leaderboard for RF coverage surrogate models"
+   },
+   {
+    "title": "Models",
+    "url": "https://chronarf.com/models",
+    "desc": "Inference package, weights and model cards for Chrona surrogates"
+   },
+   {
+    "title": "Applications",
+    "url": "https://chronarf.com/applications",
+    "desc": "Worked RF scenarios, each with an application note on method and results"
+   },
+   {
+    "title": "How TDOA locates a radio transmitter",
+    "url": "https://chronarf.com/stories/2",
+    "desc": "Explainer on locating emitters from arrival-time differences"
+   },
+   {
+    "title": "A short history of the contest over the spectrum",
+    "url": "https://chronarf.com/stories/5",
+    "desc": "History of competition for control of the radio spectrum"
+   }
+  ],
+  "made": "Landing site"
+ },
+ "blacklab": {
+  "tagline": "Predicts the physical state of a place by fusing a physics engine, live sensors and fast learned surrogates.",
+  "about": [
+   "Blacklab predicts a physical field over a place, such as the strength of a signal, the presence of an object or how either changes over the next few minutes. It fuses a deterministic physics engine, live sensors and fast learned surrogates into one estimate with per-point confidence.",
+   "Radio, camera, LiDAR, radar, audio and weather feeds pass through a common adapter format called PixelCloud. RF is described as the first validated physics domain.",
+   "A tiling and attribution design lets many nodes predict a shared area together, with results checked through consensus. People can run the desktop client to contribute compute to the network.",
+   "The live demo estimates where a tracked object goes next, or how a transmitter covers an area, and is labeled a fast approximate estimate on a fixed scene."
+  ],
+  "studio": "Butts Studios designed the landing site.",
+  "articles": [
+   {
+    "title": "Multi-Sensor Perception",
+    "url": "https://blacklab.world/research",
+    "desc": "Technical overview of sensor fusion and estimation across RF, radar and camera"
+   },
+   {
+    "title": "The RF Perception Benchmark",
+    "url": "https://blacklab.world/benchmarking",
+    "desc": "Open benchmark and reference leaderboard for radio power-field surrogates"
+   },
+   {
+    "title": "No single sensor is sufficient for real-world perception",
+    "url": "https://blacklab.world/stories/0",
+    "desc": "Why perception systems combine sensors that fail differently"
+   },
+   {
+    "title": "Radio frequency signals can reconstruct spatial structure",
+    "url": "https://blacklab.world/stories/2",
+    "desc": "How RF measurements can map the environment around them"
+   },
+   {
+    "title": "From a snapshot to a living model of the world",
+    "url": "https://blacklab.world/stories/5",
+    "desc": "Moving from static sensing toward continuously predicted world state"
+   },
+   {
+    "title": "Benchmarking perception is a question of what the test set leaves out",
+    "url": "https://blacklab.world/stories/6",
+    "desc": "How held-out test design shapes perception benchmark results"
+   }
+  ],
+  "made": "Landing site"
+ },
+ "raphael": {
+  "tagline": "Research intelligence that forecasts research trajectories and designs the teams and resources behind breakthroughs.",
+  "about": [
+   "Raphael is a research intelligence platform. It uses forward simulation to forecast how research fields and their impact may develop, and inverse design to propose the teams, resources and collaboration structures that could lead to a breakthrough.",
+   "It continuously ingests new literature from ArXiv, Semantic Scholar and PubMed, and renders citation and concept networks as interactive 3D knowledge graphs that update as new research arrives.",
+   "Graph, map and experiment studios launch runs and show results live, with pluggable deterministic and stochastic engines. The live demo classifies a research paper into one of seven fields and is labeled an approximate classifier."
+  ],
+  "studio": "Butts Studios designed the landing site.",
+  "articles": [
+   {
+    "title": "The Science of Science",
+    "url": "https://raphaelresearch.com/research",
+    "desc": "Technical overview of novelty, disruption and citation-dynamics measures"
+   },
+   {
+    "title": "A single number that asks whether a paper opened a new direction",
+    "url": "https://raphaelresearch.com/stories/0",
+    "desc": "Explainer on the disruption index for scientific papers"
+   },
+   {
+    "title": "Large teams and small teams do different jobs in science",
+    "url": "https://raphaelresearch.com/stories/2",
+    "desc": "How team size relates to developing versus disrupting ideas"
+   },
+   {
+    "title": "Modeling how a paper accumulates its citations over time",
+    "url": "https://raphaelresearch.com/stories/4",
+    "desc": "Notes on citation-growth models for individual papers"
+   },
+   {
+    "title": "Discovery is speeding up, and direction becomes the scarce resource",
+    "url": "https://raphaelresearch.com/stories/5",
+    "desc": "Commentary on research direction as discovery accelerates"
+   },
+   {
+    "title": "Benchmarking a graph surrogate turns on the splits",
+    "url": "https://raphaelresearch.com/stories/6",
+    "desc": "Why train and test splits decide graph model benchmark results"
+   }
+  ],
+  "made": "Landing site"
+ },
+ "sage": {
+  "tagline": "Multi-scale biological simulation from molecules to tissues, with ML-accelerated molecular dynamics and target-driven design.",
+  "about": [
+   "Sage is a cloud platform for biological simulation across four scales: molecular, protein, cellular and tissue. Researchers load a structure from RCSB or draft one from a natural-language prompt, choose a force field and conditions, and watch trajectories unfold in a live 3D viewer.",
+   "Physics-informed neural networks learn from molecular dynamics runs to speed up simulation while keeping biochemical constraints. Sage describes itself as the step after structure prediction: it takes a known structure and simulates how it moves, binds and reacts.",
+   "The Optimization Studio runs target-driven campaigns that tune a structure toward properties such as binding affinity and stability. The site presents fully de novo design from target specifications as the broader vision.",
+   "Teams can scrub and replay trajectories, review per-residue analytics, share interactive results and automate work through a REST API with Python and JavaScript clients. The public demo uses an approximate AI surrogate on sample complexes to estimate binding affinity."
+  ],
+  "studio": "Butts Studios designed the landing site.",
+  "articles": [
+   {
+    "title": "Research",
+    "url": "https://sagesimulation.com/research",
+    "desc": "Technical overview of molecular dynamics, force fields, ML potentials and enhanced sampling"
+   },
+   {
+    "title": "Benchmarking",
+    "url": "https://sagesimulation.com/benchmarking",
+    "desc": "Open benchmark defining task, convention and scoring for molecular force-field surrogates"
+   },
+   {
+    "title": "Models",
+    "url": "https://sagesimulation.com/models",
+    "desc": "Neural-net surrogate models with model cards, weights and an inference package"
+   },
+   {
+    "title": "Screen a binding affinity in milliseconds",
+    "url": "https://sagesimulation.com/demo",
+    "desc": "Live demo estimating drug and protein binding affinity on sample complexes"
+   },
+   {
+    "title": "A machine-learned force field can pass the benchmark and still fail the simulation",
+    "url": "https://sagesimulation.com/stories/6",
+    "desc": "Why benchmark accuracy and stable simulation behavior can diverge for ML force fields"
+   },
+   {
+    "title": "How molecular simulation learned to watch a protein move",
+    "url": "https://sagesimulation.com/stories/5",
+    "desc": "A short history of molecular dynamics, from early methods to the Nobel"
+   }
+  ],
+  "made": "Landing site"
+ },
+ "farad": {
+  "tagline": "Defensive cyber simulation for training and benchmarking autonomous defender agents, building toward privacy-preserving collaborative defense.",
+  "about": [
+   "Farad is a defensive cybersecurity platform built around simulation. Today it trains and evaluates cooperative multi-agent reinforcement learning defenders against adversaries scripted over a modeled network.",
+   "Five specialized agents cover detection, response, hardening, forensics and threat hunting. Benchmark reports reference MITRE-aligned threats and public references such as CAGE-4, and a replayable spatial view shows what a defender did and why.",
+   "The longer-term aim is collaborative defense through federated learning and zero-knowledge proofs, so organizations can share threat intelligence while keeping their infrastructure private. The site states that the proof circuits are implemented and that the cross-organization exchange is on the roadmap.",
+   "The public demo uses a trained detector to read the stage and severity of synthetic attack scenarios as a fast estimate."
+  ],
+  "studio": "Butts Studios designed the landing site.",
+  "articles": [
+   {
+    "title": "Research",
+    "url": "https://faraddefense.com/research",
+    "desc": "Overview of multi-agent RL, red and blue team simulation, and privacy-preserving learning"
+   },
+   {
+    "title": "Benchmarking",
+    "url": "https://faraddefense.com/benchmarking",
+    "desc": "Open threat-detection benchmark with fixed task, metrics and held-out scoring"
+   },
+   {
+    "title": "Applications",
+    "url": "https://faraddefense.com/applications",
+    "desc": "Worked cyber-defense scenarios with topology, difficulty and application notes"
+   },
+   {
+    "title": "See a threat's stage in seconds",
+    "url": "https://faraddefense.com/demo",
+    "desc": "Demo reading threat profile and kill chain stage from synthetic scenarios"
+   },
+   {
+    "title": "A shared gym gave autonomous cyber defense a place to practice",
+    "url": "https://faraddefense.com/stories/0",
+    "desc": "How the CybORG environment pairs simulation and emulation for defender training"
+   },
+   {
+    "title": "A defense agent that wins in simulation still has to prove it on a real network",
+    "url": "https://faraddefense.com/stories/6",
+    "desc": "On the gap between simulated defense results and real network performance"
+   }
+  ],
+  "made": "Landing site"
+ },
+ "tiffany": {
+  "tagline": "Central monitoring for research infrastructure: streaming metrics ingestion, time-series analytics and live dashboards in one platform.",
+  "about": [
+   "Tiffany is a central monitoring platform for research infrastructure. It ingests metrics over a binary TCP protobuf stream, as well as length-prefixed JSON and StatsD over UDP, and shows them in live dashboards with drill-down views.",
+   "Storage is split by workload: PostgreSQL for transactional data, TimescaleDB for time series with continuous aggregation, and Redis for caching and sessions. Tiffany reports its own health through the same pipeline it uses for every other service.",
+   "A REST API with OpenAPI documentation, a CLI for operations tasks, an operator console for entitlements and LLM cost tracking, and an autonomous missions engine for routine development work complete the platform. It is offered under a one-time enterprise license with self-hosted, on-premise and hybrid deployment."
+  ],
+  "studio": "Butts Studios designed the landing site.",
+  "articles": [
+   {
+    "title": "Observing a fleet of independent services through one pipeline",
+    "url": "https://tiffanyapp.com/stories/5",
+    "desc": "How a fleet-wide telemetry pipeline handles ingestion, storage and query cost"
+   },
+   {
+    "title": "Observability is consolidating around a single open standard",
+    "url": "https://tiffanyapp.com/stories/0",
+    "desc": "How observability data collection is converging on one open format"
+   },
+   {
+    "title": "The benchmarks behind anomaly detection needed fixing first",
+    "url": "https://tiffanyapp.com/stories/1",
+    "desc": "Why anomaly detection benchmarks were flawed and how they were corrected"
+   },
+   {
+    "title": "Forecasting turns autoscaling from reactive to proactive",
+    "url": "https://tiffanyapp.com/stories/2",
+    "desc": "Using load forecasts to scale services ahead of demand"
+   },
+   {
+    "title": "Error budgets turn reliability into a number teams can spend",
+    "url": "https://tiffanyapp.com/stories/3",
+    "desc": "How SLOs and error budgets make reliability a measurable target"
+   },
+   {
+    "title": "Alerting on burn rate instead of raw thresholds",
+    "url": "https://tiffanyapp.com/stories/4",
+    "desc": "Why burn-rate alerting catches SLO risk better than fixed thresholds"
+   }
+  ],
+  "made": "Landing site"
+ },
+ "nods": {
+  "tagline": "Terminal workspace orchestration: define panes, directories and commands once in YAML, then launch the whole layout with one command.",
+  "about": [
+   "NODS is a terminal workspace orchestrator. Developers describe windows, panes, working directories and startup commands once in YAML, then launch the full environment with a single command.",
+   "It drives tmux, gnome-terminal, Terminator and Konsole, locally or on remote servers over SSH with persistent tmux sessions. The same definition can start an AI assistant in each pane and inject its prompt, coordinating agentic work across machines through a shared ledger.",
+   "Workspace configurations can be version-controlled and shared across a team, and session metrics track launch times and usage. The CLI is open source and runs on macOS and Linux."
+  ],
+  "studio": "Butts Studios designed the landing site.",
+  "articles": [
+   {
+    "title": "Resources",
+    "url": "https://nods.dev/resources",
+    "desc": "Downloadable workspace templates plus guides to configuration and backends"
+   },
+   {
+    "title": "Downloads",
+    "url": "https://nods.dev/downloads",
+    "desc": "NODS CLI releases for macOS and Linux with install steps"
+   },
+   {
+    "title": "The measured cost of resuming an interrupted task",
+    "url": "https://nods.dev/stories/0",
+    "desc": "Research on how long developers take to resume after interruptions"
+   },
+   {
+    "title": "The terminal multiplexer landscape gains a second answer",
+    "url": "https://nods.dev/stories/1",
+    "desc": "How a newer terminal multiplexer joins tmux as a common choice"
+   },
+   {
+    "title": "Dev containers define the environment as code",
+    "url": "https://nods.dev/stories/3",
+    "desc": "How dev containers commit a development environment as a file"
+   },
+   {
+    "title": "Why the terminal is still where developers work",
+    "url": "https://nods.dev/stories/5",
+    "desc": "Why the command line outlasted the shift to graphical tools"
+   }
+  ],
+  "made": "Landing site"
+ },
+ "chief": {
+  "tagline": "No-code programming of JavaCard and PIV smart cards, for hardware-bound credentials an organization can issue and manage itself.",
+  "about": [
+   "Chief is a platform for programming JavaCard and PIV smart cards through a guided, no-code wizard. It handles the cryptographic steps so teams can issue hardware-bound credentials using their own readers and cards.",
+   "Chief sets up a certificate authority for the organization, generates each keypair on the card and signs its certificate, so the private key stays on the hardware. Administrators can revoke lost cards, renew expiring certificates and distribute CRL and OCSP updates.",
+   "Card Studio lets people design a card in 3D before programming it, and a library of pre-built applets covers web login, document signing, VPN, identity badges and physical access. The site describes Chief as an early-stage product."
+  ],
+  "studio": "Butts Studios designed the landing site and the product interface.",
+  "articles": [
+   {
+    "title": "Card Studio",
+    "url": "https://badgechief.com/card-studio",
+    "desc": "Interactive 3D card designer with the steps from design to programmed card"
+   },
+   {
+    "title": "Client Platform Integration",
+    "url": "https://badgechief.com/integration",
+    "desc": "Guide to mTLS setup, CA trust and certificate mapping for smart card login"
+   },
+   {
+    "title": "Card Reader Demo",
+    "url": "https://badgechief.com/card-reader-demo",
+    "desc": "Browser demo authenticating a Java Card with a Chief-issued certificate"
+   },
+   {
+    "title": "FIPS 201-3 Expands PIV Beyond the Card",
+    "url": "https://badgechief.com/stories/0",
+    "desc": "How the FIPS 201-3 update extends PIV credentials past physical cards"
+   },
+   {
+    "title": "Derived PIV Credentials: PKI Without the Card in Hand",
+    "url": "https://badgechief.com/stories/1",
+    "desc": "How derived PIV credentials carry PKI identity onto mobile devices"
+   },
+   {
+    "title": "One credential for the screen and the door",
+    "url": "https://badgechief.com/stories/5",
+    "desc": "Using a single smart card for both computer login and physical access"
+   }
+  ],
+  "made": "Landing site · Product interface"
+ },
+ "document-scanner": {
+  "tagline": "Browser-based document capture with OCR and full-text search, plus a REST API, CLI and JavaScript scanning package.",
+  "about": [
+   "Document Scanner turns paper into searchable digital records. People capture pages with a device camera or upload existing files, and the browser handles corner detection and perspective correction.",
+   "OCR extracts text with broad language support, and full-text search covers file names and document contents with highlighted snippets, folders and filters. Teams share folders and documents with role-based access.",
+   "Developers can build with a REST API, a CLI for terminals and CI, and a JavaScript package that runs the scanning pipeline on-device in the browser. The site describes Document Scanner as an early-stage product."
+  ],
+  "studio": "Butts Studios designed the landing site and the product interface.",
+  "articles": [
+   {
+    "title": "Scan a document in your browser",
+    "url": "https://documentscanner.app/demo",
+    "desc": "Demo page and embed guide for the client-side scanning engine"
+   },
+   {
+    "title": "Build with Document Scanner API",
+    "url": "https://documentscanner.app/developers",
+    "desc": "Developer guide to the REST API, CLI and on-device JavaScript package"
+   },
+   {
+    "title": "How machines learned to read a page",
+    "url": "https://documentscanner.app/stories/5",
+    "desc": "A history of optical character recognition and machine reading"
+   },
+   {
+    "title": "TrOCR collapses the OCR stack into a single transformer",
+    "url": "https://documentscanner.app/stories/1",
+    "desc": "How TrOCR replaces a multi-stage OCR pipeline with one transformer model"
+   },
+   {
+    "title": "LayoutLMv3 learns text, layout, and image together",
+    "url": "https://documentscanner.app/stories/2",
+    "desc": "How LayoutLMv3 combines text, position and image for document understanding"
+   },
+   {
+    "title": "DocLayNet shows the training distribution is the bottleneck",
+    "url": "https://documentscanner.app/stories/4",
+    "desc": "What the DocLayNet dataset shows about training data for layout analysis"
+   }
+  ],
+  "made": "Landing site · Product interface"
+ },
+ "rigor": {
+  "tagline": "Collaborative structured argumentation: map claims, evidence and rebuttals as shared 3D graphs, with AI fact-checking and fallacy detection.",
+  "about": [
+   "Rigor is a collaborative platform for structured argumentation. Groups map claims, evidence and rebuttals as interactive 3D graphs and build them together in real time with live presence.",
+   "Built-in AI tools check facts, score source credibility and flag logical fallacies. Typing a topic generates a starter map with a central claim, premises, evidence, a counter-argument and a conclusion, which the group then examines and extends.",
+   "Rigor is aimed at policy and advocacy teams, researchers, public institutions and educators, and finished maps can be published for anyone to explore."
+  ],
+  "studio": "Butts Studios designed the landing site.",
+  "articles": [
+   {
+    "title": "From Aristotle to the Logic Gate: A Short History of Reasoning Made Formal",
+    "url": "https://rigor.world/stories/12",
+    "desc": "A history of formal logic from the syllogism to computing"
+   },
+   {
+    "title": "One Semester of Argument Mapping Outperforms Three Years of College",
+    "url": "https://rigor.world/stories/7",
+    "desc": "Meta-analysis findings on argument mapping and critical thinking gains"
+   },
+   {
+    "title": "Structured Online Deliberation Produces More Deliberative Voters a Year Later",
+    "url": "https://rigor.world/stories/11",
+    "desc": "Study on lasting effects of structured online deliberation on voters"
+   },
+   {
+    "title": "Cross-Partisan Discussion Reverses What Echo Chambers Build",
+    "url": "https://rigor.world/stories/8",
+    "desc": "Experiment showing cross-partisan discussion reduces polarization"
+   },
+   {
+    "title": "One in Seven: The Reproducibility Crisis Is an Evidence-Structure Problem",
+    "url": "https://rigor.world/stories/2",
+    "desc": "Reproducibility in science framed as a problem of evidence structure"
+   },
+   {
+    "title": "Consultation Theater: When Participation Never Reaches the Decision",
+    "url": "https://rigor.world/stories/0",
+    "desc": "Why many civic participation platforms fail to influence decisions"
+   }
+  ],
+  "made": "Landing site"
+ },
+ "kitch": {
+  "tagline": "A marketplace connecting brands with micro-influencers, with campaign workflow, escrow payments and performance analytics.",
+  "about": [
+   "Kitch is a marketplace that connects brands with creators, with a focus on micro-influencers. Brands write a campaign brief, find creators by audience fit, and review profiles, past performance and rates.",
+   "Creators submit content for approval inside the platform, with feedback tools and version tracking. Payments are held in escrow and released by milestone once deliverables are approved and published.",
+   "Campaign analytics track impressions, engagement, clicks and conversions with exportable reports, and brands can draw an area on a map to target creators and audiences by region."
+  ],
+  "studio": "Butts Studios designed the landing site.",
+  "articles": [
+   {
+    "title": "Influencer marketing is older than the internet",
+    "url": "https://kitch.global/stories/5",
+    "desc": "A history of endorsement marketing reaching back to 1765"
+   },
+   {
+    "title": "Why brand and creator matching is the field's hardest step",
+    "url": "https://kitch.global/stories/4",
+    "desc": "Why pairing brands with suitable creators is difficult to get right"
+   },
+   {
+    "title": "Measurement is now the constraint on influencer marketing",
+    "url": "https://kitch.global/stories/2",
+    "desc": "How measuring results became the main limit on influencer marketing"
+   },
+   {
+    "title": "The influencer base has shifted to its smallest creators",
+    "url": "https://kitch.global/stories/0",
+    "desc": "How nano and micro creators came to dominate the influencer base"
+   },
+   {
+    "title": "Creator earnings are rising as brands plan to spend more",
+    "url": "https://kitch.global/stories/1",
+    "desc": "Report findings on creator income and planned brand spending"
+   },
+   {
+    "title": "Creator spending is moving beyond social and down-market",
+    "url": "https://kitch.global/stories/3",
+    "desc": "Where creator marketing budgets are shifting across channels and tiers"
+   }
+  ],
+  "made": "Landing site"
+ },
+ "fasci": {
+  "tagline": "Civic engagement platform for organizing campaigns, events and boycotts, with verified participation and transparent governance.",
+  "about": [
+   "Fasci is a civic engagement platform for organizing campaigns, events, protests and boycotts. Organizers set a goal, milestones and verification criteria, then recruit volunteers and coordinate action across their network.",
+   "Participation is verified through GPS presence, timestamped media, witness attestation and transaction receipts, and each action is recorded with a signed participation certificate. Threaded deliberation and signed records build an audit trail that stakeholders can review.",
+   "Coalitions can run multi-organization campaigns with shared dashboards, and the Campaign Studio scopes a campaign to a region drawn on a map. Civic organizations can also run member elections with verifiable voting."
+  ],
+  "studio": "Butts Studios designed the landing site.",
+  "articles": [
+   {
+    "title": "How the boycott got its name, and how it spread",
+    "url": "https://fasci.app/stories/7",
+    "desc": "The 1880 origin of the word boycott and its spread"
+   },
+   {
+    "title": "Ostrom's design principles for institutions that sustain cooperation",
+    "url": "https://fasci.app/stories/4",
+    "desc": "Elinor Ostrom's principles for communities governing shared resources"
+   },
+   {
+    "title": "vTaiwan shows what structured deliberation at scale requires",
+    "url": "https://fasci.app/stories/2",
+    "desc": "Lessons from vTaiwan on large-scale structured public deliberation"
+   },
+   {
+    "title": "The 3.5% participation threshold and what sits behind it",
+    "url": "https://fasci.app/stories/1",
+    "desc": "The research behind the 3.5% participation threshold for movements"
+   },
+   {
+    "title": "Verifiable participation is becoming a tractable design problem",
+    "url": "https://fasci.app/stories/6",
+    "desc": "How civic technology is approaching verifiable participation records"
+   },
+   {
+    "title": "What online participatory budgeting needs beyond access",
+    "url": "https://fasci.app/stories/3",
+    "desc": "What research shows online participatory budgeting needs to work"
+   }
+  ],
+  "made": "Landing site"
+ },
+ "good-tea": {
+  "tagline": "One feed for YouTube, Twitch, TikTok, Instagram, Facebook and X, with AI sentiment, trend detection and curation.",
+  "about": [
+   "Good Tea, called Tea on its own site, gathers content from YouTube, Twitch, TikTok, Instagram, Facebook and X into one feed. People connect accounts through read-only OAuth and follow creators across platforms in a single view.",
+   "AI analysis sorts content by topic, scores sentiment, flags emerging trends and links organic content to marketing campaigns. Saved items are tagged automatically and grouped into collections.",
+   "A browser extension captures content from any platform, libraries sync across devices, and data exports to CSV or JSON. The site names content strategists, brand managers and researchers as its main users."
+  ],
+  "studio": "Butts Studios designed the landing site.",
+  "articles": [
+   {
+    "title": "How a system for watching many livestreams at once fits together",
+    "url": "https://goodtea.world/stories/5",
+    "desc": "Architecture of a backend that monitors many livestreams across platforms"
+   },
+   {
+    "title": "Multiview: watching several live feeds on one screen",
+    "url": "https://goodtea.world/stories/1",
+    "desc": "How multiview viewing of several live streams works and is used"
+   },
+   {
+    "title": "Why some live streams lag seconds behind and others do not",
+    "url": "https://goodtea.world/stories/4",
+    "desc": "The technical causes of latency differences between live streams"
+   },
+   {
+    "title": "The second screen is now standard viewing equipment",
+    "url": "https://goodtea.world/stories/2",
+    "desc": "How second-screen use became a normal part of watching"
+   },
+   {
+    "title": "Live streaming has become a mainstream viewing habit",
+    "url": "https://goodtea.world/stories/0",
+    "desc": "Data on how live streaming moved into mainstream viewing"
+   },
+   {
+    "title": "The creator ecosystem is large, and most of it is part-time",
+    "url": "https://goodtea.world/stories/3",
+    "desc": "The size of the creator ecosystem and its part-time majority"
+   }
+  ],
+  "made": "Landing site"
+ },
+ "prophet": {
+  "tagline": "Developer engagement across GitHub, YouTube, Reddit and Mastodon, with persona-based content, sentiment tracking and self-scored forecasts.",
+  "about": [
+   "Prophet is a developer engagement platform for technical communities on GitHub, YouTube, Reddit, Mastodon, Twitter and Discord. Teams plan multi-platform campaigns and scheduled posts from one dashboard.",
+   "Content generation uses defined personas with consistent voices for tutorials, release notes and community updates, and drafts pass through a human review workflow. Sentiment analysis follows community mood across platforms and surfaces emerging concerns.",
+   "Prophet forecasts engagement for each campaign and scores its own predictions against actual results, so teams can see how closely the model tracks."
+  ],
+  "studio": "Butts Studios designed the landing site.",
+  "articles": [
+   {
+    "title": "How a self-scoring forecasting platform is put together",
+    "url": "https://prophetai.world/stories/5",
+    "desc": "Architecture of a forecasting system that scores predictions against outcomes"
+   },
+   {
+    "title": "Predicting how a post will land before it is published",
+    "url": "https://prophetai.world/stories/2",
+    "desc": "Research on forecasting social post engagement before publishing"
+   },
+   {
+    "title": "Likes prove far more predictable than comments",
+    "url": "https://prophetai.world/stories/3",
+    "desc": "Why likes are easier to predict than comments in engagement models"
+   },
+   {
+    "title": "Reading sentiment at scale runs into sarcasm and slang",
+    "url": "https://prophetai.world/stories/4",
+    "desc": "The limits of automated sentiment analysis on social text"
+   },
+   {
+    "title": "The social platform map keeps shifting under content strategy",
+    "url": "https://prophetai.world/stories/0",
+    "desc": "How changing platform usage affects content strategy"
+   },
+   {
+    "title": "Downloads",
+    "url": "https://prophetai.world/downloads",
+    "desc": "Prophet desktop app releases for macOS and Linux"
+   }
+  ],
+  "made": "Landing site"
+ },
+ "tillio": {
+  "tagline": "A living cap table for projects that grow on contribution: agree the split, log the work, watch equity update.",
+  "about": [
+   "Tillio is a living cap table for projects that grow on contribution. Founders, contributors and advisors sign one equity agreement that sets vesting, milestones and category weights.",
+   "Team members log contributions as they happen, from code and design to investor intros and checks. An AI evaluation engine drafts a value and a rationale for each entry, and the project owner approves, edits or overrides it.",
+   "Approved entries update the split that everyone on the team sees, payouts follow the ledger over Stripe and bank rails, and every entry has a comment thread and a dispute window. Tillio is in alpha, with a CLI and a GitHub Actions workflow for logging work from code."
+  ],
+  "studio": "Butts Studios designed the landing site and the product interface.",
+  "articles": [
+   {
+    "title": "Research",
+    "url": "https://tillio.ai/research",
+    "desc": "Tillio's open research questions on attribution, AI evaluation and disputes"
+   },
+   {
+    "title": "Tillio CLI",
+    "url": "https://tillio.ai/developers/cli",
+    "desc": "CLI reference with install steps and commands for logging contributions"
+   },
+   {
+    "title": "GitHub Actions",
+    "url": "https://tillio.ai/developers/github-actions",
+    "desc": "Workflow templates that submit commits to Tillio on every push"
+   },
+   {
+    "title": "The equity equation ties ownership to contribution",
+    "url": "https://tillio.ai/stories/0",
+    "desc": "How the equity equation frames ownership as a trade for contribution"
+   },
+   {
+    "title": "The Linux kernel measures authority in patches merged",
+    "url": "https://tillio.ai/stories/1",
+    "desc": "How Linux kernel maintainership builds authority from merged work"
+   },
+   {
+    "title": "Open-source funding platforms route rewards to contributions",
+    "url": "https://tillio.ai/stories/4",
+    "desc": "How open-source funding tools attach rewards to specific contributions"
+   }
+  ],
+  "made": "Landing site · Product interface"
+ },
+ "sentinel": {
+  "tagline": "Integrity scanning for code, docs and configuration: detect corruption, trace where it started, and repair it safely.",
+  "about": [
+   "Sentinel scans codebases for integrity issues: corruption, typo-class defects, copy drift, broken references and configuration inconsistencies across code, documentation and config files.",
+   "It runs quick, deep, ecosystem and CI/CD scan modes against a built-in pattern library, classifies each finding by severity, and opens guided repair sessions to apply fixes. Git history forensics help trace when an issue entered the codebase and how far it spread.",
+   "The same engine powers a CLI for CI and pre-commit hooks, a desktop app and a web dashboard, so findings stay consistent across all three."
+  ],
+  "studio": "Butts Studios designed the landing site.",
+  "articles": [
+   {
+    "title": "Resources",
+    "url": "https://sentinelscanner.com/resources",
+    "desc": "Workflow recipes and guides for first scans, CI gating and triage"
+   },
+   {
+    "title": "Getting Started with Sentinel: Your First Integrity Scan",
+    "url": "https://sentinelscanner.com/stories/0",
+    "desc": "Walkthrough of installing Sentinel and running a first integrity scan"
+   },
+   {
+    "title": "Anatomy of a Scan: How Sentinel Finds Integrity Issues",
+    "url": "https://sentinelscanner.com/stories/1",
+    "desc": "How a Sentinel scan reasons across files to surface findings"
+   },
+   {
+    "title": "When a Config File Takes Down the Internet: The Silent Integrity Problem",
+    "url": "https://sentinelscanner.com/stories/7",
+    "desc": "How a single bad configuration file can cause wide outages"
+   },
+   {
+    "title": "Silent Data Corruption: When the System Gives You No Signal",
+    "url": "https://sentinelscanner.com/stories/8",
+    "desc": "How silent data corruption escapes detection in running systems"
+   },
+   {
+    "title": "The XZ Utils Backdoor: Corruption Hidden in a Trusted Codebase",
+    "url": "https://sentinelscanner.com/stories/9",
+    "desc": "What the XZ Utils backdoor shows about supply chain integrity"
+   }
+  ],
+  "made": "Landing site"
+ }
+}

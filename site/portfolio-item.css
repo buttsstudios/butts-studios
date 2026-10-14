@@ -1,0 +1,64 @@
+/* Butts Studios: one page per portfolio item (2026-10-13). Layered on styles.css + portfolio.css. */
+
+.pi-hero { padding-block: clamp(36px, 7vw, 88px) clamp(28px, 4vw, 48px); }
+.pi-crumb { margin: 0 0 18px; font-size: 12px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); }
+.pi-crumb a { text-decoration: none; }
+.pi-crumb a:hover { color: var(--fg); }
+.pi-hero h1 { font-size: clamp(44px, 8vw, 112px); }
+.pi-hero .kind { font-size: 13px; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); font-weight: 700; margin: 18px 0 0; }
+.pi-hero .lede { margin: 18px 0 0; max-width: 40ch; }
+.pi-hero .open-site { margin-top: 26px; }
+
+.pi-lead { margin: 0 0 clamp(40px, 6vw, 72px); }
+.pi-lead .pf-frame { border-radius: 8px; }
+
+.pi-body { padding-bottom: clamp(48px, 7vw, 88px); border-bottom: 1px solid var(--line); }
+.pi-body .prose p:last-child { margin-bottom: 0; }
+.pi-body .prose .pi-studio { color: var(--muted); font-style: italic; }
+.pi-details { border: 1px solid var(--line); border-radius: 6px; padding: clamp(18px, 2.4vw, 26px); display: grid; gap: 18px; align-self: start; }
+.pi-details h2 { font-size: 12px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); margin: 0; }
+.pi-details dl { margin: 0; display: grid; gap: 16px; }
+.pi-details dt { font-size: 11px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+.pi-details dd { margin: 6px 0 0; font-size: 15px; line-height: 1.45; }
+.pi-details dd a { text-underline-offset: 3px; }
+.pi-details .swatches i { width: 44px; height: 44px; }
+
+.pi-section { padding-block: clamp(48px, 7vw, 88px); border-bottom: 1px solid var(--line); }
+.pi-section .section-head { margin-bottom: 28px; }
+
+.pi-gallery { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: clamp(16px, 2.2vw, 28px); align-items: start; grid-auto-flow: row dense; }
+.pi-gallery > * { grid-column: span 6; }
+.pi-gallery > .g-phone { grid-column: span 3; }
+.pi-gallery > .g-phone .phone { max-width: none; border-radius: 16px; }
+.pi-gallery > .g-phone figcaption { margin-top: 10px; font-size: 13px; color: var(--muted); }
+.pi-gallery figure { margin: 0; }
+.pi-gallery .plate { min-height: 220px; }
+.pi-gallery .plate-fig figcaption { margin-top: 10px; font-size: 13px; color: var(--muted); }
+
+.pi-articles { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+.pi-articles a {
+  display: grid; gap: 6px; height: 100%; text-decoration: none; padding: 18px 20px;
+  border: 1px solid var(--line); border-radius: 6px; transition: border-color .2s, background .2s;
+}
+.pi-articles a:hover { border-color: var(--fg); background: var(--surface); }
+.pi-articles b { font-size: 18px; font-weight: 700; letter-spacing: -.01em; line-height: 1.25; }
+.pi-articles span { font-family: var(--serif); font-size: 16px; line-height: 1.4; color: var(--muted); }
+.pi-articles small { font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
+
+.pi-pager { display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr); gap: 14px; align-items: stretch; padding-block: clamp(36px, 5vw, 56px) clamp(56px, 8vw, 96px); }
+.pi-pager a { text-decoration: none; border: 1px solid var(--line); border-radius: 6px; padding: 16px 18px; display: grid; gap: 4px; transition: border-color .2s, background .2s; }
+.pi-pager a:hover { border-color: var(--fg); background: var(--surface); }
+.pi-pager small { font-size: 11px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+.pi-pager b { font-size: clamp(18px, 2vw, 24px); font-weight: 800; letter-spacing: -.02em; }
+.pi-pager .next { text-align: right; }
+.pi-pager .all { place-content: center; text-align: center; font-size: 13px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
+
+@media (max-width: 900px) {
+  .pi-gallery > * { grid-column: span 12; }
+  .pi-gallery > .g-phone { grid-column: span 6; }
+  .pi-articles { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 600px) {
+  .pi-pager { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+  .pi-pager .all { grid-column: 1 / -1; grid-row: 2; }
+}

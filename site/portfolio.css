@@ -195,3 +195,35 @@ html.lb-open { overflow: hidden; }
 .plate.tsi-ink { background: #0A0A0A; }
 .plate.tsi-paper { background: #F5F3EE; }
 .plate.tsi-paper .plate-cap { color: #6B655B; }
+
+/* ---------- item pages: links from the portfolio (2026-10-13) ---------- */
+a.pf-name { text-decoration: none; color: inherit; }
+a.pf-name:hover { text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 4px; }
+.pf-more { display: inline-block; font-size: 12px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; text-decoration: none; }
+.pf-more:hover { color: var(--muted); }
+.pf-more-row { margin: 0; }
+.product-head .pf-more { margin-top: 10px; }
+
+/* ---------- featured products: full-row cards with a larger gallery (Principal 2026-10-13) ---------- */
+.pf-sub { margin: 0 0 22px; }
+.pf-featured + .pf-sub { margin-top: clamp(56px, 7vw, 96px); }
+.pf-featured { display: grid; gap: clamp(48px, 6vw, 88px); }
+.pf-featured .product-head h3 { font-size: clamp(30px, 3.4vw, 46px); }
+.pf-featured .product-head p { font-size: 19px; max-width: 60ch; }
+.pf-featured .product-gallery { grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 16px; grid-auto-flow: row dense; }
+.pf-featured .product-gallery > * { grid-column: span 4; }
+.pf-featured .product-gallery > .f2 { grid-column: span 2; }
+.pf-featured .product-gallery > .f3 { grid-column: span 3; }
+.pf-featured .product-gallery > .f4 { grid-column: span 4; }
+.pf-featured .product-gallery > .f5 { grid-column: span 5; }
+.pf-featured .product-gallery > .f6 { grid-column: span 6; }
+.pf-featured .product-gallery figcaption { font-size: 13px; }
+@media (max-width: 900px) {
+  .pf-featured .product-gallery > .f2 { grid-column: span 4; }
+  .pf-featured .product-gallery > .f3, .pf-featured .product-gallery > .f4 { grid-column: span 6; }
+  .pf-featured .product-gallery > .f5, .pf-featured .product-gallery > .f6 { grid-column: span 12; }
+}
+@media (max-width: 600px) {
+  .pf-featured .product-gallery > .f3, .pf-featured .product-gallery > .f4 { grid-column: span 12; }
+  .pf-featured .product-gallery > .f2 { grid-column: span 6; }
+}

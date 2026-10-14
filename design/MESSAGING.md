@@ -55,13 +55,16 @@ Concrete nouns over adjectives. One idea per section.
 - **Apparel line** (store.buttsstudios.com) → "Good design you can wear."
 
 
-## The mark as the method (Principal, 2026-10-14)
+## The mark as the method: shown in the design, never said (Principal, 2026-10-14)
 > "thebutts studios icon almost reminds me of architecture. and in a wa yit accuraly refelcts our methodical and precsise natrue with design."
+> "no you dont need to say that literally. it has to come across in design"
 
-The square-and-X reads as **cross-bracing**: what architects draw to keep a frame square and a structure true. That
-gives the storyline its image: **stories, built like architecture: methodical, precise, made to hold.**
-- About / How we work line: "Our mark is a braced frame, the part of a structure that keeps it true. It's how we work: methodical, precise, made to hold."
-- Optional homepage lede variant **D** (under "Made of Story."): "Butts Studios designs the way architects build: methodically, precisely, to hold. Books, comics, channels, clothing and products, all to one standard: good design."
+No copy about the mark, architecture or bracing. The idea lives in how the pages are built:
+- **Visible structure:** a strict column grid; hairline rules that frame modules and sections; content sits *in* frames.
+- **Precision:** exact, consistent spacing; aligned edges; numbered sections and mono measures (No. 01, v0.1, stage bars).
+- **Square geometry:** small corners only, square crops, right angles; the C5 frame proportions echoed in image frames and cards.
+- **Restraint:** one accent, generous negative space, nothing decorative without a structural reason.
+- **Detail at close range:** captions, specs and labels set with the same care as headlines.
 
 ## Recommendation
 **Option A** for the homepage (it says what the studio is in one sentence), plus the four pillars on How we work.

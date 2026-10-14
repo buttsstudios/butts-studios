@@ -6,7 +6,7 @@
 <title>Future Identity Concepts</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400&family=Lexend+Exa:wght@200;300&family=Outfit:wght@200;300&family=Red+Hat+Display:wght@300;400&family=Figtree:wght@300;400&family=Manrope:wght@300&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400&family=Lexend+Exa:wght@200;300&family=Outfit:wght@200;300&family=Red+Hat+Display:wght@300;400&family=Figtree:wght@300;400&family=Manrope:wght@300&family=Archivo:wght@700;800&display=swap" rel="stylesheet">
 <style>
   /* Concept sheet: alternate "future vibe" identity for Butts Studios.
      Refs: design/references/2026-10-13_future_vibe/ (Future Observatory signage). Not the approved identity. */
@@ -43,6 +43,10 @@
   .f-figtree { font-family: "Figtree"; font-weight: 300; letter-spacing: .075em; }
   .f-manrope { font-family: "Manrope"; font-weight: 300; letter-spacing: .07em; }
   .f-blend { font-family: "Jost"; font-weight: 300; letter-spacing: .085em; }
+  .f-archivo { font-family: "Archivo"; font-weight: 700; text-transform: none; letter-spacing: -.01em; line-height: .98; font-size: 38px; }
+  .gold { color: #E8B521; }
+  .card.black { background: #050707; border-color: #1c1e1d; color: #E8B521; }
+  .card.black .meta { color: #8f8d85; border-color: #262826; }
   .pick { border: 1px solid var(--ink); }
   .f-redhat { font-family: "Red Hat Display"; font-weight: 300; letter-spacing: .07em; }
   .marks { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 16px; }
@@ -80,6 +84,10 @@
     <symbol id="m-g" viewBox="0 0 100 100"><g fill="none" stroke="currentColor" stroke-width="4.5"><rect x="8" y="8" width="84" height="84"/><path d="M14 14 L86 86 M86 14 L14 86"/></g></symbol>
     <symbol id="m-h" viewBox="0 0 100 100"><g fill="none" stroke="currentColor" stroke-width="4.5"><rect x="8" y="8" width="84" height="84"/><path d="M18 18 L82 82 M82 18 L18 82"/></g></symbol>
     <symbol id="m-i" viewBox="0 0 100 100"><g fill="none" stroke="currentColor" stroke-width="4.5"><rect x="8" y="8" width="84" height="84"/><path d="M21 21 L79 79 M79 21 L21 79"/></g></symbol>
+    <!-- Heavy marks for the current-font lockups (stroke 10 / 12 / 14) -->
+    <symbol id="m-h10" viewBox="0 0 100 100"><g fill="none" stroke="currentColor" stroke-width="10"><rect x="9" y="9" width="82" height="82"/><path d="M20 20 L80 80 M80 20 L20 80"/></g></symbol>
+    <symbol id="m-h12" viewBox="0 0 100 100"><g fill="none" stroke="currentColor" stroke-width="12"><rect x="10" y="10" width="80" height="80"/><path d="M10 10 L90 90 M90 10 L10 90"/></g></symbol>
+    <symbol id="m-h14" viewBox="0 0 100 100"><g fill="none" stroke="currentColor" stroke-width="14" stroke-linecap="square"><rect x="11" y="11" width="78" height="78"/><path d="M27 27 L73 73 M73 27 L27 73"/></g></symbol>
   </defs>
 </svg>
 
@@ -87,6 +95,23 @@
   <h1>Butts Studios · future identity</h1>
   <p>Concepts for an alternate identity, from the Future Observatory references: a light, wide, all-caps sans, stacked, beside a simple box with an X through it. Black on white first, with the muted greens as a variant. The approved 2021 gold-on-black identity is unchanged.</p>
 </header>
+
+<section>
+  <h2>Current font (Archivo Bold) + a heavier square and X</h2>
+  <div class="grid">
+    <div class="card black"><div class="lockup"><svg><use href="#m-h10"/></svg><div class="word f-archivo"><span>Butts</span><span>Studios</span></div></div><p class="meta">C1 · gold on black (the current colours) · stroke 10, X inset</p></div>
+    <div class="card black"><div class="lockup"><svg><use href="#m-h12"/></svg><div class="word f-archivo"><span>Butts</span><span>Studios</span></div></div><p class="meta">C2 · gold on black · stroke 12, X to the corners</p></div>
+    <div class="card black"><div class="lockup"><svg><use href="#m-h14"/></svg><div class="word f-archivo"><span>Butts</span><span>Studios</span></div></div><p class="meta">C3 · gold on black · stroke 14, X floating</p></div>
+    <div class="card "><div class="lockup"><svg><use href="#m-h10"/></svg><div class="word f-archivo"><span>Butts</span><span>Studios</span></div></div><p class="meta">C4 · black on white · stroke 10</p></div>
+    <div class="card "><div class="lockup"><svg><use href="#m-h12"/></svg><div class="word f-archivo"><span>Butts</span><span>Studios</span></div></div><p class="meta">C5 · black on white · stroke 12</p></div>
+    <div class="card dark"><div class="lockup" style="color:var(--moss)"><svg><use href="#m-h10"/></svg><div class="word f-archivo" style="color:var(--night-ink)"><span>Butts</span><span>Studios</span></div></div><p class="meta">C6 · moss mark, bone type</p></div>
+  </div>
+  <div class="grid" style="margin-top:16px">
+    <div class="card black"><div class="lockup" style="gap:12px"><svg style="width:40px;height:40px"><use href="#m-h10"/></svg><div class="word f-archivo" style="font-size:21px"><span>Butts</span><span>Studios</span></div></div><p class="meta">C1 at nav size</p></div>
+    <div class="card"><div class="lockup" style="gap:12px"><svg style="width:40px;height:40px"><use href="#m-h12"/></svg><div class="word f-archivo" style="font-size:21px"><span>Butts</span><span>Studios</span></div></div><p class="meta">C5 at nav size</p></div>
+    <div class="card black" style="display:grid;place-items:center"><svg style="width:96px;height:96px"><use href="#m-h10"/></svg><p class="meta" style="width:100%;text-align:center">Mark alone (favicon / avatar)</p></div>
+  </div>
+</section>
 
 <section>
   <h2>Between 1 and 2: your pick, blended (type + mark)</h2>

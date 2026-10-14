@@ -19,3 +19,13 @@ until the Principal says so.
 - **Bridge notes:** the X-box is the designer's "image goes here" placeholder, which fits selling working drafts. Pair
   it with the wordmark (alone, it can read as a missing image). If adopted, the drafts store is the natural first use,
   with finished releases keeping the gold.
+
+### 1b · Current font + heavy X-box (added 2026-10-13)
+- **Ask (verbatim):** "you can also try a logo where you keep our current font andtry the square and x with that with aa thicker linewidth"
+- **Where:** top section of `concepts/future-identity.html`, C1–C6 + nav size + mark alone.
+- **Spec:** the current wordmark type (Archivo Bold, stacked "Butts / Studios", mixed case) beside a square with an X
+  at stroke 10 / 12 / 14 per 100 units. Shown in the current gold #E8B521 on black #050707, black on white, and moss on
+  night.
+- **Bridge note:** this is the bridge between the gold identity and the future direction. It keeps the recognisable
+  type and colour and swaps the blob for the X-box. C1 (stroke 10, X inset) holds up best at nav and favicon size.
+- **Status:** stored with §1. Nothing ships until the Principal adopts it.

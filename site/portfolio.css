@@ -134,8 +134,8 @@ a.zoom:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; bord
 a.zoom:hover img { opacity: .9; }
 
 /* ---------- products (A): one sheet per product ---------- */
-.pf-products { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(20px, 3vw, 36px); align-items: start; }
-.pf-product { border: 1px solid var(--line); border-radius: 6px; padding: clamp(16px, 2.2vw, 24px); display: grid; gap: 18px; }
+.pf-products { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(40px, 5vw, 72px) clamp(28px, 4vw, 56px); align-items: start; }
+.pf-product { display: grid; gap: 18px; }
 .product-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; }
 .product-head h3 { font-size: clamp(26px, 2.6vw, 34px); font-weight: 800; letter-spacing: -.03em; line-height: 1; margin: 0; }
 .product-head p { margin: 8px 0 0; font-family: var(--serif); font-size: 17px; line-height: 1.45; max-width: 46ch; }

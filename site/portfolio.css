@@ -3,14 +3,14 @@
 /* ---------- shared pieces ---------- */
 .pf-shot { margin: 0; }
 .pf-shot .pf-frame {
-  border: 1px solid var(--line); border-radius: 6px; overflow: hidden; background: #0b0b0b;
+  border: 1px solid var(--line); border-radius: 3px; overflow: hidden; background: #0b0b0b;
 }
 .pf-shot img { width: 100%; height: auto; display: block; }
 .pf-shot figcaption { margin-top: 10px; font-size: 13px; color: var(--muted); line-height: 1.4; }
 .pf-shot figcaption b { color: var(--fg); font-weight: 700; }
 .pf-tag {
   display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase;
-  color: var(--muted); border: 1px solid var(--line); border-radius: 999px; padding: 4px 10px;
+  color: var(--muted); border: 1px solid var(--line); border-radius: 3px; padding: 4px 10px;
 }
 
 .swatches { display: flex; flex-wrap: wrap; gap: 10px; margin: 0; padding: 0; list-style: none; }
@@ -23,7 +23,7 @@
 .pf-switch { display: inline-flex; gap: 6px; margin-top: 28px; flex-wrap: wrap; }
 .pf-switch a {
   text-decoration: none; font-size: 12px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase;
-  border: 1.5px solid var(--line); border-radius: 999px; padding: 8px 14px;
+  border: 1.5px solid var(--line); border-radius: 3px; padding: 8px 14px;
 }
 .pf-switch a[aria-current] { border-color: var(--fg); background: var(--fg); color: var(--bg); }
 .pf-switch a:not([aria-current]):hover { border-color: var(--fg); }
@@ -46,7 +46,7 @@
 .case-media .two-thirds { grid-column: span 4; }
 
 /* logo plates: brand marks shown on their own grounds */
-.plate { border: 1px solid var(--line); border-radius: 6px; display: grid; place-items: center; padding: clamp(20px, 4vw, 48px); min-height: 180px; height: 100%; }
+.plate { border: 1px solid var(--line); border-radius: 3px; display: grid; place-items: center; padding: clamp(20px, 4vw, 48px); min-height: 180px; height: 100%; }
 .plate img { max-width: 100%; max-height: 120px; width: auto; height: auto; }
 .plate.ha { background: #1f1f1d; }
 .plate.ha-light { background: #F1ECE2; }
@@ -58,7 +58,7 @@
 .plate.ha-light .plate-cap, .plate.dat-paper .plate-cap { color: #6B655B; }
 
 /* phone shots */
-.phone { border: 1px solid var(--line); border-radius: 22px; overflow: hidden; background: #0b0b0b; max-width: 260px; margin-inline: auto; }
+.phone { border: 1px solid var(--line); border-radius: 3px; overflow: hidden; background: #0b0b0b; max-width: 260px; margin-inline: auto; }
 .phone img { width: 100%; height: auto; display: block; }
 .phones { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 16px; align-items: start; }
 
@@ -80,7 +80,7 @@
 .wall .plate { min-height: 220px; }
 .wall .phone { max-width: 300px; }
 .wall-card {
-  border: 1px solid var(--line); border-radius: 6px; padding: 22px; display: grid; gap: 12px; background: var(--surface);
+  border: 1px solid var(--line); border-radius: 3px; padding: 22px; display: grid; gap: 12px; background: var(--surface);
 }
 .wall-card h3 { font-size: 26px; font-weight: 800; letter-spacing: -.03em; line-height: 1; }
 .wall-card p { margin: 0; font-family: var(--serif); font-size: 17px; line-height: 1.45; }
@@ -88,7 +88,7 @@
 .wall-filters { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 28px; padding: 0; list-style: none; }
 .wall-filters button {
   appearance: none; background: none; color: inherit; cursor: pointer; font: 700 12px/1 var(--display); letter-spacing: .08em; text-transform: uppercase;
-  border: 1.5px solid var(--line); border-radius: 999px; padding: 9px 14px;
+  border: 1.5px solid var(--line); border-radius: 3px; padding: 9px 14px;
 }
 .wall-filters button[aria-pressed="true"] { background: var(--fg); color: var(--bg); border-color: var(--fg); }
 .wall [hidden] { display: none !important; }
@@ -97,7 +97,7 @@
 .open-site {
   display: inline-flex; align-items: center; gap: 8px; margin-top: 12px; text-decoration: none;
   font-size: 12px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase;
-  border: 1.5px solid var(--fg); border-radius: 999px; padding: 8px 14px;
+  border: 1.5px solid var(--fg); border-radius: 3px; padding: 8px 14px;
 }
 .open-site:hover { background: var(--fg); color: var(--bg); }
 .open-site small { font-size: 11px; font-weight: 600; letter-spacing: .04em; text-transform: none; color: var(--muted); }
@@ -144,7 +144,7 @@ a.zoom:hover img { opacity: .9; }
 .product-gallery > .lead { grid-column: span 6; }
 .product-gallery > .lead.with-phone { grid-column: span 5; }
 .product-gallery > .k-phone { grid-column: span 1; }
-.product-gallery .k-phone .phone { border-radius: 10px; max-width: none; }
+.product-gallery .k-phone .phone { border-radius: 3px; max-width: none; }
 .product-gallery figcaption { margin-top: 6px; font-size: 12px; }
 
 /* ---------- products (B): wall tile with thumbs ---------- */
@@ -171,7 +171,7 @@ html.lb-open { overflow: hidden; }
   border: 1px solid #2B2824; border-radius: 4px; background: #0b0b0b; }
 .lb-stage img.is-svg { width: min(900px, 90vw); padding: clamp(24px, 8vw, 96px); background: #1f1f1d; }
 .lb button { appearance: none; cursor: pointer; display: grid; place-items: center; width: 44px; height: 44px; padding: 0;
-  border: 1px solid rgba(237, 231, 219, .3); border-radius: 999px; background: rgba(5, 7, 7, .7); color: #EDE7DB; font: 400 24px/1 var(--display); }
+  border: 1px solid rgba(237, 231, 219, .3); border-radius: 50%; background: rgba(5, 7, 7, .7); color: #EDE7DB; font: 400 24px/1 var(--display); }
 .lb button:hover { background: #EDE7DB; color: #050707; }
 .lb button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
 .lb .lb-prev, .lb .lb-next { position: absolute; top: 50%; transform: translateY(-50%); }
@@ -228,7 +228,7 @@ a.pf-name:hover { text-decoration: underline; text-decoration-thickness: 2px; te
 }
 
 /* "Mockup" label: device-frame composites are marked as mockups wherever they appear (2026-10-14) */
-.mock-tag { display: inline-block; font-size: 10px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--fg); border: 1px solid var(--line); border-radius: 999px; padding: 3px 8px; margin-right: 6px; vertical-align: 1px; }
+.mock-tag { display: inline-block; font-size: 10px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--fg); border: 1px solid var(--line); border-radius: 3px; padding: 3px 8px; margin-right: 6px; vertical-align: 1px; }
 /* partnership cards: mockup in the frame, real captures as zoomable thumbs below */
 .work .frame.mock { background: var(--surface); }
 .work .frame.mock a.zoom { display: block; position: absolute; inset: 0; }

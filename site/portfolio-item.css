@@ -10,12 +10,12 @@
 .pi-hero .open-site { margin-top: 26px; }
 
 .pi-lead { margin: 0 0 clamp(40px, 6vw, 72px); }
-.pi-lead .pf-frame { border-radius: 8px; }
+.pi-lead .pf-frame { border-radius: 3px; }
 
 .pi-body { padding-bottom: clamp(48px, 7vw, 88px); border-bottom: 1px solid var(--line); }
 .pi-body .prose p:last-child { margin-bottom: 0; }
 .pi-body .prose .pi-studio { color: var(--muted); font-style: italic; }
-.pi-details { border: 1px solid var(--line); border-radius: 6px; padding: clamp(18px, 2.4vw, 26px); display: grid; gap: 18px; align-self: start; }
+.pi-details { border: 1px solid var(--line); border-radius: 3px; padding: clamp(18px, 2.4vw, 26px); display: grid; gap: 18px; align-self: start; }
 .pi-details h2 { font-size: 12px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); margin: 0; }
 .pi-details dl { margin: 0; display: grid; gap: 16px; }
 .pi-details dt { font-size: 11px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
@@ -29,7 +29,7 @@
 .pi-gallery { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: clamp(16px, 2.2vw, 28px); align-items: start; grid-auto-flow: row dense; }
 .pi-gallery > * { grid-column: span 6; }
 .pi-gallery > .g-phone { grid-column: span 3; }
-.pi-gallery > .g-phone .phone { max-width: none; border-radius: 16px; }
+.pi-gallery > .g-phone .phone { max-width: none; border-radius: 3px; }
 .pi-gallery > .g-phone figcaption { margin-top: 10px; font-size: 13px; color: var(--muted); }
 .pi-gallery figure { margin: 0; }
 .pi-gallery .plate { min-height: 220px; }
@@ -38,7 +38,7 @@
 .pi-articles { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
 .pi-articles a {
   display: grid; gap: 6px; height: 100%; text-decoration: none; padding: 18px 20px;
-  border: 1px solid var(--line); border-radius: 6px; transition: border-color .2s, background .2s;
+  border: 1px solid var(--line); border-radius: 3px; transition: border-color .2s, background .2s;
 }
 .pi-articles a:hover { border-color: var(--fg); background: var(--surface); }
 .pi-articles b { font-size: 18px; font-weight: 700; letter-spacing: -.01em; line-height: 1.25; }
@@ -46,7 +46,7 @@
 .pi-articles small { font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
 
 .pi-pager { display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr); gap: 14px; align-items: stretch; padding-block: clamp(36px, 5vw, 56px) clamp(56px, 8vw, 96px); }
-.pi-pager a { text-decoration: none; border: 1px solid var(--line); border-radius: 6px; padding: 16px 18px; display: grid; gap: 4px; transition: border-color .2s, background .2s; }
+.pi-pager a { text-decoration: none; border: 1px solid var(--line); border-radius: 3px; padding: 16px 18px; display: grid; gap: 4px; transition: border-color .2s, background .2s; }
 .pi-pager a:hover { border-color: var(--fg); background: var(--surface); }
 .pi-pager small { font-size: 11px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
 .pi-pager b { font-size: clamp(18px, 2vw, 24px); font-weight: 800; letter-spacing: -.02em; }
@@ -65,13 +65,13 @@
 
 /* original-site screen recordings */
 .pi-film { margin: 0; }
-.pi-film video { display: block; width: 100%; height: auto; border: 1px solid var(--line); border-radius: 6px; background: #0b0b0b; }
+.pi-film video { display: block; width: 100%; height: auto; border: 1px solid var(--line); border-radius: 3px; background: #0b0b0b; }
 .pi-film.mobile video { max-width: 360px; }
 .pi-film figcaption { margin-top: 8px; font-size: 13px; color: var(--muted); }
 
 /* hero mockup: our own laptop + phone frames around real captures (2026-10-14) */
 .pi-hero.has-mock { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: clamp(24px, 4vw, 56px); align-items: center; }
-.pi-mock { margin: 0; background: var(--surface); border: 1px solid var(--line); border-radius: 8px; padding: clamp(14px, 2.4vw, 32px); }
+.pi-mock { margin: 0; background: var(--surface); border: 1px solid var(--line); border-radius: 3px; padding: clamp(14px, 2.4vw, 32px); }
 .pi-mock a.zoom { display: block; }
 .pi-mock img { display: block; width: 100%; height: auto; max-height: 560px; object-fit: contain; }
 .pi-mock figcaption { margin-top: 12px; font-size: 13px; color: var(--muted); }

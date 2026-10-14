@@ -171,7 +171,7 @@ FOOT = '''
 <footer class="site-foot">
   <div class="wrap">
     <span><span class="gold">Butts Studios</span> · Production studio since 2018</span>
-    <span><a href="../partnerships.html">Partnerships</a> &nbsp;·&nbsp; <a href="../portfolio.html">← All work</a></span>
+    <span><a href="../partnerships.html">Partnerships</a> &nbsp;·&nbsp; <a href="../portfolio.html">← All work</a> &nbsp;·&nbsp; <a href="https://store.buttsstudios.com">Shop</a></span>
   </div>
 </footer>
 

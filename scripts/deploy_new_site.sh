@@ -27,6 +27,11 @@ mkdir -p "$STAGE/.vercel"
 printf '{"orgId":"%s","projectId":"%s"}\n' "$ORG_ID" "$PROJECT_ID" > "$STAGE/.vercel/project.json"
 echo "staged $(find "$STAGE" -type f | wc -l | tr -d ' ') files, $(du -sh "$STAGE" | cut -f1)"
 
+# Footer Shop link: only ship it once the shop is live (Principal: footer-only link between site and shop).
+if [ "$(curl -s -o /dev/null -w '%{http_code}' --max-time 15 https://store.buttsstudios.com)" != "200" ]; then
+  find "$STAGE" -name '*.html' -exec sed -i '' 's# \&nbsp;·\&nbsp; <a href="https://store.buttsstudios.com">Shop</a>##' {} +
+  echo "store.buttsstudios.com not live: Shop footer link removed from this deploy"
+fi
 # Pre-flight content checks (public copy rules).
 if grep -rliE '\bAHL\b|Anne Huntington|digital[- ]only|nothing ships' "$STAGE" --include='*.html' | grep -v '/work/'; then
   echo "BLOCKED: banned wording found (above)"; exit 1; fi

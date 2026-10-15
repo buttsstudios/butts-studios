@@ -4,7 +4,12 @@ import os, html
 
 OUT = os.path.expanduser("~/buttsstudios/staged/legal_2026-10-14")
 
-ENTITY = "[CONFIRM: operating/selling entity, Butts Studios or Huntington Applied LLC]"
+import re as _re
+
+def seller(p):
+    """The project itself is the seller/operator (DECISIONS 2026-10-15: project names everywhere, no entity name)."""
+    return html.escape(p.get("seller") or _re.sub(r"\s*\(.*\)$", "", p["name"]))
+
 ADDRESS = "[CONFIRM: mailing address]"
 INBOX = "[CONFIRM: privacy inbox; buttsstudios@gmail.com is the only address that receives mail today]"
 LAW = "[CONFIRM: governing-law state]"
@@ -65,7 +70,7 @@ def ul(items):
 def privacy(p):
     b = []
     b.append(f"""<h2>1. Who we are</h2>
-<p>{html.escape(p['name'])} at <strong>{p['host']}</strong> is operated by {ENTITY} (&ldquo;we&rdquo;, &ldquo;us&rdquo;), {ADDRESS}. This policy explains what information this site handles, why, who processes it for us, and the choices you have. Questions go to {INBOX}.</p>""")
+<p>This policy covers <strong>{p['host']}</strong>, run by {seller(p)} (&ldquo;we&rdquo;, &ldquo;us&rdquo;), {ADDRESS}. This policy explains what information this site handles, why, who processes it for us, and the choices you have. Questions go to {INBOX}.</p>""")
     b.append("<h2>2. Information we handle</h2>\n" + ul(p["collect"]))
     b.append("<h2>3. How we use it</h2>\n" + ul(p["use"] + [
         "To keep the site secure, prevent abuse and meet legal obligations."]))
@@ -88,7 +93,7 @@ def privacy(p):
     b.append(f"""<h2>12. Changes</h2>
 <p>We will post any change on this page and update the date above. Material changes will be highlighted on the site before they take effect.</p>
 <h2>13. Contact</h2>
-<p>{ENTITY}<br>{ADDRESS}<br>Privacy requests: {INBOX}</p>""")
+<p>{seller(p)}<br>{ADDRESS}<br>Privacy requests: {INBOX}</p>""")
     if p.get("privacy_extra"):
         b.insert(2, p["privacy_extra"])
     return page(p, "Privacy Policy", "\n".join(b))
@@ -96,7 +101,7 @@ def privacy(p):
 def terms(p):
     b = []
     b.append(f"""<h2>1. Agreement</h2>
-<p>These terms govern your use of {html.escape(p['name'])} at <strong>{p['host']}</strong>, operated by {ENTITY} (&ldquo;we&rdquo;, &ldquo;us&rdquo;). By using the site you agree to them and to our <a href="privacy.html">Privacy Policy</a>. If you do not agree, please do not use the site.</p>
+<p>These terms govern your use of <strong>{p['host']}</strong>, run by {seller(p)} (&ldquo;we&rdquo;, &ldquo;us&rdquo;). By using the site you agree to them and to our <a href="privacy.html">Privacy Policy</a>. If you do not agree, please do not use the site.</p>
 <h2>2. Eligibility</h2>
 <p>You must be at least 13 years old to use this site. You must be 18 or older, or have a parent or guardian's permission and involvement, to make a purchase.</p>""")
     b.append("<h2>3. What the site offers</h2>\n<p>" + p["offer"] + "</p>")
@@ -122,7 +127,7 @@ def terms(p):
 <h2>13. Changes and termination</h2>
 <p>We may update these terms by posting a new version here with a new date. Continued use after a change means you accept it. We may suspend or end the site or any feature; if we end a paid feature you bought, the Refund Policy explains what happens.</p>
 <h2>14. Contact</h2>
-<p>{ENTITY}<br>{ADDRESS}<br>{INBOX}</p>""")
+<p>{seller(p)}<br>{ADDRESS}<br>{INBOX}</p>""")
     if p.get("terms_extra"):
         b.append(p["terms_extra"])
     return page(p, "Terms of Use", "\n".join(b))
@@ -281,7 +286,7 @@ PROPS = {
                   "Lost your upgrade after clearing browser data or changing device: we restore it rather than refund, on request with your receipt."],
 ),
 "clients": dict(
-    name="Butts Studios Client Portal", host="clients.buttsstudios.com", home="https://clients.buttsstudios.com/", sells=False,
+    name="Butts Studios Client Portal", seller="Butts Studios", host="clients.buttsstudios.com", home="https://clients.buttsstudios.com/", sells=False,
     collect=["<strong>Sign-in details.</strong> The sign-in form is not yet connected to an account system: the email and password you type stay in your browser and are not sent to us or stored anywhere. [CONFIRM: when the portal goes live, replace this with the account data collected (name, email, company, hashed password), the auth provider, and project files and messages stored in the portal.]",
              "<strong>Access requests.</strong> When you click &ldquo;Request access&rdquo;, your email app opens a message to us; we receive your address and whatever you write.",
              REQ],

@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Launch guard for ~/buttsstudios/site: exits 1 while any fill-in or draft marker remains.
 
-Markers: "[CONFIRM" fill-ins (entity, mailing address, governing-law state, refund windows, dates) and the
+Markers: "[CONFIRM" fill-ins (mailing address, governing-law state, refund windows, dates) and the
 "Draft · not yet in effect" badge on the legal pages. These wait on Principal decisions
 (~/jarvis/JARVIS QUESTIONS.md); fill them in, delete the badge, then this passes.
 

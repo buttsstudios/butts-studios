@@ -44,7 +44,7 @@ done
 [ $missing = 0 ] || { echo "BLOCKED: missing assets"; exit 1; }
 # Internal links/anchors, img alt, head meta, nav + footer on every page.
 python3 "$ROOT/scripts/check_site_links.py" || { echo "BLOCKED: site checks failed (above)"; exit 1; }
-# Legal fill-ins ([CONFIRM: entity / address / governing-law state / refund windows]) and draft badges must be
+# Legal fill-ins ([CONFIRM: address / governing-law state / refund windows; seller = Butts Studios per DECISIONS 2026-10-15]) and draft badges must be
 # resolved before anything ships; they wait on Principal decisions in ~/jarvis/JARVIS QUESTIONS.md.
 python3 "$ROOT/scripts/check_launch_ready.py" "$STAGE" || { echo "BLOCKED: legal placeholders remain"; exit 1; }
 echo "pre-flight OK"

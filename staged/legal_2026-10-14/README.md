@@ -8,7 +8,7 @@ is blocked from this seat, so placement and deploy are left to the owning lane.
 Every page carries a yellow "Draft, not yet in effect" banner, `<meta name="robots" content="noindex">`,
 and `Last updated: [CONFIRM: effective date]`. Before publishing: fill every `[CONFIRM: …]`, delete the
 banner, remove the noindex tag. `_generate.py` rebuilds all pages from one shared text base
-(`python3 _generate.py`); edit the constants at the top (entity, address, inbox, state, window) once
+(`python3 _generate.py`); edit the constants at the top (address, inbox, state, window; the seller is each property's own project name, DECISIONS 2026-10-15) once
 and regenerate rather than hand-editing nine folders.
 
 ## Audit summary (live, 2026-10-14)

@@ -142,6 +142,13 @@ HEAD = '''<!doctype html>
 <title>{title} · Portfolio · Butts Studios</title>
 <meta name="description" content="{desc}">
 <meta name="robots" content="noindex">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Butts Studios">
+<meta property="og:title" content="{title} · Portfolio · Butts Studios">
+<meta property="og:description" content="{desc}">
+<meta property="og:url" content="https://buttsstudios.com/portfolio/{slug}.html">
+<meta property="og:image" content="https://buttsstudios.com/{ogimg}">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="icon" type="image/svg+xml" href="../favicon.svg">
 <link rel="icon" type="image/png" href="../favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -223,7 +230,10 @@ def build():
         tagline = c.get('tagline') or re.sub(r'<[^>]+>', '', info['desc'])
         visit = (f'<a class="open-site" href="{info["url"]}" target="_blank" rel="noopener">Visit ↗</a>' if info['live'] else '')
 
-        out = [HEAD.format(title=E(name), desc=E(f'{name}: {tagline} Designed by Butts Studios.'))]
+        ogimg = f'assets/portfolio/mockup-{slug}.webp'
+        if not os.path.exists(os.path.join(SITE, ogimg)):
+            ogimg = 'assets/og-default.png'
+        out = [HEAD.format(title=E(name), desc=E(f'{name}: {tagline} Designed by Butts Studios.'), slug=slug, ogimg=ogimg)]
         out.append('<main>\n  <div class="wrap">\n')
         mock = mockups.get(slug)
         mock_fig = ''

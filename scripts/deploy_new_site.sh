@@ -29,7 +29,7 @@ echo "staged $(find "$STAGE" -type f | wc -l | tr -d ' ') files, $(du -sh "$STAG
 
 # Footer Shop link: only ship it once the shop is live (Principal: footer-only link between site and shop).
 if [ "$(curl -s -o /dev/null -w '%{http_code}' --max-time 15 https://store.buttsstudios.com)" != "200" ]; then
-  find "$STAGE" -name '*.html' -exec sed -i '' 's# \&nbsp;·\&nbsp; <a href="https://store.buttsstudios.com">Shop</a>##' {} +
+  find "$STAGE" -name '*.html' -exec perl -0pi -e 's#<!--ff-shop-->.*?<!--/ff-shop-->##gs; s# \&nbsp;·\&nbsp; <a href="https://store.buttsstudios.com">Shop</a>##g' {} +
   echo "store.buttsstudios.com not live: Shop footer link removed from this deploy"
 fi
 # Pre-flight content checks (public copy rules).

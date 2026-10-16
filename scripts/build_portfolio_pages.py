@@ -4,7 +4,10 @@
 Inputs:
   site/portfolio.html                     images, palette/type rows, names (source of truth for the cards)
   scripts/portfolio_copy.json             about / tagline / studio / articles per item (paraphrased from each item's own site)
-  scripts/portfolio_extra_images.json     extra gallery images (fresh captures) with captions + alt text
+  product-shot library (~/latarence/coordination/product_shots/manifest.json; env PRODUCT_SHOTS_MANIFEST)
+                                          gallery images + public_ok holds + capture dates; any public in-app shot with a
+                                          site/ web file is placed automatically. Falls back to
+                                          scripts/portfolio_extra_images.json when the manifest is absent.
 Run: python3 scripts/build_portfolio_pages.py   (re-checks every live URL with curl; Visit only on 200)
 """
 import html, json, os, re, subprocess
@@ -44,6 +47,39 @@ ITEMS = [  # slug, url, made
 ]
 
 E = html.escape
+SHOTS = os.environ.get('PRODUCT_SHOTS_MANIFEST',
+                       os.path.expanduser('~/latarence/coordination/product_shots/manifest.json'))
+
+
+def load_shots():
+    """Index the shared product-shot library by product slug (None when the manifest is absent)."""
+    if not os.path.exists(SHOTS):
+        return None
+    by = {}
+    for s in json.load(open(SHOTS))['shots']:
+        web = s.get('files', {}).get('web', '')
+        s['href'] = web.split(':', 1)[1][len('site/'):] if web.startswith('buttsstudios:site/') else None
+        by.setdefault(s['product'], []).append(s)
+    return by
+
+
+def shot_gallery(rows, placed):
+    """Gallery rows from the library: placed gallery shots in order, then any other public in-app shot."""
+    out = []
+    pf = lambda s: s.get('use', {}).get('portfolio') or {}
+    for s in sorted((s for s in rows if pf(s).get('role') == 'gallery'), key=lambda s: pf(s).get('order', 0)):
+        if s['public_ok'] and s['href']:
+            out.append(s)
+    for s in rows:
+        if s['public_ok'] and s['href'] and s['surface'] == 'in-app' and not pf(s) and s['href'] not in placed:
+            out.append(s)
+    return [{'href': s['href'], 'short': s['caption'], 'alt': s['alt'] or s['caption'],
+             'kind': pf(s).get('kind', 'shot'), 'surface': s['surface']} for s in out]
+
+
+def month(d):
+    import datetime
+    return datetime.date.fromisoformat(d).strftime('%B %Y') if d else 'October 2026'
 
 
 def live(url):
@@ -204,6 +240,7 @@ def build():
     mockups = json.load(open(mock_path)) if os.path.exists(mock_path) else {}
     vids_path = os.path.join(ROOT, 'scripts', 'portfolio_videos.json')
     videos = json.load(open(vids_path)) if os.path.exists(vids_path) else {}
+    library = load_shots()
     os.makedirs(OUT, exist_ok=True)
     infos = []
     for slug, url, made in ITEMS:
@@ -215,15 +252,28 @@ def build():
         slug, name = info['slug'], info['name']
         c = copy[slug]
         imgs = []
+        rows = (library or {}).get(slug, [])
+        by_href = {s['href']: s for s in rows if s['href']}
         for img in info['images']:
+            s = by_href.get(img['href'])
+            if s and not s['public_ok']:
+                print(f'  HOLD {slug}: {img["href"]} not placed ({"; ".join(s["issues"])}). Remove it from the portfolio.html card too.')
+                continue
             img['short'] = short_caption(name, img['caption'])
+            img['surface'] = s['surface'] if s else ''
             imgs.append(img)
-        for row in extra.get(slug, []):
-            base, cap, alt = row[:3]
-            href = f'assets/portfolio/{base}.webp'
-            assert os.path.exists(os.path.join(SITE, href)), href
-            imgs.append({'href': href, 'short': cap, 'alt': alt, 'kind': row[3] if len(row) > 3 else 'shot'})
-        lead = next(x for x in imgs if x['kind'] == 'shot')
+        if library is None:
+            for row in extra.get(slug, []):
+                base, cap, alt = row[:3]
+                imgs.append({'href': f'assets/portfolio/{base}.webp', 'short': cap, 'alt': alt,
+                             'kind': row[3] if len(row) > 3 else 'shot'})
+        else:
+            imgs += shot_gallery(rows, {x['href'] for x in imgs})
+        for x in imgs:
+            assert os.path.exists(os.path.join(SITE, x['href'])), x['href']
+        # lead: an in-app working surface when the library has one (Principal 2026-10-16), else the first shot
+        lead = next((x for x in imgs if x['kind'] == 'shot' and x.get('surface') == 'in-app'),
+                    next(x for x in imgs if x['kind'] == 'shot'))
         rest = [x for x in imgs if x is not lead]
         rest.sort(key=lambda x: {'shot': 0, 'plate': 1, 'phone': 2}[x['kind']])
         kind = info.get('kind') or ('Product · ' + (c.get('made') or 'Landing site'))
@@ -264,7 +314,8 @@ def build():
         if info['live']:
             dom = info['url'].split('//', 1)[1]
             rows.append(f'<div><dt>Live</dt><dd><a href="{info["url"]}" target="_blank" rel="noopener">{dom} ↗</a></dd></div>')
-        rows.append('<div><dt>Captured</dt><dd>October 2026</dd></div>')
+        dates = [r.get('captured', '') for r in (library or {}).get(slug, []) if r.get('public_ok') and r.get('href')]
+        rows.append(f'<div><dt>Captured</dt><dd>{month(max(dates) if dates else "")}</dd></div>')
         out.append(f'''    <section class="pi-body t-grid" aria-labelledby="about-h">
       <div class="prose">
         <h2 id="about-h">About</h2>

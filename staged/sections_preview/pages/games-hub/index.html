@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-section="games">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="canonical" href="https://portal.buttsstudios.com/" />
+    <title>Butts Games - Web Games Hub</title>
+    <link rel="icon" href="favicon.ico" type="image/x-icon" />
+    <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+    <meta name="description" content="Play our collection of web-based games. Puzzles, cards, and more browser games from Butts Studios.">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://portal.buttsstudios.com/" />
+    <meta property="og:title" content="Butts Games - Web Games Hub" />
+    <meta property="og:description" content="Play our collection of web-based games. Puzzles, cards, and more browser games from Butts Studios." />
+    <meta property="og:image" content="https://portal.buttsstudios.com/og-image.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:site_name" content="Butts Studios" />
+    <meta property="og:locale" content="en_US" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@buttsstudios" />
+    <meta name="twitter:creator" content="@buttsstudios" />
+    <meta name="twitter:url" content="https://portal.buttsstudios.com/" />
+    <meta name="twitter:title" content="Butts Games - Web Games Hub" />
+    <meta name="twitter:description" content="Play our collection of web-based games. Puzzles, cards, and more browser games from Butts Studios." />
+    <meta name="twitter:image" content="https://portal.buttsstudios.com/og-image.jpg" />
+
+    <!-- Pinterest -->
+    <meta name="pinterest-rich-pin" content="false" />
+
+    <!-- Theme & Mobile -->
+    <meta name="theme-color" content="#050707" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="Butts Games" />
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: "Archivo", -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bs-ink-2);
+            color: #fff;
+            min-height: 100vh;
+        }
+        .container { max-width: 1200px; margin: 0 auto; padding: 2rem; }
+        header {
+            text-align: left;
+            padding: 3rem 0;
+        }
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+            color: var(--bs-bone);
+        }
+        .tagline { color: #888; font-size: 1.2rem; }
+        .games-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        .game-card {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid var(--bs-line);
+            border-radius: 2px;
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+        }
+        .game-card:hover {
+            border-color: var(--bs-accent);
+        }
+        .game-thumbnail {
+            height: 200px;
+            background: var(--bs-ink-3);
+            color: var(--bs-accent);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+        }
+        .game-info { padding: 1.5rem; }
+        .game-title { font-size: 1.5rem; margin-bottom: 0.5rem; }
+        .game-desc { color: #888; font-size: 0.9rem; line-height: 1.6; }
+        .game-tags { margin-top: 1rem; }
+        .tag {
+            display: inline-block;
+            background: color-mix(in srgb, var(--bs-accent) 20%, transparent);
+            color: var(--bs-accent);
+            padding: 0.25rem 0.75rem;
+            border-radius: 2px;
+            font-size: 0.8rem;
+            margin-right: 0.5rem;
+        }
+        .play-btn {
+            display: inline-block;
+            margin-top: 1rem;
+            padding: 0.75rem 2rem;
+            background: var(--bs-accent);
+            color: var(--bs-ink);
+            text-decoration: none;
+            border-radius: 2px;
+            font-weight: 600;
+            transition: transform 0.2s;
+        }
+        .play-btn:hover { filter: brightness(1.08); }
+        .buy-btn {
+            display: inline-block;
+            margin-top: 0.5rem;
+            margin-left: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            background: var(--bs-gold);
+            color: var(--bs-ink);
+            text-decoration: none;
+            border-radius: 2px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            transition: transform 0.2s;
+        }
+        .buy-btn:hover { filter: brightness(1.08); }
+        .btn-row { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1rem; }
+        footer {
+            text-align: center;
+            padding: 3rem;
+            color: #666;
+        }
+        footer a { color: var(--bs-accent); text-decoration: none; }
+    </style>
+<!--bs:head--><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;700;800&family=Newsreader:ital,opsz,wght@0,6..72,400;1,6..72,400&display=swap" rel="stylesheet"><link rel="stylesheet" href="studios-section.css"><!--/bs:head-->
+</head>
+<body>
+<!--bs:bar--><div class="bs-bar" role="banner"><div class="bs-bar-in"><a class="bs-mark" href="https://buttsstudios.com/" aria-label="Butts Studios home"><svg viewBox="0 0 100 100" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="12"><rect x="10" y="10" width="80" height="80"/><path d="M10 10 L90 90 M90 10 L10 90"/></g></svg><span>Butts Studios</span></a><span class="bs-crumb"><span class="bs-sep">/</span><a class="bs-sec" href="https://buttsstudios.com/games.html"><i class="bs-dot"></i>Games</a></span><div class="bs-nav" role="navigation" aria-label="Butts Studios sections"><a href="https://buttsstudios.com/books.html">Books</a><a href="https://buttsstudios.com/video.html">Video</a><a href="https://buttsstudios.com/games.html" aria-current="true">Games</a></div></div></div><!--/bs:bar-->
+<div class="container">
+        <header>
+            <h1>Games<span class="accent">.</span></h1>
+            <p class="tagline">Small games made with the same care as everything else here: clear rules, clean screens, and nothing in the way of playing.</p>
+        </header>
+
+        <div class="games-grid">
+            <div class="game-card" onclick="window.location.href='https://glb.buttsstudios.com'">
+                <div class="game-thumbnail">&#9698;</div>
+                <div class="game-info">
+                    <h3 class="game-title">GLB</h3>
+                    <p class="game-desc">A canvas game for the browser: move with the arrow keys or WASD, collect what's on the board and avoid the obstacles.</p>
+                    <div class="game-tags">
+                        <span class="tag">Canvas</span>
+                        <span class="tag">Adventure</span>
+                    </div>
+                    <div class="btn-row">
+                        <a href="https://glb.buttsstudios.com" class="play-btn">Try It</a>
+                        <a href="__NEW_PAYMENT_LINK_GLB_5__" class="buy-btn">Unlock Full: $5 one-time</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="game-card" onclick="window.location.href='https://cards.buttsstudios.com'">
+                <div class="game-thumbnail">&#9635;</div>
+                <div class="game-info">
+                    <h3 class="game-title">Card Battle</h3>
+                    <p class="game-desc">A strategy card game, played in the browser.</p>
+                    <div class="game-tags">
+                        <span class="tag">Cards</span>
+                        <span class="tag">Strategy</span>
+                    </div>
+                    <div class="btn-row">
+                        <a href="https://cards.buttsstudios.com" class="play-btn">Try It</a>
+                        <a href="__NEW_PAYMENT_LINK_CARDS_3__" class="buy-btn">Unlock Full: $3 one-time</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="game-card" onclick="window.location.href='https://puzzle.buttsstudios.com'">
+                <div class="game-thumbnail">&#8862;</div>
+                <div class="game-info">
+                    <h3 class="game-title">Sliding Numbers</h3>
+                    <p class="game-desc">The classic sliding-tile puzzle, set cleanly: put the numbers back in order in as few moves as you can.</p>
+                    <div class="game-tags">
+                        <span class="tag">Puzzle</span>
+                        <span class="tag">Logic</span>
+                    </div>
+                    <div class="btn-row">
+                        <a href="https://puzzle.buttsstudios.com" class="play-btn">Try It</a>
+                        <a href="__NEW_PAYMENT_LINK_PUZZLE_3__" class="buy-btn">Unlock Full: $3 one-time</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        
+    </div>
+<!--bs:foot--><div class="bs-foot" role="contentinfo"><div class="bs-foot-in"><div><a class="bs-mark" href="https://buttsstudios.com/" aria-label="Butts Studios home"><svg viewBox="0 0 100 100" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="12"><rect x="10" y="10" width="80" height="80"/><path d="M10 10 L90 90 M90 10 L10 90"/></g></svg><span>Butts Studios</span></a><div class="bs-foot-line">Made of story.</div></div><div class="bs-foot-cols" role="navigation" aria-label="Butts Studios"><a href="https://buttsstudios.com/books.html">Books</a><a href="https://buttsstudios.com/video.html">Video</a><a href="https://buttsstudios.com/games.html" aria-current="true">Games</a><a href="https://buttsstudios.com/">Studio</a><a href="https://www.instagram.com/buttsstudios/" target="_blank" rel="noopener">Instagram</a></div></div><div class="bs-foot-base"><span>© 2026 Butts Studios</span><span class="bs-legal"><a href="https://buttsstudios.com/terms.html">Terms</a><a href="https://buttsstudios.com/refunds.html">Refunds</a><a href="https://buttsstudios.com/privacy.html">Privacy</a></span></div></div><!--/bs:foot-->
+</body>
+</html>

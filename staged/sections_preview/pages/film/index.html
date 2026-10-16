@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-section="video">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Butts Film - Film & Video Production</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: "Archivo", -apple-system, BlinkMacSystemFont, sans-serif;
+            background: #000;
+            color: #fff;
+            line-height: 1.6;
+        }
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 2rem;
+            background: linear-gradient(180deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.9) 100%),
+                        var(--bs-ink-2);
+        }
+        h1 {
+            font-size: 5rem;
+            font-weight: 300;
+            letter-spacing: 0.5rem;
+            margin-bottom: 1rem;
+        }
+        .tagline {
+            font-size: 1.2rem;
+            color: #666;
+            letter-spacing: 0.3rem;
+            text-transform: uppercase;
+        }
+        nav {
+            position: sticky;
+            top: 0;
+            left: 0;
+            right: 0;
+            padding: 1.5rem 3rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            background: linear-gradient(180deg, rgba(0,0,0,0.8) 0%, transparent 100%);
+        }
+        .logo {
+            font-weight: 300;
+            font-size: 1.2rem;
+            letter-spacing: 0.2rem;
+        }
+        nav a {
+            color: #888;
+            text-decoration: none;
+            margin-left: 2rem;
+            font-size: 0.9rem;
+            letter-spacing: 0.1rem;
+            transition: color 0.3s;
+        }
+        nav a:hover { color: #fff; }
+        .section {
+            padding: 6rem 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        .section h2 {
+            font-size: 2rem;
+            font-weight: 300;
+            letter-spacing: 0.3rem;
+            text-align: center;
+            margin-bottom: 4rem;
+            text-transform: uppercase;
+        }
+        .film-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 2rem;
+        }
+        .film-card {
+            position: relative;
+            aspect-ratio: 16/9;
+            overflow: hidden;
+            cursor: pointer;
+        }
+        .film-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: var(--bs-accent);
+            opacity: 0.8;
+            transition: opacity 0.3s;
+        }
+        .film-card:hover::before { opacity: 0.6; }
+        .film-card-content {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 2rem;
+        }
+        .film-card h3 {
+            font-size: 1.5rem;
+            font-weight: 400;
+            margin-bottom: 0.5rem;
+        }
+        .film-card p {
+            color: rgba(255,255,255,0.7);
+            font-size: 0.9rem;
+        }
+        .film-meta {
+            margin-top: 1rem;
+            font-size: 0.8rem;
+            color: rgba(255,255,255,0.5);
+        }
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            text-align: center;
+        }
+        .service-item h3 {
+            font-size: 1.2rem;
+            font-weight: 400;
+            margin-bottom: 1rem;
+            color: var(--bs-accent);
+        }
+        .service-item p {
+            color: #666;
+            font-size: 0.9rem;
+        }
+        .contact-section {
+            text-align: center;
+            padding: 6rem 2rem;
+            background: linear-gradient(180deg, #000 0%, #0a0a0a 100%);
+        }
+        .contact-section h2 {
+            font-size: 2rem;
+            font-weight: 300;
+            letter-spacing: 0.3rem;
+            margin-bottom: 1rem;
+        }
+        .contact-section p {
+            color: #666;
+            margin-bottom: 2rem;
+        }
+        .btn {
+            display: inline-block;
+            padding: 1rem 3rem;
+            border: 1px solid #fff;
+            color: #fff;
+            text-decoration: none;
+            letter-spacing: 0.2rem;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+        }
+        .btn:hover {
+            background: #fff;
+            color: #000;
+        }
+        footer {
+            text-align: center;
+            padding: 2rem;
+            color: #444;
+            font-size: 0.8rem;
+        }
+        footer a { color: #666; text-decoration: none; }
+        .play-icon {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 4rem;
+            opacity: 0.8;
+            transition: transform 0.3s, opacity 0.3s;
+        }
+        .film-card:hover .play-icon {
+            transform: translate(-50%, -50%) scale(1.2);
+            opacity: 1;
+        }
+    </style>
+<!--bs:head--><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;700;800&family=Newsreader:ital,opsz,wght@0,6..72,400;1,6..72,400&display=swap" rel="stylesheet"><link rel="stylesheet" href="studios-section.css"><!--/bs:head-->
+</head>
+<body>
+<!--bs:bar--><div class="bs-bar" role="banner"><div class="bs-bar-in"><a class="bs-mark" href="https://buttsstudios.com/" aria-label="Butts Studios home"><svg viewBox="0 0 100 100" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="12"><rect x="10" y="10" width="80" height="80"/><path d="M10 10 L90 90 M90 10 L10 90"/></g></svg><span>Butts Studios</span></a><span class="bs-crumb"><span class="bs-sep">/</span><a class="bs-sec" href="https://buttsstudios.com/video.html"><i class="bs-dot"></i>Video</a><span class="bs-sep">/</span><span class="bs-here">Film</span></span><div class="bs-nav" role="navigation" aria-label="Butts Studios sections"><a href="https://buttsstudios.com/books.html">Books</a><a href="https://buttsstudios.com/video.html" aria-current="true">Video</a><a href="https://buttsstudios.com/games.html">Games</a></div></div></div><!--/bs:bar-->
+<nav>
+        <div class="logo">BUTTS FILM</div>
+        <div>
+            <a href="#work">Work</a>
+            <a href="#services">Services</a>
+            <a href="#contact">Contact</a>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <h1>BUTTS FILM</h1>
+        <p class="tagline">Cinematic storytelling for the digital age</p>
+    </section>
+
+    <section class="section" id="work">
+        <h2>Selected Work</h2>
+        <div class="film-grid">
+            <div class="film-card">
+                <span class="play-icon">&#9658;</span>
+                <div class="film-card-content">
+                    <h3>The Last Signal</h3>
+                    <p>A sci-fi short film about humanity's final message to the cosmos.</p>
+                    <div class="film-meta">Short Film | 2026 | 12 min</div>
+                </div>
+            </div>
+            <div class="film-card">
+                <span class="play-icon">&#9658;</span>
+                <div class="film-card-content">
+                    <h3>Echoes of Tomorrow</h3>
+                    <p>Documentary exploring AI's impact on creative industries.</p>
+                    <div class="film-meta">Documentary | 2025 | 45 min</div>
+                </div>
+            </div>
+            <div class="film-card">
+                <span class="play-icon">&#9658;</span>
+                <div class="film-card-content">
+                    <h3>Neon Dreams</h3>
+                    <p>Music video for electronic artist featuring cyberpunk aesthetics.</p>
+                    <div class="film-meta">Music Video | 2025 | 4 min</div>
+                </div>
+            </div>
+            <div class="film-card">
+                <span class="play-icon">&#9658;</span>
+                <div class="film-card-content">
+                    <h3>Product Launch: Tiffany AI</h3>
+                    <p>Promotional video showcasing AI data analyst capabilities.</p>
+                    <div class="film-meta">Commercial | 2026 | 2 min</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="services">
+        <h2>Services</h2>
+        <div class="services-grid">
+            <div class="service-item">
+                <h3>Short Films</h3>
+                <p>Narrative storytelling with cinematic production value.</p>
+            </div>
+            <div class="service-item">
+                <h3>Documentaries</h3>
+                <p>Compelling non-fiction stories that inform and inspire.</p>
+            </div>
+            <div class="service-item">
+                <h3>Music Videos</h3>
+                <p>Visual experiences that elevate musical artistry.</p>
+            </div>
+            <div class="service-item">
+                <h3>Commercials</h3>
+                <p>Brand films and product videos that convert.</p>
+            </div>
+            <div class="service-item">
+                <h3>Corporate Video</h3>
+                <p>Professional content for internal and external communications.</p>
+            </div>
+            <div class="service-item">
+                <h3>Post-Production</h3>
+                <p>Color grading, VFX, and finishing services.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact-section" id="contact">
+        <h2>Start Your Project</h2>
+        <p>Let's create something extraordinary together.</p>
+        <a href="mailto:film@buttsstudios.com" class="btn">Get in Touch</a>
+    </section>
+
+    
+<!--bs:foot--><div class="bs-foot" role="contentinfo"><div class="bs-foot-in"><div><a class="bs-mark" href="https://buttsstudios.com/" aria-label="Butts Studios home"><svg viewBox="0 0 100 100" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="12"><rect x="10" y="10" width="80" height="80"/><path d="M10 10 L90 90 M90 10 L10 90"/></g></svg><span>Butts Studios</span></a><div class="bs-foot-line">Made of story.</div></div><div class="bs-foot-cols" role="navigation" aria-label="Butts Studios"><a href="https://buttsstudios.com/books.html">Books</a><a href="https://buttsstudios.com/video.html" aria-current="true">Video</a><a href="https://buttsstudios.com/games.html">Games</a><a href="https://buttsstudios.com/">Studio</a><a href="https://www.instagram.com/buttsstudios/" target="_blank" rel="noopener">Instagram</a></div></div><div class="bs-foot-base"><span>© 2026 Butts Studios</span><span class="bs-legal"><a href="https://buttsstudios.com/terms.html">Terms</a><a href="https://buttsstudios.com/refunds.html">Refunds</a><a href="https://buttsstudios.com/privacy.html">Privacy</a></span></div></div><!--/bs:foot-->
+</body>
+</html>

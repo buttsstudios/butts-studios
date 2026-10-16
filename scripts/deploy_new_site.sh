@@ -18,7 +18,7 @@ TOK=()
 [ -n "${VERCEL_TOKEN:-}" ] && TOK=(--token "$VERCEL_TOKEN")
 
 # Stage: the site folder only (no repo history, scripts or design sources). Archived pages and assets ride along.
-rsync -a --exclude '_check*.html' --exclude '_open.html' --exclude '.DS_Store' "$SRC/" "$STAGE/"
+rsync -a --exclude '_check*.html' --exclude '_open.html' --exclude '.DS_Store' --exclude '*.tmpl' "$SRC/" "$STAGE/"
 cat > "$STAGE/vercel.json" <<'EOF'
 { "cleanUrls": false, "trailingSlash": false,
   "headers": [ { "source": "/assets/(.*)", "headers": [ { "key": "Cache-Control", "value": "public, max-age=604800" } ] } ] }

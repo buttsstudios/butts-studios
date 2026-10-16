@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-section="partnerships">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Butts Studios - Client Portal</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: "Archivo", -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bs-ink-2);
+            min-height: 100vh;
+        }
+        .login-container {
+            min-height: 100vh;
+            display: flex;
+        }
+        .login-left {
+            flex: 1;
+            background: var(--bs-ink-3);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 3rem;
+            color: var(--bs-bone);
+        }
+        .login-left h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        .login-left p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            text-align: center;
+            max-width: 400px;
+        }
+        .features {
+            margin-top: 3rem;
+            text-align: left;
+        }
+        .feature {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            opacity: 0.9;
+        }
+        .feature-icon {
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .login-right {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 3rem;
+            background: var(--bs-bone);
+        }
+        .login-form {
+            width: 100%;
+            max-width: 400px;
+        }
+        .login-form h2 {
+            font-size: 2rem;
+            color: #333;
+            margin-bottom: 0.5rem;
+        }
+        .login-form .subtitle {
+            color: #888;
+            margin-bottom: 2rem;
+        }
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        .form-group label {
+            display: block;
+            color: #666;
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+        }
+        .form-group input {
+            width: 100%;
+            padding: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 2px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+        .form-group input:focus {
+            outline: none;
+            border-color: var(--bs-accent);
+        }
+        .forgot-link {
+            text-align: right;
+            margin-bottom: 1.5rem;
+        }
+        .forgot-link a {
+            color: var(--bs-accent);
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+        .btn {
+            width: 100%;
+            padding: 1rem;
+            background: var(--bs-accent);
+            color: var(--bs-ink);
+            border: none;
+            border-radius: 2px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        .btn:hover { transform: scale(1.02); }
+        .divider {
+            display: flex;
+            align-items: center;
+            margin: 2rem 0;
+            color: #999;
+        }
+        .divider::before, .divider::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: #ddd;
+        }
+        .divider span { padding: 0 1rem; }
+        .request-access {
+            text-align: center;
+            color: #666;
+        }
+        .request-access a {
+            color: var(--bs-accent);
+            text-decoration: none;
+            font-weight: 600;
+        }
+        @media (max-width: 768px) {
+            .login-container { flex-direction: column; }
+            .login-left { min-height: 40vh; }
+        }
+    </style>
+<!--bs:head--><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;700;800&family=Newsreader:ital,opsz,wght@0,6..72,400;1,6..72,400&display=swap" rel="stylesheet"><link rel="stylesheet" href="studios-section.css"><!--/bs:head-->
+</head>
+<body>
+<!--bs:bar--><div class="bs-bar" role="banner"><div class="bs-bar-in"><a class="bs-mark" href="https://buttsstudios.com/" aria-label="Butts Studios home"><svg viewBox="0 0 100 100" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="12"><rect x="10" y="10" width="80" height="80"/><path d="M10 10 L90 90 M90 10 L10 90"/></g></svg><span>Butts Studios</span></a><span class="bs-crumb"><span class="bs-sep">/</span><a class="bs-sec" href="https://buttsstudios.com/partnerships.html"><i class="bs-dot"></i>Partnerships</a><span class="bs-sep">/</span><span class="bs-here">Client portal</span></span><div class="bs-nav" role="navigation" aria-label="Butts Studios sections"><a href="https://buttsstudios.com/books.html">Books</a><a href="https://buttsstudios.com/video.html">Video</a><a href="https://buttsstudios.com/games.html">Games</a></div></div></div><!--/bs:bar-->
+<div class="login-container">
+        <div class="login-left">
+            <h1>Client Portal</h1>
+            <p>Access your projects, review deliverables, and collaborate with our creative team.</p>
+            <div class="features">
+                <div class="feature">
+                    <div class="feature-icon">&#128196;</div>
+                    <span>View project progress in real-time</span>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">&#128172;</div>
+                    <span>Direct communication with your team</span>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">&#128230;</div>
+                    <span>Download deliverables securely</span>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">&#9989;</div>
+                    <span>Approve revisions with one click</span>
+                </div>
+            </div>
+        </div>
+        <div class="login-right">
+            <form class="login-form">
+                <h2>Welcome Back</h2>
+                <p class="subtitle">Sign in to your client account</p>
+                
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" placeholder="you@company.com" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" placeholder="Enter your password" required>
+                </div>
+                
+                <div class="forgot-link">
+                    <a href="#">Forgot password?</a>
+                </div>
+                
+                <button type="submit" class="btn">Sign In</button>
+                
+                <div class="divider"><span>or</span></div>
+                
+                <p class="request-access">
+                    New client? <a href="mailto:clients@buttsstudios.com">Request access</a>
+                </p>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        document.querySelector('.login-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Client portal is coming soon! Contact clients@buttsstudios.com for project updates.');
+        });
+    </script>
+<!--bs:foot--><div class="bs-foot" role="contentinfo"><div class="bs-foot-in"><div><a class="bs-mark" href="https://buttsstudios.com/" aria-label="Butts Studios home"><svg viewBox="0 0 100 100" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="12"><rect x="10" y="10" width="80" height="80"/><path d="M10 10 L90 90 M90 10 L10 90"/></g></svg><span>Butts Studios</span></a><div class="bs-foot-line">Made of story.</div></div><div class="bs-foot-cols" role="navigation" aria-label="Butts Studios"><a href="https://buttsstudios.com/books.html">Books</a><a href="https://buttsstudios.com/video.html">Video</a><a href="https://buttsstudios.com/games.html">Games</a><a href="https://buttsstudios.com/">Studio</a><a href="https://www.instagram.com/buttsstudios/" target="_blank" rel="noopener">Instagram</a></div></div><div class="bs-foot-base"><span>© 2026 Butts Studios</span><span class="bs-legal"><a href="https://buttsstudios.com/terms.html">Terms</a><a href="https://buttsstudios.com/refunds.html">Refunds</a><a href="https://buttsstudios.com/privacy.html">Privacy</a></span></div></div><!--/bs:foot-->
+</body>
+</html>

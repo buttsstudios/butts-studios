@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-section="games">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="canonical" href="https://glb.buttsstudios.com/" />
+    <title>GLB - Canvas Game</title>
+    <link rel="icon" href="favicon.ico" type="image/x-icon" />
+    <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+    <meta name="description" content="Play GLB — a fast-paced browser game from Butts Studios. Challenge your reflexes and skills.">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://glb.buttsstudios.com/" />
+    <meta property="og:title" content="GLB - Canvas Game" />
+    <meta property="og:description" content="Play GLB — a fast-paced browser game from Butts Studios. Challenge your reflexes and skills." />
+    <meta property="og:image" content="https://glb.buttsstudios.com/og-image.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:site_name" content="Butts Studios" />
+    <meta property="og:locale" content="en_US" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@buttsstudios" />
+    <meta name="twitter:creator" content="@buttsstudios" />
+    <meta name="twitter:url" content="https://glb.buttsstudios.com/" />
+    <meta name="twitter:title" content="GLB - Canvas Game" />
+    <meta name="twitter:description" content="Play GLB — a fast-paced browser game from Butts Studios. Challenge your reflexes and skills." />
+    <meta name="twitter:image" content="https://glb.buttsstudios.com/og-image.jpg" />
+
+    <!-- Pinterest -->
+    <meta name="pinterest-rich-pin" content="false" />
+
+    <!-- Theme & Mobile -->
+    <meta name="theme-color" content="#050707" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="GLB Game" />
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background: #0a0a0a;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            background: var(--bs-ink-2);
+            font-family: "Archivo", sans-serif;
+        }
+        #game-container {
+            position: relative;
+            margin: 32px auto 64px;
+            max-width: 100%;
+            margin: 32px auto 64px;
+            max-width: 100%;
+        }
+        canvas {
+            border: 2px solid #333;
+            border-radius: 4px;
+            box-shadow: 0 0 40px color-mix(in srgb, var(--bs-accent) 30%, transparent);
+        }
+        #ui {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            color: #fff;
+            font-size: 14px;
+        }
+        #score { font-size: 24px; font-weight: bold; }
+        #instructions {
+            position: absolute;
+            bottom: -40px;
+            left: 0;
+            right: 0;
+            text-align: center;
+            color: #666;
+            font-size: 12px;
+        }
+        .start-screen {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.8);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: #fff;
+            border-radius: 4px;
+        }
+        .start-screen h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            color: var(--bs-bone);
+        }
+        .start-btn {
+            padding: 15px 40px;
+            font-size: 18px;
+            background: var(--bs-accent);
+            border: none;
+            color: var(--bs-ink);
+            border-radius: 4px;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        .start-btn:hover { filter: brightness(1.08); }
+        
+        .paywall {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.95);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            border-radius: 4px;
+        }
+        .paywall.show { display: flex; }
+        .paywall-content {
+            text-align: center;
+            padding: 2rem;
+            max-width: 400px;
+        }
+        .paywall-content h2 {
+            font-size: 2rem;
+            color: var(--bs-accent);
+            margin-bottom: 1rem;
+        }
+        .paywall-content p { color: #aaa; margin-bottom: 1.5rem; }
+        .features {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+        .feature { color: #4CAF50; font-size: 0.9rem; }
+        .price {
+            font-size: 2.5rem;
+            color: #fff;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+        .price span { font-size: 1rem; color: #888; }
+        .upgrade-btn {
+            width: 100%;
+            padding: 1rem;
+            background: var(--bs-accent);
+            border: none;
+            color: var(--bs-ink);
+            font-size: 1.1rem;
+            font-weight: bold;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-bottom: 1rem;
+        }
+        .restore-btn {
+            background: transparent;
+            border: 1px solid #444;
+            color: #888;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.8rem;
+        }
+        .note { font-size: 0.8rem; color: #666; margin-top: 0.5rem; }
+    </style>
+<!--bs:head--><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;700;800&family=Newsreader:ital,opsz,wght@0,6..72,400;1,6..72,400&display=swap" rel="stylesheet"><link rel="stylesheet" href="studios-section.css"><!--/bs:head-->
+</head>
+<body>
+<!--bs:bar--><div class="bs-bar" role="banner"><div class="bs-bar-in"><a class="bs-mark" href="https://buttsstudios.com/" aria-label="Butts Studios home"><svg viewBox="0 0 100 100" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="12"><rect x="10" y="10" width="80" height="80"/><path d="M10 10 L90 90 M90 10 L10 90"/></g></svg><span>Butts Studios</span></a><span class="bs-crumb"><span class="bs-sep">/</span><a class="bs-sec" href="https://buttsstudios.com/games.html"><i class="bs-dot"></i>Games</a><span class="bs-sep">/</span><span class="bs-here">GLB</span></span><div class="bs-nav" role="navigation" aria-label="Butts Studios sections"><a href="https://buttsstudios.com/books.html">Books</a><a href="https://buttsstudios.com/video.html">Video</a><a href="https://buttsstudios.com/games.html" aria-current="true">Games</a></div></div></div><!--/bs:bar-->
+<div id="game-container">
+        <canvas id="game" width="800" height="600"></canvas>
+        <div id="ui">
+            <div id="score">Score: 0</div>
+            <div id="lives">Lives: 3</div>
+            <div id="level">Level: 1</div>
+        </div>
+        <div id="instructions">Use arrow keys or WASD to move. Collect orbs, avoid obstacles.</div>
+        <div class="start-screen" id="start-screen">
+            <h1>GLB</h1>
+            <p style="margin-bottom: 30px; color: #888;">A canvas adventure game</p>
+            <button class="start-btn" onclick="startGame()">Start Game</button>
+        </div>
+        <div class="paywall" id="paywall">
+            <div class="paywall-content">
+                <h2>Level 5 Reached!</h2>
+                <p>That is the end of the trial. Unlock the full game to keep playing.</p>
+                <div class="features">
+                    <div class="feature">&#9733; Unlimited Levels</div>
+                </div>
+                <p class="price">$5<span> one-time</span></p>
+                <a href="#" onclick="buyPremium(event)" class="upgrade-btn">Unlock Full Game</a>
+                <button class="restore-btn" onclick="restore()">Restore Purchase</button>
+                <p class="note">Already a member? Restore your purchase</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://js.stripe.com/v3/"></script>
+    <script>
+        const stripe = Stripe('pk_live_51TBisj3Fr8U6X9hIo8bGhNNxcDogDxBI2x1Gpu23CzgBbiIkDOUaEAD3JjZ5DYutPBq4Cn0UjxxNQ6elDR6sMnOK00KqcwOnog');
+        
+        // One-time unlock, the same Payment Link the games hub sells (games.buttsstudios.com).
+        const GLB_PAYMENT_LINK = '__NEW_PAYMENT_LINK_GLB_5__';
+
+        function buyPremium(e) {
+            e.preventDefault();
+            window.location.href = GLB_PAYMENT_LINK;
+        }
+
+        // Premium unlocks only after the server confirms a paid Checkout session.
+        const urlParams = new URLSearchParams(window.location.search);
+        const sessionId = urlParams.get('session_id');
+        if (sessionId) {
+            window.history.replaceState({}, document.title, window.location.pathname);
+            fetch('/api/verify-purchase?session_id=' + encodeURIComponent(sessionId))
+                .then(function (r) { return r.json(); })
+                .then(function (d) {
+                    if (d && d.premium === true) {
+                        localStorage.setItem('glb_premium', 'true');
+                        if (typeof isPremium !== 'undefined') isPremium = true;
+                    }
+                })
+                .catch(function () {});
+        }
+    </script>
+
+    <script>
+        const canvas = document.getElementById('game');
+        const ctx = canvas.getContext('2d');
+        const startScreen = document.getElementById('start-screen');
+        const paywall = document.getElementById('paywall');
+        
+        let gameRunning = false;
+        let score = 0;
+        let lives = 3;
+        let level = 1;
+        let isPremium = false;
+        const FREE_LEVEL_LIMIT = 5;
+        
+        // Check for premium status in localStorage
+        if (localStorage.getItem('glb_premium') === 'true') {
+            isPremium = true;
+        }
+        
+        function upgrade() {
+            window.location.href = GLB_PAYMENT_LINK;
+        }
+        
+        function restore() {
+            // In production, verify purchase with Stripe
+            alert('Checking for previous purchases... Contact support@buttsstudios.com if you need help.');
+        }
+        
+        function nextLevel() {
+            level++;
+            document.getElementById('level').textContent = 'Level: ' + level;
+            
+            // Check if trial level limit reached
+            if (!isPremium && level > FREE_LEVEL_LIMIT) {
+                gameRunning = false;
+                paywall.classList.add('show');
+                return true;
+            }
+            
+            // Increase difficulty
+            spawnOrbs(5 + level);
+            spawnObstacles(3 + Math.floor(level / 2));
+            return false;
+        }
+        
+        function startGame() {
+            startScreen.style.display = 'none';
+            gameRunning = true;
+            score = 0;
+            lives = 3;
+            level = 1;
+            document.getElementById('level').textContent = 'Level: 1';
+            orbs.length = 0;
+            obstacles.length = 0;
+            spawnOrbs(5);
+            spawnObstacles(3);
+            gameLoop();
+        }
+        
+        function spawnOrbs(count) {
+            for (let i = 0; i < count; i++) {
+                orbs.push({
+                    x: Math.random() * (canvas.width - 40) + 20,
+                    y: Math.random() * (canvas.height - 40) + 20,
+                    size: 10,
+                    color: '#7BC47F'
+                });
+            }
+        }
+        
+        function spawnObstacles(count) {
+            for (let i = 0; i < count; i++) {
+                obstacles.push({
+                    x: Math.random() * (canvas.width - 60) + 30,
+                    y: Math.random() * (canvas.height - 60) + 30,
+                    size: 30,
+                    speedX: (Math.random() - 0.5) * 4,
+                    speedY: (Math.random() - 0.5) * 4,
+                    color: '#ff4444'
+                });
+            }
+        }
+        
+        document.addEventListener('keydown', e => keys[e.key.toLowerCase()] = true);
+        document.addEventListener('keyup', e => keys[e.key.toLowerCase()] = false);
+        
+        function update() {
+            // Player movement
+            if (keys['w'] || keys['arrowup']) player.y -= player.speed;
+            if (keys['s'] || keys['arrowdown']) player.y += player.speed;
+            if (keys['a'] || keys['arrowleft']) player.x -= player.speed;
+            if (keys['d'] || keys['arrowright']) player.x += player.speed;
+            
+            // Bounds
+            player.x = Math.max(player.size, Math.min(canvas.width - player.size, player.x));
+            player.y = Math.max(player.size, Math.min(canvas.height - player.size, player.y));
+            
+            // Move obstacles
+            obstacles.forEach(obs => {
+                obs.x += obs.speedX;
+                obs.y += obs.speedY;
+                if (obs.x <= obs.size || obs.x >= canvas.width - obs.size) obs.speedX *= -1;
+                if (obs.y <= obs.size || obs.y >= canvas.height - obs.size) obs.speedY *= -1;
+            });
+            
+            // Collision with orbs
+            for (let i = orbs.length - 1; i >= 0; i--) {
+                const orb = orbs[i];
+                const dist = Math.hypot(player.x - orb.x, player.y - orb.y);
+                if (dist < player.size + orb.size) {
+                    orbs.splice(i, 1);
+                    score += 10 * level;
+                    document.getElementById('score').textContent = `Score: ${score}`;
+                    if (orbs.length === 0) {
+                        // Level complete - check for paywall
+                        if (nextLevel()) {
+                            return; // Paywall shown, stop game
+                        }
+                    }
+                }
+            }
+            
+            // Collision with obstacles
+            obstacles.forEach(obs => {
+                const dist = Math.hypot(player.x - obs.x, player.y - obs.y);
+                if (dist < player.size + obs.size) {
+                    lives--;
+                    document.getElementById('lives').textContent = `Lives: ${lives}`;
+                    player.x = canvas.width / 2;
+                    player.y = canvas.height / 2;
+                    if (lives <= 0) {
+                        gameRunning = false;
+                        startScreen.innerHTML = `<h1>Game Over</h1><p style="margin: 20px; color: #888;">Final Score: ${score}</p><button class="start-btn" onclick="startGame()">Play Again</button>`;
+                        startScreen.style.display = 'flex';
+                    }
+                }
+            });
+        }
+        
+        function draw() {
+            ctx.fillStyle = '#0a0a0a';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            
+            // Draw grid
+            ctx.strokeStyle = '#1a1a1a';
+            for (let i = 0; i < canvas.width; i += 40) {
+                ctx.beginPath();
+                ctx.moveTo(i, 0);
+                ctx.lineTo(i, canvas.height);
+                ctx.stroke();
+            }
+            for (let i = 0; i < canvas.height; i += 40) {
+                ctx.beginPath();
+                ctx.moveTo(0, i);
+                ctx.lineTo(canvas.width, i);
+                ctx.stroke();
+            }
+            
+            // Draw orbs
+            orbs.forEach(orb => {
+                ctx.beginPath();
+                ctx.arc(orb.x, orb.y, orb.size, 0, Math.PI * 2);
+                ctx.fillStyle = orb.color;
+                ctx.fill();
+                ctx.shadowBlur = 15;
+                ctx.shadowColor = orb.color;
+            });
+            ctx.shadowBlur = 0;
+            
+            // Draw obstacles
+            obstacles.forEach(obs => {
+                ctx.beginPath();
+                ctx.arc(obs.x, obs.y, obs.size, 0, Math.PI * 2);
+                ctx.fillStyle = obs.color;
+                ctx.fill();
+            });
+            
+            // Draw player
+            ctx.beginPath();
+            ctx.arc(player.x, player.y, player.size, 0, Math.PI * 2);
+            ctx.fillStyle = player.color;
+            ctx.fill();
+            ctx.shadowBlur = 20;
+            ctx.shadowColor = player.color;
+            ctx.fill();
+            ctx.shadowBlur = 0;
+        }
+        
+        function gameLoop() {
+            if (!gameRunning) return;
+            update();
+            draw();
+            requestAnimationFrame(gameLoop);
+        }
+    </script>
+<!--bs:foot--><div class="bs-foot" role="contentinfo"><div class="bs-foot-in"><div><a class="bs-mark" href="https://buttsstudios.com/" aria-label="Butts Studios home"><svg viewBox="0 0 100 100" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="12"><rect x="10" y="10" width="80" height="80"/><path d="M10 10 L90 90 M90 10 L10 90"/></g></svg><span>Butts Studios</span></a><div class="bs-foot-line">Made of story.</div></div><div class="bs-foot-cols" role="navigation" aria-label="Butts Studios"><a href="https://buttsstudios.com/books.html">Books</a><a href="https://buttsstudios.com/video.html">Video</a><a href="https://buttsstudios.com/games.html" aria-current="true">Games</a><a href="https://buttsstudios.com/">Studio</a><a href="https://www.instagram.com/buttsstudios/" target="_blank" rel="noopener">Instagram</a></div></div><div class="bs-foot-base"><span>© 2026 Butts Studios</span><span class="bs-legal"><a href="https://buttsstudios.com/terms.html">Terms</a><a href="https://buttsstudios.com/refunds.html">Refunds</a><a href="https://buttsstudios.com/privacy.html">Privacy</a></span></div></div><!--/bs:foot-->
+</body>
+</html>

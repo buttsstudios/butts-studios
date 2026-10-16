@@ -26,10 +26,10 @@ TARGETS = {
     "glb": ("games", "GLB", "static"),
     "cards": ("games", "Card Battle", "next"),
     "puzzle": ("games", "Sliding Numbers", "next"),
-    "film": ("video", "Film", "static"),
-    "animation": ("video", "Animation", "static"),
+    "film": ("video", "Butts Studios Film", "static"),
+    "animation": ("video", "Butts Studios Animation", "static"),
     "novels": ("books", "The Signal", "static"),
-    "clients": ("partnerships", "Client portal", "static"),
+    "clients": ("partnerships", "Clients", "static"),
 }
 
 
@@ -179,8 +179,11 @@ def apply_static(name, root):
     section, here, _ = TARGETS[name]
     p = root / "index.html"
     s = p.read_text()
-    s = retheme_html(s, SECTIONS[section][2])
-    s = tweak(name, s)
+    # pages redesigned natively in the Studios system (film, animation, clients: 2026-10-16) carry <!--bs:native-->;
+    # they only get the bar/foot/head re-injected, never the old-template retheme or tweaks
+    if "<!--bs:native-->" not in s:
+        s = retheme_html(s, SECTIONS[section][2])
+        s = tweak(name, s)
     s = inject(s, section, here)
     p.write_text(s)
     shutil.copy(SHARED / "studios-section.css", root / "studios-section.css")

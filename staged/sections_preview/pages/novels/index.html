@@ -183,6 +183,9 @@
             border-radius: 4px;
             width: 300px;
         }
+        .nl-status { margin-top: 1.25rem; color: #bbb; min-height: 1.4em; }
+        .nl-sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+        .nl-hp { position: absolute; left: -10000px; width: 1px; height: 1px; opacity: 0; }
         .btn {
             padding: 1rem 2rem;
             background: var(--bs-accent);
@@ -253,22 +256,12 @@
             </div>
             <div class="book-card">
                 <div class="book-cover">
-                    <div class="book-num">Book Two</div>
-                    <h3>The Resonance</h3>
+                    <div class="book-num">Next in the series</div>
+                    <h3>Coming soon</h3>
                 </div>
                 <div class="book-info">
-                    <p>As humanity attempts to reply, factions emerge with competing visions for our cosmic future.</p>
-                    <span class="book-status status-coming">Coming 2027</span>
-                </div>
-            </div>
-            <div class="book-card">
-                <div class="book-cover">
-                    <div class="book-num">Book Three</div>
-                    <h3>The Silence</h3>
-                </div>
-                <div class="book-info">
-                    <p>The final transmission reveals the true nature of consciousness and the price of immortality.</p>
-                    <span class="book-status status-coming">Coming 2028</span>
+                    <p>The books that follow The Signal are coming soon.</p>
+                    <span class="book-status status-coming">Coming soon</span>
                 </div>
             </div>
         </div>
@@ -276,11 +269,40 @@
 
     <section class="newsletter" id="subscribe">
         <h2>Stay Connected</h2>
-        <p>Get updates on new chapters, release dates, and exclusive content.</p>
-        <form class="newsletter-form">
-            <input type="email" placeholder="Enter your email">
-            <button type="submit" class="btn">Subscribe</button>
+        <p>Email updates on new chapters and release dates.</p>
+        <form class="newsletter-form" id="nl-form" novalidate>
+            <label for="nl-email" class="nl-sr">Email</label>
+            <input type="email" id="nl-email" name="email" placeholder="Enter your email" autocomplete="email" required>
+            <input type="text" name="website" class="nl-hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+            <button type="submit" class="btn" id="nl-btn">Get updates</button>
         </form>
+        <p class="nl-status" id="nl-status" role="status" aria-live="polite"></p>
+        <script>
+        (function () {
+            var form = document.getElementById('nl-form'), st = document.getElementById('nl-status'), btn = document.getElementById('nl-btn');
+            var NOT_OPEN = 'The updates list is not open yet, so nothing was saved. Please check back soon.';
+            var FAIL = 'That did not go through, so nothing was saved. Please try again later.';
+            form.addEventListener('submit', function (e) {
+                e.preventDefault();
+                var email = document.getElementById('nl-email').value.trim();
+                if (!/^[^@\s]+@[^@\s]+\.[^@\s]{2,}$/.test(email)) { st.textContent = 'Please enter a valid email address.'; return; }
+                btn.disabled = true; st.textContent = 'Adding you...';
+                fetch('/api/subscribe', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ email: email, website: form.elements.website.value })
+                }).then(function (r) {
+                    return r.json().catch(function () { return {}; }).then(function (d) { return { status: r.status, d: d }; });
+                }).then(function (x) {
+                    if (x.status === 200 && x.d.ok) { st.textContent = 'You are on the list. Updates will come from Butts Studios.'; form.reset(); }
+                    else if (x.status === 503 || x.status === 404) { st.textContent = NOT_OPEN; }
+                    else if (x.status === 400) { st.textContent = 'Please enter a valid email address.'; }
+                    else { st.textContent = FAIL; }
+                }).catch(function () { st.textContent = FAIL; })
+                  .then(function () { btn.disabled = false; });
+            });
+        })();
+        </script>
     </section>
 
     

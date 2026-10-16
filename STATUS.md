@@ -13,7 +13,7 @@
 | runwaeapparel.com | Down (holding page built) | Deploy holding page | Vercel token + 2 GoDaddy records |
 | Email | hello@ / support@ on buttsstudios.com, runwaeapparel.com, girlslovebutts.com bounce (no mail routing). GLB "Restore purchase" points at support@buttsstudios.com. | Cloudflare Email Routing catch-all | Setup sheet row "buttsstudios.com email" (in progress with the Principal) |
 | Socials | Instagram is the only live account; TikTok / FB / Threads / X / Bluesky / Pinterest "to create" | Add to footer as each becomes real | Principal accounts; posting needs per-batch OK (Buffer) |
-| Messaging | Storyline: good design is the spine (`design/MESSAGING.md`); home line choice open in JARVIS | — | Principal taste call |
+| Messaging | Principal 2026-10-15: never combine "good design" with "made of story" (the combined line is withdrawn). `design/MESSAGING.md` being corrected; home line still open | Rewrite messaging without the combination | Principal taste call |
 
 ## Open Principal decisions (JARVIS)
 - Home page line; apps & games branding (naming, GLB game vs GLB apparel name clash); drafts-store terms (do v0.1 buyers get later drafts?); legal answers above; The Signal on the slate.

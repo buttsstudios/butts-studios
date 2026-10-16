@@ -51,12 +51,16 @@ preview() {
     git -C "$B/$r" grep -q "__NEW_PAYMENT_LINK_" "$BR" 2>/dev/null && echo "             WAIT: Payment Link placeholder on $BR (rebases on go)"
   done
   echo "new site: games.html $(code https://buttsstudios.com/games.html) terms.html $(code https://buttsstudios.com/terms.html) (both must be 200 before go)"
+  echo "mail: MX buttsstudios.com = [$(dig +short MX buttsstudios.com | tr '\n' ' ')] (must be non-empty before go: clients/film/animation/glb contact by @buttsstudios.com mail; scripts/email_routing_and_push.sh)"
+  echo "novels /api/subscribe: $(curl -s -m 15 https://novels.buttsstudios.com/api/subscribe) (open:false = form says 'not open yet' until RESEND_API_KEY + RESEND_AUDIENCE_ID are set; staged/novels_resend_setup.sh)"
   echo "local preview: open $B/staged/sections_preview/index.html"
 }
 
 go() {
   [[ "$(code https://buttsstudios.com/games.html)" == 200 && "$(code https://buttsstudios.com/terms.html)" == 200 ]] \
     || { echo "STOP: the new buttsstudios.com is not live yet (scripts/deploy_new_site.sh first)"; exit 1; }
+  [[ -n "$(dig +short MX buttsstudios.com)" || "${MAIL_PENDING_OK:-}" == 1 ]] \
+    || { echo "STOP: buttsstudios.com has no MX yet; the clients/film/animation/glb contact links would bounce (scripts/email_routing_and_push.sh first, or MAIL_PENDING_OK=1 to ship anyway)"; exit 1; }
   gate "push the shared Studios style to the 8 subdomains"
   for e in "${T[@]}"; do IFS=: read -r n r base h <<<"$e"
     git -C "$B/$r" fetch -q origin
@@ -79,6 +83,8 @@ verify() {
     p=$(curl -s -m 15 "https://$h.buttsstudios.com/")
     ok=1; for s in 'class="bs-bar"' 'data-bs-section=' 'buttsstudios.com/terms.html' 'Butts Studios'; do grep -q "$s" <<<"$p" || { ok=0; echo "FAIL $n missing $s"; }; done
     grep -qi "9C27B0\|E91E63" <<<"$p" && echo "WARN $n still carries the old magenta"
+    [[ $n == clients ]] && grep -q 'type="password"' <<<"$p" && { ok=0; echo "FAIL clients still shows the dead sign-in form"; }
+    [[ $n == novels ]] && echo "     novels /api/subscribe: $(curl -s -m 15 "https://$h.buttsstudios.com/api/subscribe")"
     [[ $ok == 1 ]] && echo "ok   $n $(code "https://$h.buttsstudios.com/")"
   done
 }

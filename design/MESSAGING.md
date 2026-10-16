@@ -1,25 +1,32 @@
-# Butts Studios: storyline and messaging (draft for the Principal, 2026-10-14)
+# Butts Studios: storyline and messaging (draft for the Principal, revised 2026-10-16)
 
-**Direction (verbatim):** "yes youll have to dig deeper for a storyline about butts studiods and messaging. its about good design."
-**Constants (already decided):** headline **Made of Story.** · C5 logo · design philosophy: thoughtful, advanced,
-technical, measured (DESIGN_DIRECTIONS §2) · paid-only, honest labels · founded 2018.
+**Direction (verbatim, 2026-10-14):** "yes youll have to dig deeper for a storyline about butts studiods and messaging. its about good design."
+**Correction (verbatim, 2026-10-15 07:12):** "i never approved the vombining of good design, made f stories. dont do that"
+**Constants (already decided):** headline **Made of Story.** (the site's own line; it predates this draft and stands
+alone) · C5 logo · design philosophy: thoughtful, advanced, technical, measured (DESIGN_DIRECTIONS §2) · paid-only,
+honest labels · founded 2018.
+
+> **Withdrawn 2026-10-15:** the combined line "Good design, made of story" and every line that fused the two ideas
+> ("good design is how a story gets told well", "Good design you can wear", "the same standard: good design").
+> Never combine them. **Made of Story.** stays the site's line on its own. Good design is never stated in copy: it is
+> shown (show, don't say; see "The mark as the method" below).
 
 ## The storyline in one paragraph
-Butts Studios is a design studio. It has always made two kinds of things: work for other people (sites, identities
-and products for musicians, galleries, young brands, a research lab and an engineering firm) and work of its own
-(books, comics, channels, art and clothing). Both get the same standard, because the standard is the point:
-**good design is how a story gets told well.** A novel, a hoodie and a product page each succeed for the same
-reasons: every part earns its place, the craft holds up up close, and nothing pretends to be more than it is.
+Butts Studios has made two kinds of things since 2018: work for other people (sites, identities and products for
+musicians, galleries, young brands, a research lab and an engineering firm) and work of its own (books, comics,
+channels, art and clothing). Each piece is shown at its true stage, with its working visible: what it is, how far
+along it is, and what comes next.
 
 ## Core message
-**Good design, made of story.** Everything the studio makes starts as a story and is finished with care.
+**Made of Story.** Used as-is, on its own line. Supporting copy says what the studio makes and names each stage; it
+does not explain or extend the headline.
 
-## Four pillars (what "good design" means here; each maps to the philosophy)
-| Pillar | Means | Proof on the site |
+## Four pillars (internal only: how the work is built; never written as claims on the site)
+| Pillar | How it shows | Proof on the site |
 |---|---|---|
-| **Thoughtful** | Every element earns its place. Fewer, better things. | A slate of six titles; a capsule of seven pieces |
+| **Thoughtful** | Fewer, better things. | A slate of six titles; a capsule of seven pieces |
 | **Advanced** | Modern tools, used with real craft. | Products designed for a research lab and an engineering firm (portfolio) |
-| **Technical** | Show the working: stages, versions, specs. | Stage bars, "Working draft · v0.1", print specs on every garment |
+| **Technical** | The working is visible: stages, versions, specs. | Stage bars, "Working draft · v0.1", print specs on every garment |
 | **Measured** | Restraint and honest labels. Calm voice, one accent. | "Concept", "Mockup", "Price TBA"; no hype |
 
 ## Proof points (all real, all on the site)
@@ -29,9 +36,10 @@ reasons: every part earns its place, the craft holds up up close, and nothing pr
 - Apparel from the same studio: Runwae Apparel, GLB, the Butts Studios line.
 
 ## Messages by audience
-- **Readers and viewers:** "Stories, designed to be kept." The slate shows what exists and how far along it is.
-- **Partners:** "The same care as our own releases." Identity, sites and products, designed and built.
-- **Apparel customers:** "Good design you can wear." Clothes from the same studio, held to the same standard.
+- **Readers and viewers:** the slate shows what exists and how far along it is.
+- **Partners:** identity, sites and products, designed and built since 2019, with the work shown in the portfolio.
+- **Apparel customers:** clothes from the same studio; each brand speaks to its own crowd (see the apparel identities
+  draft in `~/mdo3d/projects/external/runwae-apparel/APPAREL_PLAYBOOK.md`).
 
 ## Voice
 Calm, specific, confident. Short declaratives. Say what a thing is, show how it's made, name its stage.
@@ -39,20 +47,20 @@ Concrete nouns over adjectives. One idea per section.
 
 ## Homepage copy options (headline stays "Made of Story.")
 **A · Studio-first**
-> Butts Studios is a design studio. We make books, comics, channels, clothing and products, and we hold every one of them to the same standard: good design.
+> Butts Studios makes books, comics, channels, clothing and products, for its own slate and for partners.
 
-**B · Belief-first**
-> Good design is how a story gets told well. Since 2018 we've designed for musicians, galleries, a research lab and our own slate of stories.
+**B · Slate-first**
+> Novels, a comic, channels and shorts, each shown at the stage it's at. Since 2018.
 
 **C · Proof-first**
-> One studio, one standard. Novels and comics, channels and clothing, identities and products for others: designed with care, and released when they're right.
+> One studio since 2018. Novels and comics, channels and clothing, identities and products for others, released when they're ready.
 
 ## Section rewrites this implies
-- **How we work** → "What good design means here" (the four pillars, each with its proof).
-- **Partnerships lede** → "Designed and built with musicians, galleries and young brands since 2019. Partners get the same care as our own releases."
-- **Portfolio lede** → "Identity and product design from the studio: the same standard, applied to other people's stories."
-- **Footer line** → "Butts Studios · A design studio since 2018".
-- **Apparel line** (store.buttsstudios.com) → "Good design you can wear."
+- **How we work** → the process itself (stages, versions, how drafts are sold), with the proof; no statement of values.
+- **Partnerships lede** → "Designed and built with musicians, galleries and young brands since 2019."
+- **Portfolio lede** → "Identity and product design from the studio, for other people's stories."
+- **Footer line** → "Made of story. Since 2018." (current; unchanged)
+- **Apparel line** (store.buttsstudios.com) → brand-specific voice from the apparel identities draft.
 
 
 ## The mark as the method: shown in the design, never said (Principal, 2026-10-14)
@@ -67,4 +75,5 @@ No copy about the mark, architecture or bracing. The idea lives in how the pages
 - **Detail at close range:** captions, specs and labels set with the same care as headlines.
 
 ## Recommendation
-**Option A** for the homepage (it says what the studio is in one sentence), plus the four pillars on How we work.
+**Option A** for the homepage (it says what the studio makes in one sentence). The four pillars stay an internal
+build guide.

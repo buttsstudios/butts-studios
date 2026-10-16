@@ -1,0 +1,20 @@
+{
+  "_note": "buttsstudios.com drafts store config. Approved by the Principal 2026-10-15 07:12 (DECISIONS: drafts store 'ok'; #109 prices 'ok'). Nothing is on sale: every buy button stays disabled until the Principal's live GO. Stripe stays TEST mode until then. No prices end in .99. Source pages: site/titles/*.html, site/terms.html, site/refunds.html.",
+  "seller": "Butts Studios",
+  "stripe": { "account": "Butts Studios", "mode": "test", "live_requires": "Principal GO" },
+  "currency": "usd",
+  "policy": {
+    "later_drafts_included": true,
+    "later_drafts_scope": "every later draft of the same title until its first release (a v0.1 book buyer gets each later draft of that book)",
+    "refund_window_days": 14,
+    "draft_covers": "type-only"
+  },
+  "products": [
+    { "id": "us-against-the-world-ebook", "page": "titles/us-against-the-world.html", "name": "Us Against the World · Ebook · Working draft v0.1", "price_cents": 1000, "interval": null, "cover": "type-only" },
+    { "id": "talon-issue-1-script", "page": "titles/talon.html", "name": "Talon · Issue #1 draft script", "price_cents": 300, "interval": null, "cover": "type-only" },
+    { "id": "the-channels-supporter", "page": "titles/the-channels.html", "name": "The Channels · Supporter", "price_cents": 500, "interval": "month" },
+    { "id": "little-things-pack", "page": "titles/the-little-things.html", "name": "The Little Things · Shorts pack (working cuts)", "price_cents": 300, "interval": null },
+    { "id": "runwae-art-set", "page": "titles/runwae-and-glb.html", "name": "Runwae Apparel · Art set (working files)", "price_cents": 500, "interval": null },
+    { "id": "glb-prints", "page": "titles/runwae-and-glb.html", "name": "GLB · Line-art prints (working files)", "price_cents": 1000, "interval": null }
+  ]
+}

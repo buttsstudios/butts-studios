@@ -3,6 +3,12 @@
 *Last updated: 2026-10-16 ~08:10 ET (record-keeping pass: Brace, Glowgrid, games next-level, apparel photo/teaser folders, open calls mapped to JARVIS ids; earlier today: JARVIS 10-15 07:12 answers applied). Source of truth for direction:
 `~/latarence/coordination/dispatch/2026-10-07_STUDIOS_new_site.md`. Seat: `Organization/Chief-of-Staff/README.md`.*
 
+## 2026-10-17 (updated 2026-10-17 19:30 ET)
+Pointers only. Rows: `~/latarence/coordination/P0_SPRINT_2026-10-16.md` (XE-*); ships: `~/latarence/coordination/MANUAL_SHIP_QUEUE.md`.
+- **Shipped live:** legal pages (privacy/terms/refunds) on buttsstudios.com, games. and glb. (XE-4, HQ PASS); sitemap fix + /the-signal → novels (XE-10); "free"/"Play Free" copy removed from games/GLB (XE-7 copy leg); games hub canonical/og moved off portal. (XE-8 link-preview leg).
+- **Built, waiting:** plain How to play (closed by default) on Glowgrid / Card Battle / Sliding Numbers / Brace / hub (`STUDIOS_HOWTO_GO`, blocked on new Payment Link placeholders); Glowgrid rename carried; Share buttons on 4 Studios games (branches pushed); XE-1 GLB `?premium=true` bypass fix VERIFIED (1cc5a1a + cards/puzzle) but not run.
+- **Blocked:** XE-1 + $5/$3/$3 prices need the Studios Stripe read key, new live Payment Links and a Butts Studios Vercel token (SETUP_TODO `[studios-games-premium]`, `[vercel-butts-deploy]`); legal governing-law fill-in (XE-5, JARVIS L1); portal.buttsstudios.com has no DNS.
+
 ## Now
 | Area | State | Next | Gate |
 |---|---|---|---|

@@ -19,6 +19,8 @@
 # Before `price`: new one-time Payment Links at $5 (GLB) and $3 (Cards, Puzzle), same redirect rule,
 #   exported as NEW_PAYMENT_LINK_GLB_5, NEW_PAYMENT_LINK_CARDS_3, NEW_PAYMENT_LINK_PUZZLE_3, and their
 #   plink_ ids added to PREMIUM_PAYMENT_LINKS. Then deactivate the old .99 links.
+# 2026-10-17 P0 sprint: branches rebased onto origin tips after the XE-4/XE-7 legal+copy deploy
+#   (glb 1f68209, portal f65f351); portal's old 'free' commit b28f2cc dropped as already live.
 # Rollback: fix forward. A revert/promote needs the Principal (2026-10-13 rule): ROLLBACK_OK=principal.
 set -euo pipefail
 B=~/buttsstudios
@@ -26,7 +28,8 @@ REPOS_FIX=("games/glb:fix/verify-purchase-2026-10-15" "apps/butts-cards-next:fix
 REPOS_PRICE=("games/glb" "apps/butts-cards-next" "apps/butts-puzzle-next" "games/portal")
 HOSTS=(glb cards puzzle games)
 
-gate() { [[ "${CONFIRM:-}" == "GO" ]] && return; read -r -p "Type GO to $1: " a; [[ "$a" == "GO" ]] || { echo "aborted"; exit 1; }; }
+# DRY=1 <fix|price>: full preflight (ff check against origin tip + `git push --dry-run`), no push, no prompt.
+gate() { [[ "${DRY:-0}" == 1 ]] && { echo "DRY: would $1"; return; }; [[ "${CONFIRM:-}" == "GO" ]] && return; read -r -p "Type GO to $1: " a; [[ "$a" == "GO" ]] || { echo "aborted"; exit 1; }; }
 
 check() {
   for e in "${REPOS_FIX[@]}"; do r=${e%%:*}; br=${e##*:}
@@ -45,13 +48,14 @@ check() {
 push_branch() { local r=$1 br=$2
   git -C "$B/$r" fetch -q origin
   git -C "$B/$r" merge-base --is-ancestor origin/main "$br" || { echo "STOP $r: $br does not fast-forward origin/main; rebase first"; exit 1; }
+  if [[ "${DRY:-0}" == 1 ]]; then git -C "$B/$r" push --dry-run origin "$br:main" 2>&1 | tail -1 | sed "s#^#DRY $r: #"; return; fi
   git -C "$B/$r" push origin "$br:main"
 }
 
 fix() {
   gate "push the premium-bypass fix to glb, cards, puzzle and the hub"
   for e in "${REPOS_FIX[@]}"; do push_branch "${e%%:*}" "${e##*:}"; done
-  echo "pushed; run: $0 verify"
+  [[ "${DRY:-0}" == 1 ]] && echo "DRY PASS (nothing pushed)" || echo "pushed; run: $0 verify"
 }
 
 price() {

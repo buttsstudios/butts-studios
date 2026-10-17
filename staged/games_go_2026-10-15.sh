@@ -3,8 +3,8 @@
 #
 # Modes:
 #   check          read-only: branches present, placeholders, bypass strings, live state
-#   fix            GO-gated: push fix/verify-purchase-2026-10-15 (glb, cards, puzzle) and
-#                  fix/one-time-label-2026-10-15 (portal hub) to origin/main; Vercel git deploys
+#   fix            GO-gated: push the PINNED SHAs (see PIN below) of fix/verify-purchase-2026-10-15 (glb, cards,
+#                  puzzle) and fix/one-time-label-2026-10-15 (portal hub) to origin/main; STOP if a tip != pin
 #   price          GO-gated: fill the new Payment Link URLs, then push price/no-99-2026-10-15
 #   verify         read-only curls after a deploy
 #
@@ -25,6 +25,18 @@
 set -euo pipefail
 B=~/buttsstudios
 REPOS_FIX=("games/glb:fix/verify-purchase-2026-10-15" "apps/butts-cards-next:fix/verify-purchase-2026-10-15" "apps/butts-puzzle-next:fix/verify-purchase-2026-10-15" "games/portal:fix/one-time-label-2026-10-15")
+# SHA pins (P0 rework 2026-10-17, XE-1 GO gap): `fix` pushes these exact commits, never the branch tip. Each branch tip
+# must equal its pin and origin/main..pin must be exactly the listed commits, or STOP (re-review, re-pin).
+#   glb    1cc5a1a = the verified fix; f854965 (contact domain butts-studios.com -> buttsstudios.com) rides under it
+#   cards  4a70aa6, puzzle 421c7ff = the verified fixes
+#   portal 61ce898 hub "one-time" copy; 595d394 (favicon/apple-touch-icon files) rides under it
+# (bash 3.2 on macOS: no associative arrays, so pins are a lookup function)
+pin_of() { case "$1" in   # <full SHA> <exact origin/main..PIN commit list, oldest first>
+  games/glb)              echo "1cc5a1ad1bbf5ababa5aa20ef284d9651eaa16ff f85496529c7f933a64d86e23cc4aa857958cb030 1cc5a1ad1bbf5ababa5aa20ef284d9651eaa16ff";;
+  apps/butts-cards-next)  echo "4a70aa6f62b42e849879142595f32122123a6503 4a70aa6f62b42e849879142595f32122123a6503";;
+  apps/butts-puzzle-next) echo "421c7ff7b032e5f22e50b93ef0e577ceffa5a1fa 421c7ff7b032e5f22e50b93ef0e577ceffa5a1fa";;
+  games/portal)           echo "61ce89808082fbe0917dffd06e8f941b86012b08 595d39470552aae3e18d85c0938762286b20a1aa 61ce89808082fbe0917dffd06e8f941b86012b08";;
+  *) echo "";; esac; }
 REPOS_PRICE=("games/glb" "apps/butts-cards-next" "apps/butts-puzzle-next" "games/portal")
 HOSTS=(glb cards puzzle games)
 
@@ -52,9 +64,28 @@ push_branch() { local r=$1 br=$2
   git -C "$B/$r" push origin "$br:main"
 }
 
+# fix mode: push the PINNED SHA (never the moving branch tip). STOP unless tip == pin and the range is exactly as reviewed.
+push_pin() { local r=$1 br=$2 spec pin tip got want c
+  spec=$(pin_of "$r"); pin=${spec%% *}; want=${spec#* }
+  [[ ${#pin} -eq 40 ]] || { echo "STOP $r: no full-SHA pin"; exit 1; }
+  git -C "$B/$r" fetch -q origin
+  git -C "$B/$r" cat-file -e "$pin^{commit}" 2>/dev/null || { echo "STOP $r: pin ${pin:0:7} not found"; exit 1; }
+  tip=$(git -C "$B/$r" rev-parse -q --verify "refs/heads/$br" || true)
+  [[ "$tip" == "$pin" ]] || { echo "STOP $r: $br tip ${tip:0:7} != pin ${pin:0:7} (branch moved; re-review and re-pin)"; exit 1; }
+  git -C "$B/$r" merge-base --is-ancestor origin/main "$pin" || { echo "STOP $r: pin ${pin:0:7} does not fast-forward origin/main; rebase + re-pin"; exit 1; }
+  got=$(git -C "$B/$r" rev-list --reverse origin/main.."$pin" | tr '\n' ' ' | sed 's/ $//')
+  set -- $got
+  [[ $# -eq $(wc -w <<<"$want") ]] || { echo "STOP $r: origin/main..pin = $(git -C "$B/$r" log --oneline --reverse origin/main.."$pin" | cut -c1-8 | tr '\n' ' '), want $want"; exit 1; }
+  local i=1; for c in $want; do [[ "${!i}" == "$c" ]] || { echo "STOP $r: commit $i is ${!i:0:8}, want $c"; exit 1; }; i=$((i+1)); done
+  echo "ok   $r: $br == pin ${pin:0:7}; origin/main($(git -C "$B/$r" rev-parse --short origin/main))..pin = $(for c in $want; do printf "%s " "${c:0:7}"; done)"
+  if [[ "${DRY:-0}" == 1 ]]; then git -C "$B/$r" push --dry-run origin "$pin:refs/heads/main" 2>&1 | tail -1 | sed "s#^#DRY $r: #"; return; fi
+  git -C "$B/$r" push origin "$pin:refs/heads/main"
+  [[ "$(git -C "$B/$r" ls-remote origin refs/heads/main | cut -f1)" == "$pin" ]] || { echo "STOP $r: origin/main != pin after push"; exit 1; }
+}
+
 fix() {
   gate "push the premium-bypass fix to glb, cards, puzzle and the hub"
-  for e in "${REPOS_FIX[@]}"; do push_branch "${e%%:*}" "${e##*:}"; done
+  for e in "${REPOS_FIX[@]}"; do push_pin "${e%%:*}" "${e##*:}"; done
   [[ "${DRY:-0}" == 1 ]] && echo "DRY PASS (nothing pushed)" || echo "pushed; run: $0 verify"
 }
 

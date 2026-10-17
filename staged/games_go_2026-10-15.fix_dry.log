@@ -1,0 +1,33 @@
+=== 2026-10-17T02:04:29Z DRY=1 games_go_2026-10-15.sh fix (SHA-pinned, P0 rework)
+DRY: would push the premium-bypass fix to glb, cards, puzzle and the hub
+STOP games/glb: commit 1 is f8549652, want f8549650
+exit=1
+=== 2026-10-17T02:04:29Z negative test: same GO with a wrong puzzle pin (tip != pin) -> must STOP
+DRY: would push the premium-bypass fix to glb, cards, puzzle and the hub
+STOP games/glb: commit 1 is f8549652, want f8549650
+exit=1
+=== 2026-10-17T02:04:46Z DRY=1 games_go_2026-10-15.sh fix (SHA-pinned, P0 rework; earlier run above STOPped on a short-prefix typo in the range list, fixed to full SHAs)
+DRY: would push the premium-bypass fix to glb, cards, puzzle and the hub
+ok   games/glb: fix/verify-purchase-2026-10-15 == pin 1cc5a1a; origin/main(1f68209)..pin = f854965 1cc5a1a 
+DRY games/glb:    1f68209..1cc5a1a  1cc5a1ad1bbf5ababa5aa20ef284d9651eaa16ff -> main
+ok   apps/butts-cards-next: fix/verify-purchase-2026-10-15 == pin 4a70aa6; origin/main(9ee506e)..pin = 4a70aa6 
+DRY apps/butts-cards-next:    9ee506e..4a70aa6  4a70aa6f62b42e849879142595f32122123a6503 -> main
+ok   apps/butts-puzzle-next: fix/verify-purchase-2026-10-15 == pin 421c7ff; origin/main(41ddb47)..pin = 421c7ff 
+DRY apps/butts-puzzle-next:    41ddb47..421c7ff  421c7ff7b032e5f22e50b93ef0e577ceffa5a1fa -> main
+ok   games/portal: fix/one-time-label-2026-10-15 == pin 61ce898; origin/main(f65f351)..pin = 595d394 61ce898 
+DRY games/portal:    f65f351..61ce898  61ce89808082fbe0917dffd06e8f941b86012b08 -> main
+DRY PASS (nothing pushed)
+exit=0
+=== 2026-10-17T02:04:49Z negative test: same GO with a wrong puzzle pin (tip != pin) -> must STOP
+DRY: would push the premium-bypass fix to glb, cards, puzzle and the hub
+ok   games/glb: fix/verify-purchase-2026-10-15 == pin 1cc5a1a; origin/main(1f68209)..pin = f854965 1cc5a1a 
+DRY games/glb:    1f68209..1cc5a1a  1cc5a1ad1bbf5ababa5aa20ef284d9651eaa16ff -> main
+ok   apps/butts-cards-next: fix/verify-purchase-2026-10-15 == pin 4a70aa6; origin/main(9ee506e)..pin = 4a70aa6 
+DRY apps/butts-cards-next:    9ee506e..4a70aa6  4a70aa6f62b42e849879142595f32122123a6503 -> main
+STOP apps/butts-puzzle-next: pin 421c7ff not found
+exit=1
+=== 2026-10-17T02:04:56Z negative test 2: puzzle pin = an existing other commit (41ddb47, tip's parent) -> must STOP tip != pin
+DRY: would push the premium-bypass fix to glb, cards, puzzle and the hub
+STOP apps/butts-puzzle-next: fix/verify-purchase-2026-10-15 tip 421c7ff != pin 41ddb47 (branch moved; re-review and re-pin)
+exit=
+  (negative test 2 result: STOP printed above, nothing pushed; exit status not captured by the logging wrapper)

@@ -11,6 +11,7 @@ set -euo pipefail
 GO=${1:-}
 ROOT="$HOME/buttsstudios"
 SRC="$ROOT/site"
+node "$ROOT/scripts/copy-lint.mjs" --root "$SRC"  # public-copy guard (COPY/LEGAL 2026-10-17); fails the deploy on a violation
 ORG_ID="team_WMhVBeGTHA1CgDK9llwAmQd9"
 PROJECT_ID="prj_J7pK4Ph2b6AVt03X6Pl7w0rNrU8W"
 STAGE="$(mktemp -d)"

@@ -12,7 +12,8 @@ GO=${1:-}
 ROOT="$HOME/buttsstudios"
 SRC="$ROOT/site"
 ORG_ID="team_WMhVBeGTHA1CgDK9llwAmQd9"
-PROJECT_ID="prj_J7pK4Ph2b6AVt03X6Pl7w0rNrU8W"
+# 2026-10-25: the domains moved to project butts-studios-website (Bridge deploy de2d76ggs); old "website" project prj_J7pK4Ph2b6AVt03X6Pl7w0rNrU8W no longer serves them.
+PROJECT_ID="${PROJECT_ID:-prj_wqttHAzUSkMszhjoDdxylm3etb1p}"
 STAGE="$(mktemp -d)"
 TOK=()
 [ -n "${VERCEL_TOKEN:-}" ] && TOK=(--token "$VERCEL_TOKEN")

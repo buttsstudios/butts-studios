@@ -90,8 +90,8 @@ def card(i):
 def build():
     items = slate_items() + client_items() + design_items()
     counts = {c: sum(1 for i in items if i["cat"] == c) for c in LABEL}
-    filters = [f'<button type="button" data-filter="all" aria-pressed="true">All <small>{len(items)}</small></button>']
-    filters += [f'<button type="button" data-filter="{c}" aria-pressed="false">{LABEL[c]} <small>{counts[c]}</small></button>'
+    filters = [f'<button type="button" data-filter="all" aria-pressed="false">All <small>{len(items)}</small></button>']
+    filters += [f'<button type="button" data-filter="{c}" aria-pressed="{str(c == "current").lower()}">{LABEL[c]} <small>{counts[c]}</small></button>'
                 for c in LABEL]
     main = f'''<main>
   <section class="wrap hero">

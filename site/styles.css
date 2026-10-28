@@ -443,3 +443,17 @@ main p, main li { overflow-wrap: break-word; }
 .wk-more { margin-top: 48px; font-size: 15px; color: var(--muted); }
 @media (max-width: 900px) { .wk-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @media (max-width: 560px) { .wk-grid { grid-template-columns: minmax(0, 1fr); } }
+
+/* ---------- contact form (STUDIOS-COHESION-1) ---------- */
+.cform { display: grid; gap: 18px; max-width: 640px; }
+.cform label { display: grid; gap: 8px; font-size: 12px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
+.cform .opt { color: var(--muted); font-weight: 600; letter-spacing: .06em; text-transform: none; }
+.cform input, .cform select, .cform textarea {
+  font: inherit; font-family: var(--serif); font-size: 18px; letter-spacing: normal; text-transform: none; font-weight: 400;
+  color: var(--fg); background: var(--bg); border: 1.5px solid var(--line); border-radius: 3px; padding: 12px 14px; width: 100%;
+}
+.cform textarea { resize: vertical; min-height: 160px; }
+.cform input:focus, .cform select:focus, .cform textarea:focus { outline: none; border-color: var(--fg); }
+.cform .btn { margin-top: 4px; justify-self: start; background: none; color: var(--fg); cursor: pointer; font-family: inherit; }
+.cform .btn:hover { background: var(--fg); color: var(--bg); }
+@media (max-width: 760px) { .cform { max-width: none; } }

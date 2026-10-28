@@ -33,6 +33,11 @@ STATIC_PAGES = {
     'titles/the-little-things.html': '/titles/the-little-things',
     'titles/us-against-the-world.html': '/titles/us-against-the-world',
     'titles/runwae-and-glb.html': '/titles/runwae-and-glb',
+    # STUDIOS-COHESION-1 (2026-10-28): contact page + fold-ins for the retiring novels./film./animation./clients. sites
+    'contact.html': '/contact',
+    'titles/the-signal.html': '/titles/the-signal',
+    'video/film.html': '/video/film',
+    'video/animation.html': '/video/animation',
 }
 
 # Games run in their own Vercel projects and are served under /games/<slug> by a proxy rewrite (same pattern as /shop).

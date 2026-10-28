@@ -45,6 +45,8 @@ done
 # Internal links/anchors, img alt, head meta, nav + footer on every page.
 python3 "$ROOT/scripts/check_url_map.py" || { echo "BLOCKED: URL map check failed (above)"; exit 1; }
 python3 "$ROOT/scripts/check_site_links.py" || { echo "BLOCKED: site checks failed (above)"; exit 1; }
+# One nav, one footer (Contact -> /contact), no retiring subdomains, title/meta format, copy and CSS rules (STUDIOS-COHESION-1).
+python3 "$ROOT/scripts/check_cohesion.py" || { echo "BLOCKED: cohesion check failed (above)"; exit 1; }
 # Legal fill-ins ([CONFIRM: address / governing-law state / refund windows; seller = Butts Studios per DECISIONS 2026-10-15]) and draft badges must be
 # resolved before anything ships; they wait on Principal decisions in ~/jarvis/JARVIS QUESTIONS.md.
 python3 "$ROOT/scripts/check_launch_ready.py" "$STAGE" || { echo "BLOCKED: legal placeholders remain"; exit 1; }
@@ -79,7 +81,7 @@ echo "deployed: $URL"
 
 sleep 20
 ok=1
-for p in / /titles /games /channels /books /video /how-we-work /partnerships /portfolio /portfolio/chief /titles/talon /shop /sitemap.xml /favicon.svg; do
+for p in / /titles /games /channels /books /video /video/film /video/animation /titles/the-signal /contact /how-we-work /partnerships /portfolio /portfolio/chief /titles/talon /shop /sitemap.xml /favicon.svg; do
   code=$(curl -s -o /dev/null -w '%{http_code}' "https://buttsstudios.com$p")
   echo "  $code  https://buttsstudios.com$p"; [ "$code" = 200 ] || ok=0
 done

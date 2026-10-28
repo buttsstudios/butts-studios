@@ -9,6 +9,9 @@ Skips the vendored wham-studios bundle and archived/_check pages. Stdlib only.
 import os
 import re
 import sys
+
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import url_map  # noqa: E402
 from html.parser import HTMLParser
 from urllib.parse import unquote, urlsplit
 
@@ -77,6 +80,16 @@ def main():
             if u.scheme or ref.startswith('//') or ref.startswith('data:'):
                 continue
             path = unquote(u.path)
+            ct = url_map.clean_target(path) if path.startswith('/') else None
+            if ct:
+                if ct[0] == 'file' and u.fragment and tag == 'a':
+                    tp = parsed.get(os.path.join(SITE, ct[1]))
+                    if tp and u.fragment not in tp.ids:
+                        problems.append(f'{rel}: missing anchor {ref}')
+                continue
+            if path.endswith('.html') and path in ('/' + f for f in url_map.page_map()):
+                problems.append(f'{rel}: link uses the legacy .html path {ref}')
+                continue
             if path:
                 target = os.path.normpath(os.path.join(SITE, path.lstrip('/')) if path.startswith('/')
                                           else os.path.join(os.path.dirname(p), path))

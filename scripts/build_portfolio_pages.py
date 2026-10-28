@@ -2,7 +2,7 @@
 """Build site/portfolio/<slug>.html, one page per portfolio item.
 
 Inputs:
-  site/portfolio.html                     images, palette/type rows, names (source of truth for the cards)
+  site/portfolio.html                    images, palette/type rows, names (source of truth for the cards)
   scripts/portfolio_copy.json             about / tagline / studio / articles per item (paraphrased from each item's own site)
   product-shot library (~/latarence/coordination/product_shots/manifest.json; env PRODUCT_SHOTS_MANIFEST)
                                           gallery images + public_ok holds + capture dates; any public in-app shot with a
@@ -182,7 +182,7 @@ HEAD = '''<!doctype html>
 <meta property="og:site_name" content="Butts Studios">
 <meta property="og:title" content="{title} · Portfolio · Butts Studios">
 <meta property="og:description" content="{desc}">
-<meta property="og:url" content="https://buttsstudios.com/portfolio/{slug}.html">
+<meta property="og:url" content="https://buttsstudios.com/portfolio/{slug}">
 <meta property="og:image" content="https://buttsstudios.com/{ogimg}">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" type="image/svg+xml" href="../favicon.svg">
@@ -199,13 +199,13 @@ HEAD = '''<!doctype html>
 <body>
 
 <header class="wrap site-head">
-  <a class="mark" href="../index.html" aria-label="Butts Studios home"><svg class="brand-x" viewBox="0 0 100 100" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="12"><rect x="10" y="10" width="80" height="80"/><path d="M10 10 L90 90 M90 10 L10 90"/></g></svg><span class="brand-word">Butts<br>Studios</span></a>
+  <a class="mark" href="/" aria-label="Butts Studios home"><svg class="brand-x" viewBox="0 0 100 100" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="12"><rect x="10" y="10" width="80" height="80"/><path d="M10 10 L90 90 M90 10 L10 90"/></g></svg><span class="brand-word">Butts<br>Studios</span></a>
   <nav>
     <button class="theme-toggle" type="button" aria-label="Switch color mode"><svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg><svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg></button>
-    <a href="../slate.html">Slate</a>
-    <a href="../how-we-work.html">How we work</a>
-    <a href="../partnerships.html">Partnerships</a>
-    <a href="../portfolio.html" aria-current="page">Portfolio</a>
+    <a href="/titles">Slate</a>
+    <a href="/how-we-work">How we work</a>
+    <a href="/partnerships">Partnerships</a>
+    <a href="/portfolio" aria-current="page">Portfolio</a>
   </nav>
 </header>
 '''
@@ -214,16 +214,16 @@ FOOT = '''
 <footer class="site-foot full-foot">
   <div class="wrap ff-grid">
     <div class="ff-brand">
-      <a class="ff-mark" href="../index.html" aria-label="Butts Studios home"><svg class="brand-x" viewBox="0 0 100 100" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="12"><rect x="10" y="10" width="80" height="80"/><path d="M10 10 L90 90 M90 10 L10 90"/></g></svg><span>Butts<br>Studios</span></a>
+      <a class="ff-mark" href="/" aria-label="Butts Studios home"><svg class="brand-x" viewBox="0 0 100 100" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="12"><rect x="10" y="10" width="80" height="80"/><path d="M10 10 L90 90 M90 10 L10 90"/></g></svg><span>Butts<br>Studios</span></a>
       <p class="ff-line">Made of story. Since 2018.</p>
       <div class="ff-social"><a href="https://www.instagram.com/buttsstudios/" target="_blank" rel="noopener" aria-label="Butts Studios on Instagram"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="4" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="12" r="4.2" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="17.4" cy="6.6" r="1.1" fill="currentColor"/></svg></a></div>
     </div>
-    <nav class="ff-col" aria-label="Work"><h4>Work</h4><a href="../slate.html">Slate</a><a href="../books.html">Books</a><a href="../video.html">Video</a><a href="../games.html">Games</a></nav>
-    <nav class="ff-col" aria-label="Studio"><h4>Studio</h4><a href="../how-we-work.html">How we work</a><a href="../partnerships.html">Partnerships</a><a href="../portfolio.html">Portfolio</a></nav>
+    <nav class="ff-col" aria-label="Work"><h4>Work</h4><a href="/titles">Slate</a><a href="/books">Books</a><a href="/video">Video</a><a href="/games">Games</a></nav>
+    <nav class="ff-col" aria-label="Studio"><h4>Studio</h4><a href="/how-we-work">How we work</a><a href="/partnerships">Partnerships</a><a href="/portfolio">Portfolio</a></nav>
     <!--ff-shop--><nav class="ff-col ff-shop" aria-label="Shop"><h4>Shop</h4><a href="https://store.buttsstudios.com">Store</a></nav><!--/ff-shop-->
     <div class="ff-col"><h4>Contact</h4><a href="mailto:hello@buttsstudios.com">hello@buttsstudios.com</a><a href="https://www.instagram.com/buttsstudios/" target="_blank" rel="noopener">Instagram</a></div>
   </div>
-  <div class="wrap ff-base"><span>© 2026 Butts Studios</span><span class="ff-legal"><a href="../terms.html">Terms</a><a href="../refunds.html">Refunds</a><a href="../privacy.html">Privacy</a></span></div>
+  <div class="wrap ff-base"><span>© 2026 Butts Studios</span><span class="ff-legal"><a href="/terms">Terms</a><a href="/refunds">Refunds</a><a href="/privacy">Privacy</a></span></div>
 </footer>
 
 <script src="../lightbox.js" defer></script>
@@ -295,7 +295,7 @@ def build():
                         f'<figcaption><span class="mock-tag">Mockup</span> {E(mock[1])}</figcaption></figure>')
         out.append(f'''    <section class="pi-hero{' has-mock' if mock else ''}">
       <div class="pi-hero-text">
-      <p class="pi-crumb"><a href="../portfolio.html">← Portfolio</a></p>
+      <p class="pi-crumb"><a href="/portfolio">← Portfolio</a></p>
       <h1 class="display">{E(name)}</h1>
       <p class="kind">{E(kind)}</p>
       <p class="lede">{E(tagline)}</p>
@@ -368,9 +368,9 @@ def build():
 ''')
         prev, nxt = infos[i - 1], infos[(i + 1) % len(infos)]
         out.append(f'''    <nav class="pi-pager" aria-label="More work">
-      <a class="prev" href="{prev["slug"]}.html"><small>← Previous</small><b>{E(prev["name"])}</b></a>
-      <a class="all" href="../portfolio.html">← All work</a>
-      <a class="next" href="{nxt["slug"]}.html"><small>Next →</small><b>{E(nxt["name"])}</b></a>
+      <a class="prev" href="/portfolio/{prev["slug"]}"><small>← Previous</small><b>{E(prev["name"])}</b></a>
+      <a class="all" href="/portfolio">← All work</a>
+      <a class="next" href="/portfolio/{nxt["slug"]}"><small>Next →</small><b>{E(nxt["name"])}</b></a>
     </nav>
 ''')
         out.append('  </div>\n</main>\n')

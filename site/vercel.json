@@ -1,6 +1,366 @@
-{ "cleanUrls": false, "trailingSlash": false,
-  "headers": [ { "source": "/assets/(.*)", "headers": [ { "key": "Cache-Control", "value": "public, max-age=604800" } ] } ],
+{
+  "cleanUrls": false,
+  "trailingSlash": false,
+  "headers": [
+    {
+      "source": "/assets/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=604800"
+        }
+      ]
+    }
+  ],
+  "redirects": [
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "host",
+          "value": "glb.buttsstudios.com"
+        }
+      ],
+      "destination": "/games/glowgrid",
+      "statusCode": 301
+    },
+    {
+      "source": "/:path+",
+      "has": [
+        {
+          "type": "host",
+          "value": "glb.buttsstudios.com"
+        }
+      ],
+      "destination": "/games/glowgrid/:path",
+      "statusCode": 301
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "host",
+          "value": "cards.buttsstudios.com"
+        }
+      ],
+      "destination": "/games/cards",
+      "statusCode": 301
+    },
+    {
+      "source": "/:path+",
+      "has": [
+        {
+          "type": "host",
+          "value": "cards.buttsstudios.com"
+        }
+      ],
+      "destination": "/games/cards/:path",
+      "statusCode": 301
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "host",
+          "value": "puzzle.buttsstudios.com"
+        }
+      ],
+      "destination": "/games/sliding-numbers",
+      "statusCode": 301
+    },
+    {
+      "source": "/:path+",
+      "has": [
+        {
+          "type": "host",
+          "value": "puzzle.buttsstudios.com"
+        }
+      ],
+      "destination": "/games/sliding-numbers/:path",
+      "statusCode": 301
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "host",
+          "value": "games.buttsstudios.com"
+        }
+      ],
+      "destination": "/games",
+      "statusCode": 301
+    },
+    {
+      "source": "/:path+",
+      "has": [
+        {
+          "type": "host",
+          "value": "games.buttsstudios.com"
+        }
+      ],
+      "destination": "/games/:path",
+      "statusCode": 301
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "host",
+          "value": "portal.buttsstudios.com"
+        }
+      ],
+      "destination": "/games",
+      "statusCode": 301
+    },
+    {
+      "source": "/:path+",
+      "has": [
+        {
+          "type": "host",
+          "value": "portal.buttsstudios.com"
+        }
+      ],
+      "destination": "/games/:path",
+      "statusCode": 301
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "host",
+          "value": "store.buttsstudios.com"
+        }
+      ],
+      "destination": "/shop",
+      "statusCode": 301
+    },
+    {
+      "source": "/:path+",
+      "has": [
+        {
+          "type": "host",
+          "value": "store.buttsstudios.com"
+        }
+      ],
+      "destination": "/shop/:path",
+      "statusCode": 301
+    },
+    {
+      "source": "/slate.html",
+      "destination": "/titles",
+      "statusCode": 301
+    },
+    {
+      "source": "/slate",
+      "destination": "/titles",
+      "statusCode": 301
+    },
+    {
+      "source": "/titles/the-channels.html",
+      "destination": "/channels",
+      "statusCode": 301
+    },
+    {
+      "source": "/titles/the-channels",
+      "destination": "/channels",
+      "statusCode": 301
+    },
+    {
+      "source": "/index.html",
+      "destination": "/",
+      "statusCode": 301
+    },
+    {
+      "source": "/the-signal",
+      "destination": "/books",
+      "statusCode": 301
+    },
+    {
+      "source": "/refund",
+      "destination": "/refunds",
+      "statusCode": 301
+    },
+    {
+      "source": "/books.html",
+      "destination": "/books",
+      "statusCode": 301
+    },
+    {
+      "source": "/channels.html",
+      "destination": "/channels",
+      "statusCode": 301
+    },
+    {
+      "source": "/games.html",
+      "destination": "/games",
+      "statusCode": 301
+    },
+    {
+      "source": "/how-we-work.html",
+      "destination": "/how-we-work",
+      "statusCode": 301
+    },
+    {
+      "source": "/partnerships.html",
+      "destination": "/partnerships",
+      "statusCode": 301
+    },
+    {
+      "source": "/portfolio.html",
+      "destination": "/portfolio",
+      "statusCode": 301
+    },
+    {
+      "source": "/privacy.html",
+      "destination": "/privacy",
+      "statusCode": 301
+    },
+    {
+      "source": "/refunds.html",
+      "destination": "/refunds",
+      "statusCode": 301
+    },
+    {
+      "source": "/terms.html",
+      "destination": "/terms",
+      "statusCode": 301
+    },
+    {
+      "source": "/titles/runwae-and-glb.html",
+      "destination": "/titles/runwae-and-glb",
+      "statusCode": 301
+    },
+    {
+      "source": "/titles/talon.html",
+      "destination": "/titles/talon",
+      "statusCode": 301
+    },
+    {
+      "source": "/titles/the-little-things.html",
+      "destination": "/titles/the-little-things",
+      "statusCode": 301
+    },
+    {
+      "source": "/titles/us-against-the-world.html",
+      "destination": "/titles/us-against-the-world",
+      "statusCode": 301
+    },
+    {
+      "source": "/video.html",
+      "destination": "/video",
+      "statusCode": 301
+    },
+    {
+      "source": "/work.html",
+      "destination": "/work",
+      "statusCode": 301
+    },
+    {
+      "source": "/portfolio/:slug([a-z0-9-]+).html",
+      "destination": "/portfolio/:slug",
+      "statusCode": 301
+    }
+  ],
   "rewrites": [
-    { "source": "/shop", "destination": "https://shop-buttsstudios.vercel.app/shop/" },
-    { "source": "/shop/:path*", "destination": "https://shop-buttsstudios.vercel.app/shop/:path*" }
-  ] }
+    {
+      "source": "/shop",
+      "destination": "https://shop-buttsstudios.vercel.app/shop/"
+    },
+    {
+      "source": "/shop/:path*",
+      "destination": "https://shop-buttsstudios.vercel.app/shop/:path*"
+    },
+    {
+      "source": "/games/glowgrid",
+      "destination": "https://glb-game.vercel.app/"
+    },
+    {
+      "source": "/games/glowgrid/:path*",
+      "destination": "https://glb-game.vercel.app/:path*"
+    },
+    {
+      "source": "/games/cards",
+      "destination": "https://butts-cards.vercel.app/games/cards"
+    },
+    {
+      "source": "/games/cards/:path*",
+      "destination": "https://butts-cards.vercel.app/games/cards/:path*"
+    },
+    {
+      "source": "/games/sliding-numbers",
+      "destination": "https://butts-puzzle.vercel.app/games/sliding-numbers"
+    },
+    {
+      "source": "/games/sliding-numbers/:path*",
+      "destination": "https://butts-puzzle.vercel.app/games/sliding-numbers/:path*"
+    },
+    {
+      "source": "/books",
+      "destination": "/books.html"
+    },
+    {
+      "source": "/channels",
+      "destination": "/channels.html"
+    },
+    {
+      "source": "/games",
+      "destination": "/games.html"
+    },
+    {
+      "source": "/how-we-work",
+      "destination": "/how-we-work.html"
+    },
+    {
+      "source": "/partnerships",
+      "destination": "/partnerships.html"
+    },
+    {
+      "source": "/portfolio",
+      "destination": "/portfolio.html"
+    },
+    {
+      "source": "/privacy",
+      "destination": "/privacy.html"
+    },
+    {
+      "source": "/refunds",
+      "destination": "/refunds.html"
+    },
+    {
+      "source": "/titles",
+      "destination": "/slate.html"
+    },
+    {
+      "source": "/terms",
+      "destination": "/terms.html"
+    },
+    {
+      "source": "/titles/runwae-and-glb",
+      "destination": "/titles/runwae-and-glb.html"
+    },
+    {
+      "source": "/titles/talon",
+      "destination": "/titles/talon.html"
+    },
+    {
+      "source": "/titles/the-little-things",
+      "destination": "/titles/the-little-things.html"
+    },
+    {
+      "source": "/titles/us-against-the-world",
+      "destination": "/titles/us-against-the-world.html"
+    },
+    {
+      "source": "/video",
+      "destination": "/video.html"
+    },
+    {
+      "source": "/work",
+      "destination": "/work.html"
+    },
+    {
+      "source": "/portfolio/:slug([a-z0-9-]+)",
+      "destination": "/portfolio/:slug.html"
+    }
+  ]
+}

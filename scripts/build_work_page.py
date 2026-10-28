@@ -45,14 +45,14 @@ def client_items():
         img = re.search(r'<img src="([^"]+)"[^>]*alt="([^"]*)"', art)
         href = re.search(r'class="open-site" href="([^"]+)"', art)
         kind = re.search(r'(?s)</h3>\s*<p[^>]*>(.*?)</p>', art)
-        out.append(dict(cat="client", href="partnerships.html#" + re.sub(r"[^a-z0-9]+", "-", title.lower()).strip("-"),
+        out.append(dict(cat="client", href="/partnerships#" + re.sub(r"[^a-z0-9]+", "-", title.lower()).strip("-"),
                         title=title, kind=text(kind.group(1)) if kind else "Website",
                         img=img.group(1) if img else "", alt=img.group(2) if img else title))
     return out
 
 
 def design_items():
-    order = re.findall(r'href="portfolio/([a-z0-9-]+)\.html"', (SITE / "portfolio.html").read_text())
+    order = re.findall(r'href="/portfolio/([a-z0-9-]+)"', (SITE / "portfolio.html").read_text())
     seen, slugs = set(), []
     for s in order + sorted(p.stem for p in (SITE / "portfolio").glob("*.html")):
         if s not in seen and (SITE / "portfolio" / f"{s}.html").exists():
@@ -63,8 +63,8 @@ def design_items():
         src = (SITE / "portfolio" / f"{s}.html").read_text()
         title = text(re.search(r'(?s)<h1[^>]*>(.*?)</h1>', src).group(1))
         kind = re.search(r'(?s)<p class="kind">(.*?)</p>', src)
-        img = re.search(r'<img src="\.\./([^"]+\.(?:webp|png|jpg|svg))"[^>]*alt="([^"]*)"', src)
-        out.append(dict(cat="design", href=f"portfolio/{s}.html", title=title,
+        img = re.search(r'<img src="(?:\.\./|/)([^"]+\.(?:webp|png|jpg|svg))"[^>]*alt="([^"]*)"', src)
+        out.append(dict(cat="design", href=f"/portfolio/{s}", title=title,
                         kind=text(kind.group(1)) if kind else "Design",
                         img=img.group(1) if img else "", alt=img.group(2) if img else title))
     return out
@@ -79,7 +79,7 @@ def card(i):
         media = (f'<div class="wk-media wk-type"><span class="wk-type-title">{esc(i["title"])}</span>'
                  f'<span class="wk-type-stage"><span class="stage-bar">{i["bar"]}</span>{esc(i["stage"])}</span></div>')
     elif i["img"]:
-        media = f'<div class="wk-media"><img src="{esc(i["img"])}" alt="{esc(i["alt"])}" loading="lazy"></div>'
+        media = f'<div class="wk-media"><img src="/{esc(i["img"].lstrip("/"))}" alt="{esc(i["alt"])}" loading="lazy"></div>'
     else:
         media = f'<div class="wk-media wk-type"><span class="wk-type-title">{esc(i["title"])}</span></div>'
     return (f'      <a class="wk-card" href="{esc(i["href"])}" data-cat="{i["cat"]}">\n        {media}\n'
@@ -109,7 +109,7 @@ def build():
     <div class="wk-grid">
 {chr(10).join(card(i) for i in items)}
     </div>
-    <p class="wk-more">Full views: <a href="slate.html">the slate</a> · <a href="partnerships.html">client sites</a> · <a href="portfolio.html">design portfolio</a></p>
+    <p class="wk-more">Full views: <a href="/titles">the slate</a> · <a href="/partnerships">client sites</a> · <a href="/portfolio">design portfolio</a></p>
   </section>
 </main>'''
     shell = (SITE / "slate.html").read_text()
@@ -119,13 +119,13 @@ def build():
     page = re.sub(r'(<meta (?:name|property)="(?:description|og:description|twitter:description)" content=")[^"]*"',
                   lambda m: m.group(1) + desc + '"', page)
     page = re.sub(r'(<meta property="og:title" content=")[^"]*"', r'\1Work · Butts Studios"', page)
-    page = page.replace("https://buttsstudios.com/slate.html", "https://buttsstudios.com/work.html")
-    page = page.replace("</body>", '<script src="work.js" defer></script>\n</body>', 1)
+    page = page.replace("https://buttsstudios.com/titles", "https://buttsstudios.com/work")
+    page = page.replace("</body>", '<script src="/work.js" defer></script>\n</body>', 1)
     (SITE / "work.html").write_text(page)
     return len(items), counts
 
 
-NAV_LINK = re.compile(r'\s*<a href="((?:\.\./)?)(slate|partnerships|portfolio|work)\.html"(?: aria-current="page")?>[A-Za-z ]+</a>')
+NAV_LINK = re.compile(r'\s*<a href="/(titles|partnerships|portfolio|work)"(?: aria-current="page")?>[A-Za-z ]+</a>')
 
 
 def rewrite_nav():
@@ -135,15 +135,14 @@ def rewrite_nav():
             pass
         s = f.read_text()
         m = re.search(r"(?s)(<header[^>]*>.*?<nav>)(.*?)(</nav>)", s)
-        if not m or "how-we-work.html" not in m.group(2):
+        if not m or "/how-we-work" not in m.group(2):
             continue
         nav = m.group(2)
-        pre = "../" if f.parent != SITE else ""
-        on_work = f.parent.name in ("portfolio", "titles") or f.stem in ("slate", "partnerships", "portfolio", "work")
+        on_work = f.parent.name in ("portfolio", "titles") or f.stem in ("slate", "partnerships", "portfolio", "work", "channels")
         cur = ' aria-current="page"' if on_work else ""
         nav2 = NAV_LINK.sub("", nav)
-        hww = re.search(r'\s*<a href="(?:\.\./)?how-we-work\.html"', nav2)
-        nav2 = nav2[:hww.start()] + f'\n    <a href="{pre}work.html"{cur}>Work</a>' + nav2[hww.start():]
+        hww = re.search(r'\s*<a href="/how-we-work"', nav2)
+        nav2 = nav2[:hww.start()] + f'\n    <a href="/work"{cur}>Work</a>' + nav2[hww.start():]
         if nav2 != nav:
             s = s[:m.start(2)] + nav2 + s[m.end(2):]
             f.write_text(s)

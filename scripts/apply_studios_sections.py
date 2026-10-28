@@ -13,10 +13,10 @@ SHARED = pathlib.Path.home() / "buttsstudios/site/shared"
 FONTS = ('<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>'
          '<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;700;800&family=Newsreader:ital,opsz,wght@0,6..72,400;1,6..72,400&display=swap" rel="stylesheet">')
 SECTIONS = {
-    "books": ("Books", "https://buttsstudios.com/books.html", "#E8B521"),
-    "video": ("Video", "https://buttsstudios.com/video.html", "#E2553A"),
-    "games": ("Games", "https://buttsstudios.com/games.html", "#7BC47F"),
-    "partnerships": ("Partnerships", "https://buttsstudios.com/partnerships.html", "#C9B98F"),
+    "books": ("Books", "https://buttsstudios.com/books", "#E8B521"),
+    "video": ("Video", "https://buttsstudios.com/video", "#E2553A"),
+    "games": ("Games", "https://buttsstudios.com/games", "#7BC47F"),
+    "partnerships": ("Partnerships", "https://buttsstudios.com/partnerships", "#C9B98F"),
 }
 NAV_ORDER = ["books", "video", "games"]
 

@@ -1,9 +1,17 @@
 #!/usr/bin/env python3
-"""Build site/work.html: one filterable index of everything the studio makes (Principal 2026-10-25).
+"""Build site/work.html: one filterable index of everything the studio makes (Principal 2026-10-25; filters
+reworked 2026-10-28, STUDIOS-WORK-PAGE-1).
 
-Current work = the slate titles (slate.html), Client work = partnership sites (partnerships.html),
-Design = the portfolio item pages (portfolio/*.html). The source pages stay the detail views; re-run this
-after editing any of them. Also rewrites the top nav on every page to: Work · How we work.
+Filters: All · Current work · Books · Video · Games · Client work · Design. They are anchor links (#all, #current,
+#books, #video, #games, #client, #design) filtered by CSS :target, so the page works without JS; work.js only
+syncs aria-current and adds `hidden` for browsers without :has(). The page opens on Current work.
+
+Sources (the retired slate/partnerships/portfolio pages live on as data in scripts/sources/, never served):
+- Current work: scripts/sources/slate.html, minus Runwae Apparel and GLB (DECISIONS #56: no Runwae/GLB as studio titles).
+- Books / Video: the index rows of site/books.html and site/video.html (adds The Signal, Film, Animation).
+- Games: the plates on site/games.html, with start-screen thumbnails in assets/work/game-<slug>-720.webp.
+- Client work: scripts/sources/partnerships.html; each card opens its archived site under /work/<client>/.
+- Design: the portfolio item pages (site/portfolio/*.html) in scripts/sources/portfolio.html order.
 
     python3 ~/buttsstudios/scripts/build_work_page.py
 """
@@ -11,7 +19,19 @@ import html
 import re
 from pathlib import Path
 
-SITE = Path(__file__).resolve().parent.parent / "site"
+ROOT = Path(__file__).resolve().parent.parent
+SITE = ROOT / "site"
+SOURCES = ROOT / "scripts" / "sources"
+
+CATS = [("current", "Current work"), ("books", "Books"), ("video", "Video"), ("games", "Games"),
+        ("client", "Client work"), ("design", "Design")]
+LABEL = dict(CATS)
+NOT_STUDIO_TITLES = ("runwae-and-glb",)  # apparel labels are not studio titles (DECISIONS #56)
+EXTRA_CATS = {"/titles/us-against-the-world": ["books"], "/titles/talon": ["books"],
+              "/channels": ["video"], "/titles/the-little-things": ["video"]}
+GAME_ALT = {"glowgrid": "Glowgrid start screen: Ready., with Today's run and Endless on a dark grid of lights",
+            "cards": "Card Battle start screen: three playing cards around a prize card, with Play the first match",
+            "sliding-numbers": "Sliding Numbers: a 3x3 board of numbered tiles with moves, time and par above it"}
 
 
 def text(s):
@@ -22,37 +42,69 @@ def esc(s):
     return html.escape(s, quote=True)
 
 
-def slate_items():
-    src = (SITE / "slate.html").read_text()
+def rows(src):
+    """Title rows of an index page: href, title, kind, stage, bar (may be empty)."""
     out = []
-    for row in re.findall(r'(?s)<a class="title-row" href="([^"]+)">(.*?)</a>\s*(?=<a class="title-row"|</div>)', src):
-        href, body = row
+    for href, body in re.findall(r'(?s)<a class="title-row" href="([^"]+)">(.*?)</a>', src):
         title = text(re.search(r"(?s)<h3[^>]*>(.*?)</h3>", body).group(1))
-        kind = text(re.search(r'(?s)class="kind">(.*?)</div>', body).group(1))
-        stage = text(re.search(r'(?s)class="stage-label">(.*?)</span>', body).group(1))
-        bar = re.search(r'(?s)<span class="stage-bar">(.*?)</span>', body).group(1)
-        note = re.search(r'(?s)class="stage-note">(.*?)</span>', body)
-        out.append(dict(cat="current", href=href, title=title, kind=kind, stage=stage, bar=bar,
-                        note=text(note.group(1)) if note else ""))
+        kind = re.search(r'(?s)class="kind">(.*?)</div>', body)
+        stage = re.search(r'(?s)class="stage-label">(.*?)</span>', body)
+        bar = re.search(r'(?s)<span class="stage-bar">(.*?)</span>', body)
+        out.append(dict(href=href, title=title, kind=text(kind.group(1)) if kind else "",
+                        stage=text(stage.group(1)) if stage else "", bar=bar.group(1) if bar else ""))
+    return out
+
+
+def current_items():
+    out = []
+    for r in rows((SOURCES / "slate.html").read_text()):
+        if any(x in r["href"] for x in NOT_STUDIO_TITLES):
+            continue
+        out.append(dict(r, cats=["current"] + EXTRA_CATS.get(r["href"], []), img=""))
+    return out
+
+
+def section_items(page, cat, have):
+    out = []
+    for r in rows((SITE / page).read_text()):
+        if r["href"] in have or not r["href"].startswith("/"):
+            continue
+        out.append(dict(r, cats=[cat], img=""))
+    return out
+
+
+def game_items():
+    src = (SITE / "games.html").read_text()
+    out = []
+    for href, slug, body in re.findall(r'(?s)<a class="plate-card" href="(/games/([a-z0-9-]+))">(.*?)</a>', src):
+        img = f"assets/work/game-{slug}-720.webp"
+        if not (SITE / img).exists():
+            raise SystemExit(f"missing game thumbnail {img}")
+        out.append(dict(href=href, title=text(re.search(r'(?s)class="plate-name">(.*?)</span>', body).group(1)),
+                        kind=text(re.search(r'(?s)class="plate-kind">(.*?)</span>', body).group(1)),
+                        cats=["games"], img=img, alt=GAME_ALT.get(slug, slug)))
     return out
 
 
 def client_items():
-    src = (SITE / "partnerships.html").read_text()
+    src = (SOURCES / "partnerships.html").read_text()
     out = []
-    for art in re.findall(r'(?s)<article(?: id="[^"]*")? class="work[^"]*">(.*?)</article>', src):
+    for aid, art in re.findall(r'(?s)<article id="([^"]+)" class="work[^"]*">(.*?)</article>', src):
         title = text(re.search(r"(?s)<h3[^>]*>(.*?)</h3>", art).group(1))
         img = re.search(r'<img src="([^"]+)"[^>]*alt="([^"]*)"', art)
-        href = re.search(r'class="open-site" href="([^"]+)"', art)
-        kind = re.search(r'(?s)</h3>\s*<p[^>]*>(.*?)</p>', art)
-        out.append(dict(cat="client", href="/partnerships#" + re.sub(r"[^a-z0-9]+", "-", title.lower()).strip("-"),
-                        title=title, kind=text(kind.group(1)) if kind else "Website",
+        kind = re.search(r'(?s)<div class="meta">(.*?)</div>', art) or re.search(r'(?s)</h3>\s*<p[^>]*>(.*?)</p>', art)
+        if (SITE / "work" / aid / "index.html").exists():
+            href = f"/work/{aid}/index.html"  # the archive's relative assets need the index.html URL
+        else:
+            zoom = re.search(r'class="zoom" href="([^"]+)"', art)
+            href = zoom.group(1) if zoom else "/work#client"
+        out.append(dict(href=href, title=title, kind=text(kind.group(1)) if kind else "Website", cats=["client"],
                         img=img.group(1) if img else "", alt=img.group(2) if img else title))
     return out
 
 
 def design_items():
-    order = re.findall(r'href="/portfolio/([a-z0-9-]+)"', (SITE / "portfolio.html").read_text())
+    order = re.findall(r'href="/portfolio/([a-z0-9-]+)"', (SOURCES / "portfolio.html").read_text())
     seen, slugs = set(), []
     for s in order + sorted(p.stem for p in (SITE / "portfolio").glob("*.html")):
         if s not in seen and (SITE / "portfolio" / f"{s}.html").exists():
@@ -64,93 +116,64 @@ def design_items():
         title = text(re.search(r'(?s)<h1[^>]*>(.*?)</h1>', src).group(1))
         kind = re.search(r'(?s)<p class="kind">(.*?)</p>', src)
         img = re.search(r'<img src="(?:\.\./|/)([^"]+\.(?:webp|png|jpg|svg))"[^>]*alt="([^"]*)"', src)
-        out.append(dict(cat="design", href=f"/portfolio/{s}", title=title,
-                        kind=text(kind.group(1)) if kind else "Design",
-                        img=img.group(1) if img else "", alt=img.group(2) if img else title))
+        out.append(dict(href=f"/portfolio/{s}", title=title, kind=text(kind.group(1)) if kind else "Design",
+                        cats=["design"], img=img.group(1) if img else "", alt=img.group(2) if img else title))
     return out
 
 
-LABEL = {"current": "Current work", "client": "Client work", "design": "Design"}
-
-
 def card(i):
-    tag = f'<span class="wk-cat">{LABEL[i["cat"]]}</span>'
-    if i["cat"] == "current":
-        media = (f'<div class="wk-media wk-type"><span class="wk-type-title">{esc(i["title"])}</span>'
-                 f'<span class="wk-type-stage"><span class="stage-bar">{i["bar"]}</span>{esc(i["stage"])}</span></div>')
-    elif i["img"]:
+    cls = " ".join(f"c-{c}" for c in i["cats"])
+    tag = f'<span class="wk-cat">{LABEL[i["cats"][0]]}</span>'
+    if i["img"]:
         media = f'<div class="wk-media"><img src="/{esc(i["img"].lstrip("/"))}" alt="{esc(i["alt"])}" loading="lazy"></div>'
     else:
-        media = f'<div class="wk-media wk-type"><span class="wk-type-title">{esc(i["title"])}</span></div>'
-    return (f'      <a class="wk-card" href="{esc(i["href"])}" data-cat="{i["cat"]}">\n        {media}\n'
+        stage = (f'<span class="wk-type-stage">{f"""<span class="stage-bar">{i["bar"]}</span>""" if i["bar"] else ""}'
+                 f'{esc(i["stage"])}</span>') if i.get("stage") else ""
+        media = f'<div class="wk-media wk-type"><span class="wk-type-title">{esc(i["title"])}</span>{stage}</div>'
+    return (f'      <a class="wk-card {cls}" href="{esc(i["href"])}" data-cat="{" ".join(i["cats"])}">\n        {media}\n'
             f'        <div class="wk-meta"><h3>{esc(i["title"])}</h3>{tag}</div>\n'
             f'        <p class="wk-kind">{esc(i["kind"])}</p>\n      </a>')
 
 
 def build():
-    items = slate_items() + client_items() + design_items()
-    counts = {c: sum(1 for i in items if i["cat"] == c) for c in LABEL}
-    filters = [f'<button type="button" data-filter="all" aria-pressed="false">All <small>{len(items)}</small></button>']
-    filters += [f'<button type="button" data-filter="{c}" aria-pressed="{str(c == "current").lower()}">{LABEL[c]} <small>{counts[c]}</small></button>'
-                for c in LABEL]
+    items = current_items()
+    have = {i["href"] for i in items}
+    items += section_items("books.html", "books", have)
+    items += section_items("video.html", "video", have)
+    items += game_items() + client_items() + design_items()
+    counts = {c: sum(1 for i in items if c in i["cats"]) for c, _ in CATS}
+    targets = "".join(f'<span class="wk-t" id="{c}"></span>' for c in ["all"] + [c for c, _ in CATS])
+    filters = [f'<a href="#all">All <small>{len(items)}</small></a>']
+    filters += [f'<a href="#{c}">{label} <small>{counts[c]}</small></a>' for c, label in CATS]
     main = f'''<main>
   <section class="wrap hero">
     <p class="eyebrow">Work</p>
     <h1 class="display">Everything<br>we <span class="gold">make</span>.</h1>
     <div class="hero-row">
-      <p class="lede">Our own titles in progress, sites for clients, and identity and product design.</p>
+      <p class="lede">Our own books, video and games, sites for clients, and identity and product design.</p>
     </div>
   </section>
 
   <section class="wrap section wk">
-    <div class="wk-filters" role="group" aria-label="Filter work">
+    {targets}
+    <nav class="wk-filters" aria-label="Filter work">
       {"".join(filters)}
-    </div>
+    </nav>
     <div class="wk-grid">
 {chr(10).join(card(i) for i in items)}
     </div>
-    <p class="wk-more">Full views: <a href="/titles">the slate</a> · <a href="/partnerships">client sites</a> · <a href="/portfolio">design portfolio</a></p>
+    <p class="wk-more wk-portfolio"><a class="btn" href="#design">Check out the portfolio →</a></p>
   </section>
 </main>'''
-    shell = (SITE / "slate.html").read_text()
-    page = re.sub(r"(?s)<main>.*?</main>", lambda _: main, shell)
-    page = re.sub(r"<title>.*?</title>", "<title>Work · Butts Studios</title>", page)
-    desc = "Everything Butts Studios makes: titles in progress, client sites, and identity and product design."
+    page = (SITE / "work.html").read_text()
+    page = re.sub(r"(?s)<main>.*?</main>", lambda _: main, page)
+    desc = "Everything Butts Studios makes: books, video and games in progress, client sites, and identity and product design."
     page = re.sub(r'(<meta (?:name|property)="(?:description|og:description|twitter:description)" content=")[^"]*"',
                   lambda m: m.group(1) + desc + '"', page)
-    page = re.sub(r'(<meta property="og:title" content=")[^"]*"', r'\1Work · Butts Studios"', page)
-    page = page.replace("https://buttsstudios.com/titles", "https://buttsstudios.com/work")
-    page = page.replace("</body>", '<script src="/work.js" defer></script>\n</body>', 1)
     (SITE / "work.html").write_text(page)
     return len(items), counts
-
-
-NAV_LINK = re.compile(r'\s*<a href="/(titles|partnerships|portfolio|work)"(?: aria-current="page")?>[A-Za-z ]+</a>')
-
-
-def rewrite_nav():
-    n = 0
-    for f in list(SITE.glob("*.html")) + list(SITE.glob("*/*.html")):
-        if "/work/" in str(f.relative_to(SITE).parent.as_posix() + "/") and f.parent.name != "titles":
-            pass
-        s = f.read_text()
-        m = re.search(r"(?s)(<header[^>]*>.*?<nav>)(.*?)(</nav>)", s)
-        if not m or "/how-we-work" not in m.group(2):
-            continue
-        nav = m.group(2)
-        on_work = f.parent.name in ("portfolio", "titles") or f.stem in ("slate", "partnerships", "portfolio", "work", "channels")
-        cur = ' aria-current="page"' if on_work else ""
-        nav2 = NAV_LINK.sub("", nav)
-        hww = re.search(r'\s*<a href="/how-we-work"', nav2)
-        nav2 = nav2[:hww.start()] + f'\n    <a href="/work"{cur}>Work</a>' + nav2[hww.start():]
-        if nav2 != nav:
-            s = s[:m.start(2)] + nav2 + s[m.end(2):]
-            f.write_text(s)
-            n += 1
-    return n
 
 
 if __name__ == "__main__":
     total, counts = build()
     print(f"work.html: {total} items {counts}")
-    print(f"nav rewritten on {rewrite_nav()} pages")

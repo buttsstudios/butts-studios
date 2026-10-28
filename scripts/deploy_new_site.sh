@@ -14,7 +14,9 @@ SRC="$ROOT/site"
 ORG_ID="team_WMhVBeGTHA1CgDK9llwAmQd9"
 # 2026-10-25: the domains moved to project butts-studios-website (Bridge deploy de2d76ggs); old "website" project prj_J7pK4Ph2b6AVt03X6Pl7w0rNrU8W no longer serves them.
 PROJECT_ID="${PROJECT_ID:-prj_wqttHAzUSkMszhjoDdxylm3etb1p}"
-STAGE="$(mktemp -d)"
+STAGE="$(mktemp -d "${WORKDIR:-${TMPDIR:-/tmp}}/bs-site.XXXXXX")"
+STAGE_ROOT="$STAGE"
+trap 'rm -rf "$STAGE_ROOT"' EXIT  # laptop disk is tight: the stage never outlives the run
 TOK=(--non-interactive)
 [ -n "${VERCEL_TOKEN:-}" ] && TOK+=(--token "$VERCEL_TOKEN")
 
@@ -54,7 +56,7 @@ echo "pre-flight OK"
 # Deploy layout: each page moves to <clean path>/index.html so /books serves directly and /books.html 404s
 # (no forwarding, Principal 2026-10-28). Runs after the asset check, which resolves refs from the repo layout.
 python3 "$ROOT/scripts/url_map.py" --stage "$STAGE"
-for p in books.html slate.html titles/talon.html portfolio/chief.html; do [ ! -e "$STAGE/$p" ] || { echo "BLOCKED: $p still in stage"; exit 1; }; done
+for p in books.html titles/talon.html portfolio/chief.html; do [ ! -e "$STAGE/$p" ] || { echo "BLOCKED: $p still in stage"; exit 1; }; done
 
 vercel whoami "${TOK[@]}" >/dev/null 2>&1 || { echo "Not logged in to Vercel. Run: vercel login"; exit 1; }
 echo "vercel user: $(vercel whoami "${TOK[@]}" 2>/dev/null)"
@@ -81,7 +83,7 @@ echo "deployed: $URL"
 
 sleep 20
 ok=1
-for p in / /titles /games /channels /books /video /video/film /video/animation /titles/the-signal /contact /how-we-work /partnerships /portfolio /portfolio/chief /titles/talon /shop /sitemap.xml /favicon.svg; do
+for p in / /work /games /channels /books /video /video/film /video/animation /titles/the-signal /contact /how-we-work /portfolio/chief /titles/talon /shop /sitemap.xml /favicon.svg; do
   code=$(curl -s -o /dev/null -w '%{http_code}' "https://buttsstudios.com$p")
   echo "  $code  https://buttsstudios.com$p"; [ "$code" = 200 ] || ok=0
 done

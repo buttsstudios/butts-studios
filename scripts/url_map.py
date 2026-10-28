@@ -20,11 +20,8 @@ STATIC_PAGES = {
     'books.html': '/books',
     'video.html': '/video',
     'games.html': '/games',
-    'slate.html': '/titles',
     'channels.html': '/channels',
     'work.html': '/work',
-    'portfolio.html': '/portfolio',
-    'partnerships.html': '/partnerships',
     'how-we-work.html': '/how-we-work',
     'terms.html': '/terms',
     'privacy.html': '/privacy',
@@ -32,7 +29,6 @@ STATIC_PAGES = {
     'titles/talon.html': '/titles/talon',
     'titles/the-little-things.html': '/titles/the-little-things',
     'titles/us-against-the-world.html': '/titles/us-against-the-world',
-    'titles/runwae-and-glb.html': '/titles/runwae-and-glb',
     # STUDIOS-COHESION-1 (2026-10-28): contact page + fold-ins for the retiring novels./film./animation./clients. sites
     'contact.html': '/contact',
     'titles/the-signal.html': '/titles/the-signal',
@@ -63,6 +59,9 @@ LEGACY_PATHS = [
     '/titles/talon.html', '/titles/the-little-things.html', '/titles/us-against-the-world.html',
     '/titles/runwae-and-glb.html', '/titles/the-channels.html', '/slate', '/titles/the-channels', '/the-signal',
     '/refund', '/channels.html',
+    # STUDIOS-WORK-PAGE-1 (2026-10-28): folded into /work (filters #current #books #video #games #client #design);
+    # sources kept as data in scripts/sources/. No forwarding: these 404.
+    '/titles', '/portfolio', '/partnerships', '/titles/runwae-and-glb',
 ]
 
 

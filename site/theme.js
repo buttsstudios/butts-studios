@@ -25,7 +25,8 @@
   var nav = head && head.querySelector('nav');
   if (!nav || nav.querySelector('.menu-toggle')) return;
   var links = nav.querySelectorAll('a');
-  if (!links.length) return;
+  // Three tabs or fewer (Studio · Work · Shop) stay visible on phones (Principal 2026-10-28); only longer navs fold.
+  if (links.length <= 3) return;
   var wrap = document.createElement('div');
   wrap.className = 'nav-links';
   wrap.id = 'site-nav-links';

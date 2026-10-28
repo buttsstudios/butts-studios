@@ -1,18 +1,20 @@
-// Work page filter: All · Current work · Client work · Design. Opens on Current work (Principal 2026-10-26); the hash (#all, #client, #design) is shareable.
+// Work page filters (STUDIOS-WORK-PAGE-1, 2026-10-28): anchor links (#all, #current, #books, #video, #games, #client,
+// #design) that CSS :target filters with no JS. This script only enhances: it marks the active filter with
+// aria-current and sets `hidden` on cards for browsers without :has(). Opens on Current work (Principal 2026-10-26).
 (function () {
-  var btns = document.querySelectorAll('.wk-filters button');
+  var links = document.querySelectorAll('.wk-filters a');
   var cards = document.querySelectorAll('.wk-card');
-  function apply(f) {
-    if (!document.querySelector('.wk-filters [data-filter="' + f + '"]')) f = 'current';
-    btns.forEach(function (b) { b.setAttribute('aria-pressed', String(b.dataset.filter === f)); });
-    cards.forEach(function (c) { c.hidden = !(f === 'all' || c.dataset.cat === f); });
-  }
-  btns.forEach(function (b) {
-    b.addEventListener('click', function () {
-      var f = b.dataset.filter;
-      history.replaceState(null, '', f === 'current' ? location.pathname : '#' + f);
-      apply(f);
+  var more = document.querySelector('.wk-portfolio');
+  function apply() {
+    var f = (location.hash || '').slice(1);
+    if (!document.querySelector('.wk-filters a[href="#' + f + '"]')) f = 'current';
+    links.forEach(function (a) {
+      if (a.getAttribute('href') === '#' + f) a.setAttribute('aria-current', 'true');
+      else a.removeAttribute('aria-current');
     });
-  });
-  apply((location.hash || '#current').slice(1));
+    cards.forEach(function (c) { c.hidden = !(f === 'all' || (' ' + c.dataset.cat + ' ').indexOf(' ' + f + ' ') >= 0); });
+    if (more) more.hidden = f !== 'current';
+  }
+  window.addEventListener('hashchange', apply);
+  apply();
 })();

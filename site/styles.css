@@ -392,7 +392,7 @@ a.title-row:hover { background: var(--surface); }
 
 /* ---------- full footer (2026-10-14) ---------- */
 .full-foot { padding-block: 56px 28px; }
-.full-foot .ff-grid { display: grid; grid-template-columns: 1.4fr repeat(4, minmax(0, 1fr)); gap: 32px; align-items: start; justify-content: initial; }
+.full-foot .ff-grid { display: grid; grid-template-columns: 1.4fr repeat(3, minmax(0, 1fr)); gap: 32px; align-items: start; justify-content: initial; }
 .ff-mark { display: flex; align-items: center; gap: 12px; color: var(--band-fg); text-decoration: none; }
 .ff-mark .brand-x { width: 36px; height: 36px; }
 .ff-mark span { font: 700 19px/.98 var(--display); letter-spacing: -.01em; }
@@ -424,6 +424,38 @@ main p, main li { overflow-wrap: break-word; }
 .wk-filters button small { font-size: 11px; color: var(--muted); margin-left: 6px; letter-spacing: 0; }
 .wk-filters button[aria-pressed="true"] { background: var(--fg); color: var(--bg); border-color: var(--fg); }
 .wk-filters button[aria-pressed="true"] small { color: var(--bg); opacity: .7; }
+/* /work filters as anchor links filtered by :target, no JS needed (STUDIOS-WORK-PAGE-1, 2026-10-28); work.js enhances */
+.wk-filters a { font: 600 13px/1 var(--sans, inherit); letter-spacing: .08em; text-transform: uppercase; color: var(--fg); text-decoration: none; border: 1px solid var(--line); border-radius: 2px; padding: 11px 14px; }
+.wk-filters a small { font-size: 11px; color: var(--muted); margin-left: 6px; letter-spacing: 0; }
+.wk-filters a:hover { border-color: var(--fg); }
+.wk-t { display: block; height: 0; scroll-margin-top: 24px; }
+.wk-portfolio { display: none; }
+.wk:not(:has(.wk-t:target)) .wk-card:not(.c-current) { display: none; }
+.wk:not(:has(.wk-t:target)) .wk-portfolio, #current:target ~ .wk-portfolio { display: block; }
+#current:target ~ .wk-grid .wk-card:not(.c-current) { display: none; }
+#books:target ~ .wk-grid .wk-card:not(.c-books) { display: none; }
+#video:target ~ .wk-grid .wk-card:not(.c-video) { display: none; }
+#games:target ~ .wk-grid .wk-card:not(.c-games) { display: none; }
+#client:target ~ .wk-grid .wk-card:not(.c-client) { display: none; }
+#design:target ~ .wk-grid .wk-card:not(.c-design) { display: none; }
+.wk:not(:has(.wk-t:target)) .wk-filters a[href="#current"],
+#all:target ~ .wk-filters a[href="#all"],
+#current:target ~ .wk-filters a[href="#current"],
+#books:target ~ .wk-filters a[href="#books"],
+#video:target ~ .wk-filters a[href="#video"],
+#games:target ~ .wk-filters a[href="#games"],
+#client:target ~ .wk-filters a[href="#client"],
+#design:target ~ .wk-filters a[href="#design"],
+.wk-filters a[aria-current="true"] { background: var(--fg); color: var(--bg); border-color: var(--fg); }
+.wk:not(:has(.wk-t:target)) .wk-filters a[href="#current"] small,
+#all:target ~ .wk-filters a[href="#all"] small,
+#current:target ~ .wk-filters a[href="#current"] small,
+#books:target ~ .wk-filters a[href="#books"] small,
+#video:target ~ .wk-filters a[href="#video"] small,
+#games:target ~ .wk-filters a[href="#games"] small,
+#client:target ~ .wk-filters a[href="#client"] small,
+#design:target ~ .wk-filters a[href="#design"] small,
+.wk-filters a[aria-current="true"] small { color: var(--bg); opacity: .7; }
 .wk-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 40px 24px; }
 .wk-card { display: block; min-width: 0; text-decoration: none; color: inherit; }
 .wk-card[hidden] { display: none; }

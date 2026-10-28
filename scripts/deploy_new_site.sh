@@ -15,8 +15,8 @@ ORG_ID="team_WMhVBeGTHA1CgDK9llwAmQd9"
 # 2026-10-25: the domains moved to project butts-studios-website (Bridge deploy de2d76ggs); old "website" project prj_J7pK4Ph2b6AVt03X6Pl7w0rNrU8W no longer serves them.
 PROJECT_ID="${PROJECT_ID:-prj_wqttHAzUSkMszhjoDdxylm3etb1p}"
 STAGE="$(mktemp -d)"
-TOK=()
-[ -n "${VERCEL_TOKEN:-}" ] && TOK=(--token "$VERCEL_TOKEN")
+TOK=(--non-interactive)
+[ -n "${VERCEL_TOKEN:-}" ] && TOK+=(--token "$VERCEL_TOKEN")
 
 # Stage: the site folder only (no repo history, scripts or design sources). Archived pages and assets ride along.
 rsync -a --exclude '_check*.html' --exclude '_open.html' --exclude '.DS_Store' --exclude '*.tmpl' "$SRC/" "$STAGE/"
@@ -49,6 +49,10 @@ python3 "$ROOT/scripts/check_site_links.py" || { echo "BLOCKED: site checks fail
 # resolved before anything ships; they wait on Principal decisions in ~/jarvis/JARVIS QUESTIONS.md.
 python3 "$ROOT/scripts/check_launch_ready.py" "$STAGE" || { echo "BLOCKED: legal placeholders remain"; exit 1; }
 echo "pre-flight OK"
+# Deploy layout: each page moves to <clean path>/index.html so /books serves directly and /books.html 404s
+# (no forwarding, Principal 2026-10-28). Runs after the asset check, which resolves refs from the repo layout.
+python3 "$ROOT/scripts/url_map.py" --stage "$STAGE"
+for p in books.html slate.html titles/talon.html portfolio/chief.html; do [ ! -e "$STAGE/$p" ] || { echo "BLOCKED: $p still in stage"; exit 1; }; done
 
 vercel whoami "${TOK[@]}" >/dev/null 2>&1 || { echo "Not logged in to Vercel. Run: vercel login"; exit 1; }
 echo "vercel user: $(vercel whoami "${TOK[@]}" 2>/dev/null)"

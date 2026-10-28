@@ -1,14 +1,14 @@
 #!/usr/bin/env bash
-# Post-deploy check for the URL map: canonical pages 200, legacy .html paths 301 to them, old game hosts 301 to /games/*.
-# Read-only. Usage: bash scripts/verify_url_map_live.sh [--hosts]   (--hosts only after the subdomains moved projects)
+# Post-deploy check for the URL map: canonical pages 200; retired URLs 404 with no forwarding (Principal 2026-10-28:
+# "no forwarding except for the domains we particularly setup for the purpose of forwarding").
+# Read-only. Usage: bash scripts/verify_url_map_live.sh [--hosts]   (--hosts after ~/go-remove-studios-subdomains.sh ran)
 base=https://buttsstudios.com; fail=0
 chk() { local got; got=$(curl -s -o /dev/null -w '%{http_code} %{redirect_url}' --max-time 20 "$1"); [[ "$got" == "$2"* ]] && echo "ok   $1 -> $got" || { echo "FAIL $1 -> $got (want $2)"; fail=1; }; }
-for p in / /games /games/glowgrid /games/cards /games/sliding-numbers /titles /titles/talon /titles/the-little-things /titles/us-against-the-world /titles/runwae-and-glb /channels /books /video /work /portfolio /portfolio/chief /how-we-work /partnerships /shop /terms /privacy /refunds /sitemap.xml; do chk "$base$p" "200"; done
-chk $base/games.html "301 $base/games"; chk $base/slate.html "301 $base/titles"; chk $base/titles/the-channels.html "301 $base/channels"
-chk $base/titles/talon.html "301 $base/titles/talon"; chk $base/books.html "301 $base/books"; chk $base/portfolio/chief.html "301 $base/portfolio/chief"
+for p in / /games /games/glowgrid /games/cards /games/sliding-numbers /titles /titles/talon /titles/the-little-things /titles/us-against-the-world /titles/runwae-and-glb /channels /books /video /work /portfolio /portfolio/chief /how-we-work /partnerships /shop /terms /privacy /refunds /sitemap.xml /robots.txt; do chk "$base$p" "200"; done
+for p in /games.html /slate.html /slate /titles/the-channels.html /titles/the-channels /titles/talon.html /books.html /portfolio/chief.html /the-signal /refund; do chk "$base$p" "404"; done
 if [ "$1" = "--hosts" ]; then
-  chk https://glb.buttsstudios.com/ "301 $base/games/glowgrid"; chk https://cards.buttsstudios.com/ "301 $base/games/cards"
-  chk https://puzzle.buttsstudios.com/ "301 $base/games/sliding-numbers"; chk https://games.buttsstudios.com/ "301 $base/games"
-  chk https://store.buttsstudios.com/ "301 $base/shop"; chk "https://glb.buttsstudios.com/?session_id=cs_test_x" "301 $base/games/glowgrid?session_id=cs_test_x"
+  for h in glb cards puzzle games portal store novels film animation clients; do
+    if host "$h.buttsstudios.com" >/dev/null 2>&1; then echo "FAIL $h.buttsstudios.com still resolves"; fail=1; else echo "ok   $h.buttsstudios.com removed (no DNS)"; fi
+  done
 fi
 exit $fail

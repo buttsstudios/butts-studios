@@ -1,8 +1,13 @@
 #!/usr/bin/env python3
 """Single source of truth for the buttsstudios.com URL map (2026-10-28, STUDIOS-URL-MAP-1).
 
-Canonical URLs have no .html. Page files keep their names; vercel.json rewrites the clean path to the file.
-`legacy_*` lists every URL that ever shipped; scripts/check_url_map.py proves each one 301s to a live page.
+Canonical URLs have no .html. Page files keep their names in the repo; at deploy, stage_pages() moves each page to
+<clean path>/index.html so the clean URL is served directly by the filesystem.
+
+No forwarding (Principal 2026-10-28: "no forwarding except for the domains we particularly setup for the purpose of
+forwarding"): retired URLs (old .html paths, /slate, /titles/the-channels, the old game/store subdomains) are not
+redirected; they stop existing (404), and the old subdomains are removed (~/go-remove-studios-subdomains.sh).
+scripts/check_url_map.py proves every LEGACY_PATHS entry 404s and that vercel.json carries no redirect rules.
 """
 import glob
 import os
@@ -37,37 +42,22 @@ GAMES = {
     'sliding-numbers': {'origin': 'https://butts-puzzle.vercel.app', 'host': 'puzzle.buttsstudios.com', 'basepath': True},
 }
 
-# Old host -> new home. The hosts must be attached to the buttsstudios.com Vercel project for these rules to fire.
-HOST_REDIRECTS = {
-    'glb.buttsstudios.com': '/games/glowgrid',
-    'cards.buttsstudios.com': '/games/cards',
-    'puzzle.buttsstudios.com': '/games/sliding-numbers',
-    'games.buttsstudios.com': '/games',
-    'portal.buttsstudios.com': '/games',
-    'store.buttsstudios.com': '/shop',
-}
+# Retired subdomains (removed, not forwarded). The site must not link them.
+RETIRED_HOSTS = ['glb.buttsstudios.com', 'cards.buttsstudios.com', 'puzzle.buttsstudios.com', 'games.buttsstudios.com',
+                 'portal.buttsstudios.com', 'store.buttsstudios.com']
 
-# Subdomains that still hold their own site (novels = The Signal, film, animation, clients). They are NOT redirected:
-# doing so would remove live content. Whether they fold into /books, /video and /partnerships is a Principal call.
-KEPT_HOSTS = ['novels.buttsstudios.com', 'film.buttsstudios.com', 'animation.buttsstudios.com', 'clients.buttsstudios.com']
-
-# Old path -> new path, beyond the generic "<page>.html -> <page>" rule.
-EXTRA_REDIRECTS = {
-    '/slate.html': '/titles',
-    '/slate': '/titles',
-    '/titles/the-channels.html': '/channels',
-    '/titles/the-channels': '/channels',
-    '/index.html': '/',
-    '/the-signal': '/books',
-    '/refund': '/refunds',
-}
+# Also slated for removal (Principal 2026-10-28), but they still hold their own live sites (novels = The Signal, film,
+# animation, clients) and books.html / video.html link them. Their links get repointed when the content moves.
+PENDING_REMOVAL_HOSTS = ['novels.buttsstudios.com', 'film.buttsstudios.com', 'animation.buttsstudios.com',
+                         'clients.buttsstudios.com']
 
 # Everything the Principal-facing site has ever linked or served (live crawl 2026-10-28 plus repo history).
 LEGACY_PATHS = [
     '/index.html', '/books.html', '/video.html', '/games.html', '/slate.html', '/work.html', '/portfolio.html',
     '/partnerships.html', '/how-we-work.html', '/terms.html', '/privacy.html', '/refunds.html',
     '/titles/talon.html', '/titles/the-little-things.html', '/titles/us-against-the-world.html',
-    '/titles/runwae-and-glb.html', '/titles/the-channels.html',
+    '/titles/runwae-and-glb.html', '/titles/the-channels.html', '/slate', '/titles/the-channels', '/the-signal',
+    '/refund', '/channels.html',
 ]
 
 
@@ -100,26 +90,9 @@ SHOP_ORIGIN = 'https://shop-buttsstudios.vercel.app'
 
 
 def build_vercel():
-    """vercel.json for the buttsstudios.com project: host redirects, legacy .html redirects, clean-path rewrites, proxies."""
-    redirects, rewrites = [], []
-    # 1. old hosts -> new paths (inert until the host is attached to this Vercel project)
-    for host, dest in HOST_REDIRECTS.items():
-        has = [{'type': 'host', 'value': host}]
-        redirects.append({'source': '/', 'has': has, 'destination': dest, 'statusCode': 301})
-        redirects.append({'source': '/:path+', 'has': has, 'destination': dest + '/:path', 'statusCode': 301})
-    # 2. old paths -> new paths
-    for src, dest in EXTRA_REDIRECTS.items():
-        redirects.append({'source': src, 'destination': dest, 'statusCode': 301})
-    pm = page_map()
-    for f, clean in sorted(pm.items()):
-        if clean == '/' or f.startswith('portfolio/'):
-            continue
-        src = '/' + f
-        if src not in EXTRA_REDIRECTS:
-            redirects.append({'source': src, 'destination': clean, 'statusCode': 301})
-    redirects.append({'source': '/portfolio/:slug([a-z0-9-]+).html', 'destination': '/portfolio/:slug', 'statusCode': 301})
-    # 3. shop (separate project) and games (separate projects), proxied under this domain
-    rewrites += [
+    """vercel.json for the buttsstudios.com project. No redirects (no forwarding); clean paths are served by the
+    staged layout (stage_pages); only the separately deployed shop and games are proxied under this domain."""
+    rewrites = [
         {'source': '/shop', 'destination': SHOP_ORIGIN + '/shop/'},
         {'source': '/shop/:path*', 'destination': SHOP_ORIGIN + '/shop/:path*'},
     ]
@@ -130,19 +103,39 @@ def build_vercel():
         else:
             rewrites.append({'source': '/games/%s' % slug, 'destination': g['origin'] + '/'})
             rewrites.append({'source': '/games/%s/:path*' % slug, 'destination': g['origin'] + '/:path*'})
-    # 4. clean paths -> page files
-    for f, clean in sorted(pm.items()):
-        if clean == '/' or f.startswith('portfolio/'):
-            continue
-        rewrites.append({'source': clean, 'destination': '/' + f})
-    rewrites.append({'source': '/portfolio/:slug([a-z0-9-]+)', 'destination': '/portfolio/:slug.html'})
     return {
         'cleanUrls': False,
         'trailingSlash': False,
         'headers': [{'source': '/assets/(.*)', 'headers': [{'key': 'Cache-Control', 'value': 'public, max-age=604800'}]}],
-        'redirects': redirects,
         'rewrites': rewrites,
     }
+
+
+def staged_file(f):
+    """Repo page file -> path inside the deploy stage (clean path + /index.html; the home page stays index.html)."""
+    clean = page_map().get(f)
+    if clean is None or clean == '/':
+        return f
+    return clean.lstrip('/') + '/index.html'
+
+
+def stage_pages(stage):
+    """Move every page in a staged copy of site/ to <clean>/index.html, so /books serves and /books.html 404s.
+    Browsers resolve relative refs against the URL, which does not change, so page content needs no edit."""
+    moves = []
+    for f in sorted(page_map(), key=lambda x: -x.count('/')):  # deepest first: titles/talon.html before slate.html
+        dst = staged_file(f)
+        if dst == f:
+            continue
+        src_p, dst_p = os.path.join(stage, f), os.path.join(stage, dst)
+        if not os.path.isfile(src_p):
+            continue
+        if os.path.exists(dst_p):
+            raise SystemExit('stage_pages: %s already exists' % dst)
+        os.makedirs(os.path.dirname(dst_p), exist_ok=True)
+        os.rename(src_p, dst_p)
+        moves.append((f, dst))
+    return moves
 
 
 if __name__ == '__main__':
@@ -153,6 +146,10 @@ if __name__ == '__main__':
             json.dump(build_vercel(), fh, indent=2)
             fh.write('\n')
         print('wrote site/vercel.json')
+    if '--stage' in sys.argv:
+        stage = sys.argv[sys.argv.index('--stage') + 1]
+        moved = stage_pages(stage)
+        print('staged %d pages as <clean>/index.html' % len(moved))
     if '--write-sitemap' in sys.argv:
         urls = sorted(set(page_map().values()) | {'/games/%s' % g for g in GAMES} | {'/shop'})
         body = ''.join('  <url><loc>https://buttsstudios.com%s</loc></url>\n' % u for u in urls)

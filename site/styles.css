@@ -1,4 +1,10 @@
 /* Butts Studios — 2021 gold-on-black identity (approved 2026-10-08) */
+/* Fallback faces sized to Archivo's metrics (measured on xps 2026-11-02: width ratio 1.0867 at 400, 1.1557 at 700-800;
+   ascent .878 / descent .21 / gap 0 of em, divided by size-adjust) so text does not reflow when Archivo swaps in. */
+@font-face { font-family: "Archivo Fallback"; font-weight: 100 600; src: local("Helvetica Neue"), local("Arial"), local("Liberation Sans");
+  size-adjust: 108.67%; ascent-override: 80.8%; descent-override: 19.3%; line-gap-override: 0%; }
+@font-face { font-family: "Archivo Fallback"; font-weight: 700 900; src: local("Helvetica Neue Bold"), local("Arial Bold"), local("Liberation Sans Bold"), local("Helvetica Neue"), local("Arial"), local("Liberation Sans");
+  size-adjust: 115.57%; ascent-override: 76%; descent-override: 18.2%; line-gap-override: 0%; }
 :root {
   /* light (default): warm paper, ink type */
   --gold: #E8B521;       /* logo type */
@@ -13,7 +19,7 @@
   --band-body: #D9D3C7;
   --band-edge: transparent;
   color-scheme: light;
-  --display: "Archivo", "Helvetica Neue", Arial, sans-serif;
+  --display: "Archivo", "Archivo Fallback", "Helvetica Neue", Arial, sans-serif;
   --serif: "Newsreader", Georgia, "Times New Roman", serif;
   --gutter: clamp(16px, 4vw, 48px);
   --max: 1360px;
@@ -321,6 +327,9 @@ a.title-row:hover { background: var(--surface); }
 @media (max-width: 700px) {
   .site-head { position: relative; }
   .site-head nav { gap: 10px; flex-wrap: nowrap; }
+  /* Before theme.js folds the links behind the menu button, hide the raw links and hold the button's height (no header shift, CLS). */
+  html.js .site-head nav > a { display: none; }
+  html.js .site-head nav { min-height: 34px; }
   .menu-toggle { display: inline-grid; }
   .nav-links { display: none; }
   .site-head.menu-open .nav-links {
@@ -419,6 +428,8 @@ main p, main li { overflow-wrap: break-word; }
 }
 
 /* Work index (one filterable page: current work · client work · design; Principal 2026-10-25) */
+/* With JS, keep the hidden filter bar's box so unhiding it does not shift the grid (CLS). */
+html.js .wk-controls[hidden] { display: block; visibility: hidden; }
 .wk-filters { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 32px; }
 .wk-filters button { appearance: none; font: 600 13px/1 var(--sans, inherit); letter-spacing: .08em; text-transform: uppercase; color: var(--fg); background: none; border: 1px solid var(--line); border-radius: 2px; padding: 11px 14px; cursor: pointer; }
 .wk-filters button small { font-size: 11px; color: var(--muted); margin-left: 6px; letter-spacing: 0; }

@@ -140,6 +140,8 @@ def card(i, tag=True):
 def swap_page(name, main, title, desc, canonical, script=None, inline=""):
     """Write site/<name>.html from the shared shell (head, header, footer) with a new <main> and meta."""
     page = (SITE / "work.html").read_text()
+    # a sync "js" class on <html> lets CSS reserve the filter bar's space before releases.js unhides it (no layout shift)
+    page = page.replace('<script>try{var t=localStorage', '<script>document.documentElement.classList.add("js");try{var t=localStorage', 1)
     page = re.sub(r"(?s)<main[^>]*>.*?</main>", lambda _: main, page)
     page = re.sub(r"<title>[^<]*</title>", lambda _: f"<title>{esc(title)} · Butts Studios</title>", page)
     page = re.sub(r'(<meta (?:name|property)="(?:description|og:description|twitter:description)" content=")[^"]*"',

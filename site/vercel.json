@@ -45,5 +45,47 @@
       "source": "/games/sliding-numbers/:path*",
       "destination": "https://butts-puzzle.vercel.app/games/sliding-numbers/:path*"
     }
+  ],
+  "redirects": [
+    {
+      "source": "/terms.html",
+      "destination": "/terms",
+      "permanent": true
+    },
+    {
+      "source": "/privacy.html",
+      "destination": "/privacy",
+      "permanent": true
+    },
+    {
+      "source": "/refunds.html",
+      "destination": "/refunds",
+      "permanent": true
+    },
+    {
+      "source": "/contact.html",
+      "destination": "/contact",
+      "permanent": true
+    },
+    {
+      "source": "/games.html",
+      "destination": "/games",
+      "permanent": true
+    },
+    {
+      "source": "/books.html",
+      "destination": "/books",
+      "permanent": true
+    },
+    {
+      "source": "/how-we-work.html",
+      "destination": "/how-we-work",
+      "permanent": true
+    },
+    {
+      "source": "/work.html",
+      "destination": "/work",
+      "permanent": true
+    }
   ]
 }

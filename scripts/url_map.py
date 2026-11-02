@@ -11,6 +11,7 @@ scripts/check_url_map.py proves every LEGACY_PATHS entry 404s and that vercel.js
 """
 import glob
 import os
+import re
 
 SITE = os.path.normpath(os.environ.get('STUDIOS_SITE') or os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'site'))
 
@@ -104,6 +105,49 @@ def page_map():
 SHOP_ORIGIN = 'https://shop-buttsstudios.vercel.app'
 
 
+# Security headers (SS1102-SEC-HEADERS, 2026-11-02). Baseline on every path, including the proxied /shop and /games/*
+# responses (safe there: no framing, no sniffing). The CSP covers first-party pages only: /shop and /games/* are separate
+# projects with their own policies and Stripe.js, /work/<client>/ legacy demos load from several CDNs.
+BASELINE_HEADERS = [
+    {'key': 'X-Content-Type-Options', 'value': 'nosniff'},
+    {'key': 'X-Frame-Options', 'value': 'SAMEORIGIN'},
+    {'key': 'Referrer-Policy', 'value': 'strict-origin-when-cross-origin'},
+    {'key': 'Permissions-Policy', 'value': 'camera=(), microphone=(), geolocation=()'},
+    {'key': 'Strict-Transport-Security', 'value': 'max-age=63072000; includeSubDomains'},
+]
+CSP_SOURCE = '/((?!shop|games/|work/|assets/).*)'
+
+
+def inline_script_hashes():
+    """sha256 of every inline <script> on the first-party pages, so the CSP allows exactly those (no 'unsafe-inline')."""
+    import base64
+    import hashlib
+    hashes = set()
+    for f in page_map():
+        if f.startswith('work/') and f.count('/') > 1:
+            continue
+        with open(os.path.join(SITE, f), encoding='utf-8') as fh:
+            for m in re.finditer(r'<script>(.*?)</script>', fh.read(), re.S):
+                hashes.add("'sha256-%s'" % base64.b64encode(hashlib.sha256(m.group(1).encode('utf-8')).digest()).decode())
+    return sorted(hashes)
+
+
+def build_csp():
+    return ('; '.join([
+        "default-src 'self'",
+        "script-src 'self' " + ' '.join(inline_script_hashes()),
+        "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",  # style="" attributes on the pages
+        "font-src 'self' data: https://fonts.gstatic.com",
+        "img-src 'self' data: https:",
+        "media-src 'self' https:",
+        "connect-src 'self'",
+        "object-src 'none'",
+        "base-uri 'self'",
+        "form-action 'self' mailto:",  # /contact posts to mailto:hello@buttsstudios.com
+        "frame-ancestors 'self'",
+    ]))
+
+
 def build_vercel():
     """vercel.json for the buttsstudios.com project. No redirects (no forwarding); clean paths are served by the
     staged layout (stage_pages); only the separately deployed shop and games are proxied under this domain."""
@@ -121,7 +165,11 @@ def build_vercel():
     return {
         'cleanUrls': False,
         'trailingSlash': False,
-        'headers': [{'source': '/assets/(.*)', 'headers': [{'key': 'Cache-Control', 'value': 'public, max-age=604800'}]}],
+        'headers': [
+            {'source': '/assets/(.*)', 'headers': [{'key': 'Cache-Control', 'value': 'public, max-age=604800'}]},
+            {'source': '/(.*)', 'headers': BASELINE_HEADERS},
+            {'source': CSP_SOURCE, 'headers': [{'key': 'Content-Security-Policy', 'value': build_csp()}]},
+        ],
         'rewrites': rewrites,
     }
 

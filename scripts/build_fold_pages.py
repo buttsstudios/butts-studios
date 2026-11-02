@@ -59,7 +59,7 @@ VIDEO_HOSTS = [('/channels', 'The Channels'), ('/titles/the-little-things', 'The
 
 def doc(section, head, header, footer, body, sub=None):
     attr = ' data-bs-section="%s"' % section if section else ''
-    return ('<!doctype html>\n<html lang="en"%s>\n%s\n<body>\n\n%s\n\n%s\n<main>\n%s\n</main>\n\n%s\n\n</body>\n</html>\n'
+    return ('<!doctype html>\n<html lang="en"%s>\n%s\n<body>\n<a class="skip" href="#main">Skip to content</a>\n\n%s\n\n%s\n<main id="main" tabindex="-1">\n%s\n</main>\n\n%s\n\n</body>\n</html>\n'
             % (attr, head, header, (sub or '') + '\n', body, footer))
 
 

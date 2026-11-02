@@ -38,19 +38,28 @@ STATIC_PAGES = {
 
 # Games run in their own Vercel projects and are served under /games/<slug> by a proxy rewrite (same pattern as /shop).
 GAMES = {
-    'glowgrid': {'origin': 'https://glb-game.vercel.app', 'host': 'glb.buttsstudios.com', 'basepath': False},
-    'cards': {'origin': 'https://butts-cards.vercel.app', 'host': 'cards.buttsstudios.com', 'basepath': True},
-    'sliding-numbers': {'origin': 'https://butts-puzzle.vercel.app', 'host': 'puzzle.buttsstudios.com', 'basepath': True},
+    # former_host = the subdomain each game used to live on (DNS removed 2026-11-02); kept only so checks can name it.
+    'glowgrid': {'origin': 'https://glb-game.vercel.app', 'former_host': 'glb.buttsstudios.com', 'basepath': False},
+    'cards': {'origin': 'https://butts-cards.vercel.app', 'former_host': 'cards.buttsstudios.com', 'basepath': True},
+    'sliding-numbers': {'origin': 'https://butts-puzzle.vercel.app', 'former_host': 'puzzle.buttsstudios.com', 'basepath': True},
 }
 
-# Retired subdomains (removed, not forwarded). The site must not link them.
+# Butts Studios has NO subdomains (Principal 2026-10-28 "fix butts studios to no subdomain"; 2026-11-02 "if any subdomain
+# exists for butts studios it should be removed"). All ten are removed from DNS/Vercel, not forwarded. Nothing in site/,
+# games/ or nginx/ may name them, even as plain text. Path replacements:
 RETIRED_HOSTS = ['glb.buttsstudios.com', 'cards.buttsstudios.com', 'puzzle.buttsstudios.com', 'games.buttsstudios.com',
-                 'portal.buttsstudios.com', 'store.buttsstudios.com']
-
-# Also slated for removal (Principal 2026-10-28), but they still hold their own live sites (novels = The Signal, film,
-# animation, clients) and books.html / video.html link them. Their links get repointed when the content moves.
-PENDING_REMOVAL_HOSTS = ['novels.buttsstudios.com', 'film.buttsstudios.com', 'animation.buttsstudios.com',
-                         'clients.buttsstudios.com']
+                 'portal.buttsstudios.com', 'store.buttsstudios.com',
+                 'novels.buttsstudios.com', 'film.buttsstudios.com', 'animation.buttsstudios.com', 'clients.buttsstudios.com']
+RETIRED_HOST_PATHS = {
+    'glb.buttsstudios.com': '/games/glowgrid', 'cards.buttsstudios.com': '/games/cards',
+    'puzzle.buttsstudios.com': '/games/sliding-numbers', 'games.buttsstudios.com': '/games', 'portal.buttsstudios.com': '/games',
+    'store.buttsstudios.com': '/shop', 'novels.buttsstudios.com': '/books', 'film.buttsstudios.com': '/video/film',
+    'animation.buttsstudios.com': '/video/animation', 'clients.buttsstudios.com': '/work',
+}
+# Kept for older callers; every pending host is now removed.
+PENDING_REMOVAL_HOSTS = []
+# Dead partner / typo domains that must never appear either (butts-studios.com hyphenated; retired partner sites).
+DEAD_DOMAINS = ['butts-studios.com', '5am.com', 'charbondew.com', 'pablopodcasto.com']
 
 # Everything the Principal-facing site has ever linked or served (live crawl 2026-10-28 plus repo history).
 LEGACY_PATHS = [

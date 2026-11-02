@@ -11,7 +11,7 @@
 |---|---|---|
 | [`site/`](site/) | The new buttsstudios.com (books, video, games, partnerships) | buttsstudios.com |
 | [`website/`](website/) | The old site, kept untouched until the new one replaces it | — |
-| [`games/`](games/) | Games hub and games (brace, cards, puzzle, portal) plus the GLB site (`games/glb/`) | games.buttsstudios.com · glb.buttsstudios.com |
+| [`games/`](games/) | Games hub and games (brace, cards, puzzle, portal) plus the GLB site (`games/glb/`) | buttsstudios.com/games · buttsstudios.com/games/glowgrid (no subdomains, Principal 2026-11-02) |
 | [`publication/`](publication/) | Books: ToBe, The Signal | buttsstudios.com |
 | [`youtube/`](youtube/) | "The Channels" (the YouTube channels) | youtube.com |
 | `~/mdo3d/projects/external/runwae-apparel/` | **Runwae Apparel** (subsidiary brand) and **GLB** storefronts. The files live in the MDO3 repo; this CoS owns them | runwaeapparel.com · girlslovebutts.com |

@@ -4,7 +4,7 @@
 Proves, over every site page (archived client originals under site/work/ excepted):
 - one header nav: same items, order and labels on every page (aria-current aside);
 - one footer: identical on every page; its Contact column links /contact, with no address in the footer;
-- no link to a retired or retiring subdomain (glb. cards. puzzle. games. portal. store. novels. film. animation. clients.);
+- no link to, or plain-text mention of, a removed subdomain (glb. cards. puzzle. games. portal. store. novels. film. animation. clients.;\n  check_removed_hosts.py, also run on its own against the game repos);
 - <title> is "<Page> · Butts Studios" (home: "Butts Studios") and og:title matches it; description and og:image set;
 - copy rules: no "AHL" / "Anne Huntington", no "free"; GLB only on the apparel pages;
 - CSS rules: border-radius <= 4px (50% only on round elements), no one-sided accent stripes (2px+ single-edge borders);
@@ -61,7 +61,7 @@ def main():
             if '<a href="/contact">Contact</a>' not in f.group(0):
                 problems.append('%s: footer has no Contact link to /contact' % rel)
         for host in sorted(set(re.findall(r'https?://([a-z0-9-]+\.buttsstudios\.com)', s)) & HOSTS):
-            problems.append('%s: links the retiring subdomain %s' % (rel, host))
+            problems.append('%s: links the removed subdomain %s' % (rel, host))
         if n:
             links = re.findall(r'<a href="([^"]+)"(?: aria-current="page")?>([^<]+)</a>', n.group(0).split('<nav>', 1)[-1])
             if links != NAV_WANT:
@@ -138,6 +138,14 @@ def main():
             problems.append('%s is retired but still in the URL map' % retired)
         if retired not in U.LEGACY_PATHS:
             problems.append('%s is retired but not in LEGACY_PATHS (must 404)' % retired)
+    # SS1102-SUBDOMAIN-LEFTOVERS (2026-11-02): no removed subdomain anywhere in site/ games/ nginx/, href or plain text
+    # (legal copy, canonical/og, sitemap, comments). Butts Studios has no subdomains.
+    import check_removed_hosts as RH
+    for d in RH.DEFAULT_DIRS:
+        if os.path.isdir(d):
+            RH.scan_dir(d, problems)
+    if getattr(U, 'PENDING_REMOVAL_HOSTS', []):
+        problems.append('url_map.PENDING_REMOVAL_HOSTS is not empty; every Studios subdomain is removed')
     for p in problems:
         print('FAIL', p)
     print('%d pages, %d problem(s)' % (len(pm), len(problems)))

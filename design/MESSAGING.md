@@ -60,7 +60,7 @@ Concrete nouns over adjectives. One idea per section.
 - **Partnerships lede** → "Designed and built with musicians, galleries and young brands since 2019."
 - **Portfolio lede** → "Identity and product design from the studio, for other people's stories."
 - **Footer line** → "Made of story. Since 2018." (current; unchanged)
-- **Apparel line** (store.buttsstudios.com) → brand-specific voice from the apparel identities draft.
+- **Apparel line** (buttsstudios.com/shop) → brand-specific voice from the apparel identities draft.
 
 
 ## The mark as the method: shown in the design, never said (Principal, 2026-10-14)

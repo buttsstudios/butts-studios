@@ -145,7 +145,7 @@ def build():
     targets = "".join(f'<span class="wk-t" id="{c}"></span>' for c in ["all"] + [c for c, _ in CATS])
     filters = [f'<a href="#all">All <small>{len(items)}</small></a>']
     filters += [f'<a href="#{c}">{label} <small>{counts[c]}</small></a>' for c, label in CATS]
-    main = f'''<main>
+    main = f'''<main id="main" tabindex="-1">
   <section class="wrap hero">
     <p class="eyebrow">Work</p>
     <h1 class="display">Everything<br>we <span class="gold">make</span>.</h1>
@@ -166,7 +166,7 @@ def build():
   </section>
 </main>'''
     page = (SITE / "work.html").read_text()
-    page = re.sub(r"(?s)<main>.*?</main>", lambda _: main, page)
+    page = re.sub(r"(?s)<main[^>]*>.*?</main>", lambda _: main, page)
     desc = "Everything Butts Studios makes: books, video and games in progress, client sites, and identity and product design."
     page = re.sub(r'(<meta (?:name|property)="(?:description|og:description|twitter:description)" content=")[^"]*"',
                   lambda m: m.group(1) + desc + '"', page)

@@ -489,3 +489,12 @@ main p, main li { overflow-wrap: break-word; }
 .cform .btn { margin-top: 4px; justify-self: start; background: none; color: var(--fg); cursor: pointer; font-family: inherit; }
 .cform .btn:hover { background: var(--fg); color: var(--bg); }
 @media (max-width: 760px) { .cform { max-width: none; } }
+
+/* Accessibility: skip link, keyboard focus, reduced motion */
+.skip { position: absolute; left: 16px; top: -100px; z-index: 100; padding: 8px 12px; background: var(--fg); color: var(--bg); border-radius: 2px; text-decoration: none; }
+.skip:focus { top: 8px; outline: 2px solid var(--bg); outline-offset: 2px; }
+:focus-visible { outline: 2px solid currentColor; outline-offset: 2px; }
+main:focus { outline: none; }
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; scroll-behavior: auto !important; }
+}

@@ -49,6 +49,6 @@ if [ "$GO" = "--go" ]; then
   for h in film animation clients; do
     printf "%s: " "$h"; curl -s "https://${h}.buttsstudios.com" | grep -o '[a-z]*@butts[-a-z]*studios\.com' | sort -u | tr '\n' ' '; echo
   done
-  printf "games favicon: "; curl -s -o /dev/null -w '%{http_code}\n' https://games.buttsstudios.com/favicon.ico
-  printf "games 'free' count (want 0): "; curl -s https://games.buttsstudios.com/ | grep -ci free || true
+  printf "games favicon: "; curl -s -o /dev/null -w '%{http_code}\n' https://buttsstudios.com/games/glowgrid/favicon.ico
+  printf "games 'free' count (want 0): "; curl -sL https://buttsstudios.com/games | grep -ci free || true
 fi

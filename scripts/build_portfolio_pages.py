@@ -204,7 +204,7 @@ HEAD = '''<!doctype html>
   <nav>
     <button class="theme-toggle" type="button" aria-label="Switch color mode"><svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg><svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg></button>
     <a href="/">Studio</a>
-    <a href="/work" aria-current="page">Work</a>
+    <a href="/releases" aria-current="page">Releases</a>
     <a href="/shop">Shop</a>
   </nav>
 </header>
@@ -218,7 +218,7 @@ FOOT = '''
       <p class="ff-line">Made of story. Since 2018.</p>
       <div class="ff-social"><a href="https://www.instagram.com/buttsstudios/" target="_blank" rel="noopener" aria-label="Butts Studios on Instagram"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="4" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="12" r="4.2" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="17.4" cy="6.6" r="1.1" fill="currentColor"/></svg></a></div>
     </div>
-    <nav class="ff-col" aria-label="Work"><h4>Work</h4><a href="/work">All work</a><a href="/books">Books</a><a href="/video">Video</a><a href="/games">Games</a></nav>
+    <nav class="ff-col" aria-label="Releases"><h4>Releases</h4><a href="/releases">All releases</a><a href="/books">Books</a><a href="/video">Video</a><a href="/games">Games</a></nav>
     <nav class="ff-col" aria-label="Studio"><h4>Studio</h4><a href="/how-we-work">How we work</a><a href="/contact">Contact</a><a href="https://www.instagram.com/buttsstudios/" target="_blank" rel="noopener">Instagram</a></nav>
     <!--ff-shop--><nav class="ff-col ff-shop" aria-label="Shop"><h4>Shop</h4><a href="/shop">Shop</a></nav><!--/ff-shop-->
   </div>
@@ -294,7 +294,7 @@ def build():
                         f'<figcaption><span class="mock-tag">Mockup</span> {E(mock[1])}</figcaption></figure>')
         out.append(f'''    <section class="pi-hero{' has-mock' if mock else ''}">
       <div class="pi-hero-text">
-      <p class="pi-crumb"><a href="/work#design">← Portfolio</a></p>
+      <p class="pi-crumb"><a href="/work">← Portfolio</a></p>
       <h1 class="display">{E(name)}</h1>
       <p class="kind">{E(kind)}</p>
       <p class="lede">{E(tagline)}</p>
@@ -368,7 +368,7 @@ def build():
         prev, nxt = infos[i - 1], infos[(i + 1) % len(infos)]
         out.append(f'''    <nav class="pi-pager" aria-label="More work">
       <a class="prev" href="/portfolio/{prev["slug"]}"><small>← Previous</small><b>{E(prev["name"])}</b></a>
-      <a class="all" href="/work#design">← All design work</a>
+      <a class="all" href="/work">← All design work</a>
       <a class="next" href="/portfolio/{nxt["slug"]}"><small>Next →</small><b>{E(nxt["name"])}</b></a>
     </nav>
 ''')

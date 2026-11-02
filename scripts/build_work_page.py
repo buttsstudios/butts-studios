@@ -140,7 +140,7 @@ def card(i, tag=True):
 def swap_page(name, main, title, desc, canonical, script=None, inline=""):
     """Write site/<name>.html from the shared shell (head, header, footer) with a new <main> and meta."""
     page = (SITE / "work.html").read_text()
-    page = re.sub(r"(?s)<main>.*?</main>", lambda _: main, page)
+    page = re.sub(r"(?s)<main[^>]*>.*?</main>", lambda _: main, page)
     page = re.sub(r"<title>[^<]*</title>", lambda _: f"<title>{esc(title)} · Butts Studios</title>", page)
     page = re.sub(r'(<meta (?:name|property)="(?:description|og:description|twitter:description)" content=")[^"]*"',
                   lambda m: m.group(1) + esc(desc) + '"', page)
@@ -170,7 +170,7 @@ def build():
               for t, label in TYPES]
     targets = "".join(f'<span class="wk-t" id="{c}"></span>' for c in ["all", "books", "video", "games"])
     how = (SOURCES / "how-it-works.html").read_text()
-    main = f'''<main>
+    main = f'''<main id="main" tabindex="-1">
   <section class="wrap hero">
     <p class="eyebrow">Releases</p>
     <h1 class="display">Our own <span class="gold">releases</span>.</h1>
@@ -198,7 +198,7 @@ def build():
              ("Identity first", "The mark, type and colour are set before anything is built, so every surface grows from one system."),
              ("Then the build", "The site, shop or product is designed and built on that identity, desktop and phone together.")]
     steps_html = "".join(f"\n        <div>\n          <h3>{t}</h3>\n          <p>{d}</p>\n        </div>" for t, d in steps)
-    smain = f'''<main>
+    smain = f'''<main id="main" tabindex="-1">
   <section class="wrap hero">
     <p class="eyebrow">Work</p>
     <h1 class="display">Made <span class="gold">with others</span>.</h1>

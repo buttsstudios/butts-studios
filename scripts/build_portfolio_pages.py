@@ -198,6 +198,7 @@ HEAD = '''<!doctype html>
 <script src="../theme.js" defer></script>
 </head>
 <body>
+<a class="skip" href="#main">Skip to content</a>
 
 <header class="wrap site-head">
   <a class="mark" href="/" aria-label="Butts Studios home"><svg class="brand-x" viewBox="0 0 100 100" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="12"><rect x="10" y="10" width="80" height="80"/><path d="M10 10 L90 90 M90 10 L10 90"/></g></svg><span class="brand-word">Butts<br>Studios</span></a>
@@ -283,7 +284,7 @@ def build():
         if not os.path.exists(os.path.join(SITE, ogimg)):
             ogimg = 'assets/og-default.png'
         out = [HEAD.format(title=E(name), desc=E(f'{name}: {tagline} Designed by Butts Studios.'), slug=slug, ogimg=ogimg)]
-        out.append('<main>\n  <div class="wrap">\n')
+        out.append('<main id="main" tabindex="-1">\n  <div class="wrap">\n')
         mock = mockups.get(slug)
         mock_fig = ''
         if mock:

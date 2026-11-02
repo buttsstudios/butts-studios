@@ -1,42 +1,79 @@
 # Butts Studios — Status (rolling snapshot, kept true by the Butts Studios CoS)
 
-*Last updated: 2026-10-16 ~08:10 ET (record-keeping pass: Brace, Glowgrid, games next-level, apparel photo/teaser folders, open calls mapped to JARVIS ids; earlier today: JARVIS 10-15 07:12 answers applied). Source of truth for direction:
-`~/latarence/coordination/dispatch/2026-10-07_STUDIOS_new_site.md`. Seat: `Organization/Chief-of-Staff/README.md`.*
+*Last updated: 2026-11-02 17:50Z (studios-surge-1: FS-50 / FS-54 / FS-59 reconciliation; every claim below was checked
+with a curl or a git/file check at that time unless marked "unverified"). Direction (verbatim, dated):
+`~/latarence/docs/DECISIONS.md` (2026-10-28 URL rule and subdomain cleanup; 2026-11-02 nav, shop naming, no subdomains).
+Older direction: `~/latarence/coordination/dispatch/2026-10-07_STUDIOS_new_site.md`. Seat: `Organization/Chief-of-Staff/README.md`.*
 
-## 2026-10-17 (updated 2026-10-17 19:30 ET)
-Pointers only. Rows: `~/latarence/coordination/P0_SPRINT_2026-10-16.md` (XE-*); ships: `~/latarence/coordination/MANUAL_SHIP_QUEUE.md`.
-- **Shipped live:** legal pages (privacy/terms/refunds) on buttsstudios.com, games. and glb. (XE-4, HQ PASS); sitemap fix + /the-signal → novels (XE-10); "free"/"Play Free" copy removed from games/GLB (XE-7 copy leg); games hub canonical/og moved off portal. (XE-8 link-preview leg).
-- **Built, waiting:** plain How to play (closed by default) on Glowgrid / Card Battle / Sliding Numbers / Brace / hub (`STUDIOS_HOWTO_GO`, blocked on new Payment Link placeholders); Glowgrid rename carried; Share buttons on 4 Studios games (branches pushed); XE-1 GLB `?premium=true` bypass fix VERIFIED (1cc5a1a + cards/puzzle) but not run.
-- **Blocked:** XE-1 + $5/$3/$3 prices need the Studios Stripe read key, new live Payment Links and a Butts Studios Vercel token (SETUP_TODO `[studios-games-premium]`, `[vercel-butts-deploy]`); legal governing-law fill-in (XE-5, JARVIS L1); portal.buttsstudios.com has no DNS.
+## Three states, kept distinct
+- **Live** = answers on buttsstudios.com right now (curl 200). **Built** = committed on a pushed branch, not deployed.
+  **Retired** = removed on purpose (404 by design, no forwarding; DECISIONS 2026-10-28).
+
+## Source and deployment (FS-59 reconciliation, 2026-11-02)
+- **Live revision:** `origin/fix/studios-work-organize-20261102` @ `460352d` (About / Releases / Work / Shop). Deployed
+  2026-11-02 ~17:09Z with `scripts/deploy_new_site.sh --go` (live `last-modified: Mon, 02 Nov 2026 17:09:08 GMT`,
+  server Vercel). Bridge handoff: `~/latarence/coordination/BRIDGE_INBOX.md` 2026-11-02 "SHIPPED + VERIFIED LIVE".
+- **origin/main** = `3aa4821` (Studio · Work · Shop header, 2026-10-28). It is an **ancestor** of `460352d`
+  (`git merge-base --is-ancestor origin/main 460352dd` → yes); main is exactly two commits behind (`bab4c27`, `460352d`)
+  and can be fast-forwarded. **Open:** fast-forward main to `460352d` (Bridge; this seat does not push main).
+- **Deploy path:** this site is **CLI-deployed, not git-deployed**. The Vercel project is `butts-studios-website`
+  (team `buttsstudios-projects`); it is not linked to the GitHub repo `buttsstudios/butts-studios`, so prod deployments
+  carry no git ref. The deployed SHA is recorded only in the Bridge handoff and here. Rollback target is in that handoff.
+- **Local checkout** `~/buttsstudios` sits on `fix/studios-work-page-2026-10-28` @ `3aa4821` with other people's
+  uncommitted work; agents work in `~/.wt/<name>` worktrees (see `AGENTS.md`), never in that tree.
+
+## URL map (live, path-based; no subdomains)
+| Path | State | Checked |
+|---|---|---|
+| `/` (About), `/releases`, `/work`, `/how-we-work`, `/shop`, `/contact` | Live 200 | curl 2026-11-02 |
+| `/books`, `/video`, `/games`, `/channels` | Live 200 | curl 2026-11-02 |
+| `/titles/the-signal`, `/titles/talon` | Live 200 | curl 2026-11-02 |
+| `/titles/the-little-things`, `/titles/us-against-the-world`, `/video/film`, `/video/animation` | In `scripts/url_map.py` at 460352d; live status **unverified** | — |
+| `/games/glowgrid`, `/games/cards`, `/games/sliding-numbers` | Live 200 (proxied from their own Vercel projects, `url_map.py` GAMES) | curl 2026-11-02 |
+| `/refunds`, `/terms`, `/privacy` | Live 200 | curl 2026-11-02 |
+| `/slate`, `/portfolio`, `/partnerships`, `/services`, `/about`, `/titles/tobe`, `/games/brace` | 404 (retired or never published; `/about` is `/`) | curl 2026-11-02 |
+| `novels.`, `film.`, `animation.`, `shop.`, `games.`, `glb.`, `cards.`, `puzzle.`, `portal.` `.buttsstudios.com` | **Removed**: do not resolve (DNS CNAMEs deleted, Vercel domains detached 2026-11-02; backups `~/latarence/coordination/evidence/2026-11-02/studios-subdomains/*.json`) | curl 2026-11-02 (novels, film, animation, shop, games: no resolve) |
+
+Rules: parts of the brand are **paths** (DECISIONS 2026-10-28); **Butts Studios has no subdomains** (DECISIONS 2026-11-02,
+"if any subdomain exists for butts studios it hsould be removed"). Kept on purpose because they are not sites: `www`
+(apex alias), `send`/`rsend` (Resend mail CNAMEs), `_domainconnect`. Open conflict to settle before it is created:
+`sega.buttsstudios.com` (DECISIONS 2026-10-26) vs the no-subdomain rule.
 
 ## Now
 | Area | State | Next | Gate |
 |---|---|---|---|
-| New buttsstudios.com (`site/`) | Built locally: slate, how-we-work, partnerships, portfolio (25 item pages), Books / Video / Games section landings, full footer, OG/meta on all 41 pages, 375px fixes, no .99 prices. Logo C5. Latest `3629c2b`. **Not deployed.** | Fill the legal blanks; deploy | Principal: deploy go + Vercel token (setup sheet) + legal answers (governing-law state, mailing address, refund terms) |
-| Sections + subdomains (Principal 10-16) | **Audit:** the front pages Books / Video / Games exist on the new site (local). All **8 live subdomains** (games, glb, cards, puzzle, novels, film, animation, clients) were the old magenta template, with no C5 mark, no link to their section front page and no legal links. **Staged:** one shared style (`site/shared/studios-section.css` + `bar.tmpl`/`foot.tmpl`, `scripts/apply_studios_sections.py`). It has a C5 bar ("Butts Studios / Section / product"), Books·Video·Games nav and a shared footer with Terms/Refunds/Privacy. Each section has one accent (Books gold, Video red, Games green, Partnerships brass). It is on branch `style/studios-sections-2026-10-16` in all 8 repos, and the front pages have a sections sub-nav. Preview: `staged/sections_preview/index.html`. **Not deployed.** | `staged/sections_go_2026-10-16.sh go` after the new site and the games GO are live. Film / animation / clients redesigned 10-16 (invented works gone, Coming soon instead); Principal to compare in the preview | Principal: deploy go + GitHub push login + Vercel token |
-| Dead controls (Principal 10-16: "If things dont work then they need o be fixed.") | Fixed on the `style/studios-sections-2026-10-16` branches, ships with the sections deploy: **clients** sign-in form (did nothing; no client accounts system exists) replaced by a request-by-email form to clients@, false portal features removed; **novels** updates form now posts to `/api/subscribe` (Resend audience, key from Vercel env) and says "not open yet, nothing was saved" until configured; **GLB** Restore Purchase (alert only) now emails support. Sweep of film/animation/hub/cards/puzzle: no other dead controls (Payment Link placeholders are already gated). | Run `staged/novels_resend_setup.sh` once the key exists; mail routing before the sections go (go now stops on no MX unless `MAIL_PENDING_OK=1`) | RESEND_API_KEY (setup row) + Cloudflare email routing + sections GO |
-| Product shots | One shared library `~/latarence/coordination/product_shots/manifest.json` (178 shots) feeds the portfolio build and distribution. In-app coverage: Boltzmann 6, Chief 6, Document Scanner 1; the other 16 products have landing/page shots only. Held: Tillio studio + projects ("dev", empty), Landslide dashboard (empty), Ridgefield simulation page (404). These are still on the portfolio.html cards. | HQ Product Shots in-app pages ([DISPATCH] 2026-10-16 in ahl COS_CHANNEL); swap the held card images | None from the Principal: no seeded demo data (Principal 10-16: "HQ should already have users that are doing real product usage"); shots come from HQ's real-usage accounts |
-| Legal pages | Seller = the project's own name everywhere. Site: 18 [CONFIRM] fill-ins left (5 resolved 2026-10-16: Stripe named, 14-day refund, later drafts); legacy subdomain drafts: 171 (same few blanks repeated). The 9 old live sites have no legal pages yet (drafts staged). | Fill once answers land; launch guards block deploy until then | Principal (JARVIS legal row) |
-| Games (cards, puzzle, Glowgrid, hub) | **Next-level pass (Principal 10-16, game-designer agents):** before/after captures in `staged/games_next_level/` (cards, puzzle, glb, hub). The GLB canvas game is renamed **Glowgrid** (not GLB-related; `games/glb/DESIGN.md`, commits b3d566f..655bfce). Card Battle leaderboard: public reads 403 (rules miss the `scores` collection); fix staged as `~/latarence/coordination/dispatch/staged/CARDS_FIRESTORE_RULES_GO_2026-10-16.sh` (JARVIS §1b, setup `[studios-firebase-login]`). `?premium=true` bypass closed (unlock only after a verified paid Stripe session); false claims removed; GLB copy matches one-time charge. New prices $5 / $3 on `price/no-99-2026-10-15` branches. | Run `staged/games_go_2026-10-15.sh` | Principal: restricted read-only Stripe key + new $5/$3 Payment Links with session redirect (setup sheet rows) + deploy go |
-| Brace (new game, Principal 10-16: "a real potential winner for the lab") | Chosen concept; vertical slice built and headless-playtested on xps, tailnet preview only (`staged/new_game_2026-10-16/README.md`; repo `games/brace/`, local only). Name/trademark + competitor + monetization report: `staged/new_game_2026-10-16/BRACE_NAME_COMPETITORS_MONETIZATION_2026-10-16.md` (web early access $8 → $15 at 1.0, Steam/itch, mobile, classroom licence). | Build toward 1.0 after the name call | JARVIS BR1 (name) · BR2 (platform spend) · BR3 (classroom licence); setup `[brace-stripe]` `[brace-tm-lawyer]` `[brace-steam]` `[brace-mobile]` |
-| Shops (Runwae Apparel, GLB, Butts Studios store) | Shared cart → Stripe Checkout (TEST), order + checkout emails, real inventory, print placement rules enforced by tests. Local commits. | Test-mode order walk, then deploy | Stripe TEST keys, Resend key, Printful/Shippo keys, GoDaddy/DNS, Vercel (setup sheet rows) |
-| Apparel photos + Runwae release | Photo prompt folders `~/Downloads/GLB_photo_revisions_2026-10-16/` (15 items) and `~/Downloads/RUNWAE_photo_revisions_2026-10-16/`; Runwae teaser posts ("new releases coming soon", Principal 10-16) prompts in `~/Downloads/RUNWAE_teaser_posts_2026-10-16/PROMPTS.md`. Runwae release lineup (no black; 4 items dropped) applied in the catalog; **release notes are notes only** (`~/mdo3d/projects/external/runwae-apparel/RELEASE_NOTES_PENDING_2026-10-16.md`, not applied until the Principal says). | Hoodie pairings; shops launch mode | JARVIS R1, R2, SH1; posts need a per-batch OK |
-| runwaeapparel.com | Down (holding page built) | Deploy holding page | Vercel token + 2 GoDaddy records |
-| Email | hello@ / support@ on buttsstudios.com, runwaeapparel.com, girlslovebutts.com bounce (no mail routing). GLB "Restore purchase" points at support@buttsstudios.com. | Cloudflare Email Routing catch-all | Setup sheet row "buttsstudios.com email" (in progress with the Principal) |
-| Socials | Instagram is the only live account; TikTok / FB / Threads / X / Bluesky / Pinterest "to create" | Add to footer as each becomes real | Principal accounts; posting needs per-batch OK (Buffer) |
-| Messaging | Principal 2026-10-15: never combine "good design" with "made of story". Combined line withdrawn; `design/MESSAGING.md` rewritten (dated note); "Made of Story." stands alone; good design shown, never said. Site had no fused copy. | Pick a home line (MESSAGING options A/B/C) | Principal taste call |
-| Drafts store (titles) | Approved 2026-10-15: later drafts of the same title included, 14-day refund, Butts Studios Stripe (TEST until live GO), type-only draft covers (Talon cover added). Prices (#109): ebook $10, Talon #1 $3, Channels $5/mo, Little Things $3, Runwae art set $5, GLB prints $10; site matches. Config `staged/drafts_store/store.json`. Buy buttons disabled. | Wire checkout in TEST | Live Stripe + deploy GO |
-| Apparel identities | Draft: playful audience stereotypes ("they all…"), 3 options each for Runwae Apparel, Butts Studios merch, GLB, with the under identity kept (`~/mdo3d/projects/external/runwae-apparel/APPAREL_PLAYBOOK.md`). | Principal picks | Principal taste call |
-| Subdomain branding | Principal 2026-10-15: "If they have butts studios in teh domainname then they should be branded dconsistntly and sstyled similiarly with a throughline btu they dont need to be the same." Restyle with the agent already on it. | Restyle per the throughline rule | none |
+| buttsstudios.com nav | **Live:** About (= `/`) · Releases (own titles: books, comics, video, games) · Work (made for others) · Shop. Footer columns Releases / Studio / Shop. "Client"/"internal" are not labels (DECISIONS 2026-11-02). Hero stats strip removed. | Fast-forward `origin/main` to `460352d` | Bridge push to main |
+| Shops (Butts Studios `/shop`, Runwae Apparel `runwaeapparel.com`, GLB `girlslovebutts.com`) | **Live, waitlist-only:** every product shows Reserve / Waitlist / Pre-order; nothing purchasable (DECISIONS 2026-10-28 "Applies to every shop"). All three answer 200. **Copy gap on live `/shop`:** the `Collection 2027` heading is still live (3 hits) and the word `planned` appears 6–9× in each shop's HTML (visible or not: unverified). The rename to Shop → Apparel · Accessories · Objects with no "planned" labels is committed **local only**: mdo3d worktree `~/.wt/studios-shop-naming`, branch `fix/studios-shop-naming-20261102` @ `d261709` (112 tests pass on xps). | Ship via the shop deploy lane | mdo3d pre-push guard refuses the push (storefront is private, public repo; see ledger SHOP-OBJECTS-NAMING-20261102). The Principal decides how the private storefront moves (see the 2026-11-02 surge report) |
+| Shop code location | Runwae Apparel + the shared storefront (Runwae, GLB, Studios store): `~/mdo3d/projects/external/runwae-apparel/` (private files in a public repo; never pushed to origin by rule). | — | — |
+| Games | Live at `/games/glowgrid` (the canvas game, formerly "GLB game"; renamed 2026-10-16), `/games/cards`, `/games/sliding-numbers`. Stripe Payment-Link return URLs use `buttsstudios.com/games/*` (read-only Stripe check by the latarence seat, DECISIONS 2026-11-02; not re-run here). Premium prices $5 / $3 / $3 (no .99). Brace: not public (`/games/brace` 404; repo `games/brace/`). | Premium checkout stays gated | Live Payment Links + Principal GO |
+| GLB on the Studios site | **Off the site entirely** (DECISIONS 2026-11-02 "GLB stays off"). GLB = the apparel brand at `girlslovebutts.com` only. If ever shown it belongs under Releases, not Work. Runwae Apparel stays on `/work` as design work, with no subsidiary statement. | — | Principal |
+| Books / titles | `/books` + `/titles/*` carry no payment link; the old `novels.` pre-order page is unreachable (domain removed; stale Vercel project `the-signal-novel` still exists without a public address). | Delete or archive the orphan Vercel project (optional) | Vercel token |
+| Legal | `/terms`, `/privacy`, `/refunds` live 200. Fill-in state (governing law, address): **unverified** this pass; see JARVIS L1. | — | Principal (JARVIS L1) |
+| Contact | `/contact` live 200 (form; footer shows a Contact link, not an address, DECISIONS 2026-10-28). | — | — |
+| Socials | **Instagram is the only live social**: the live home footer links `instagram.com/buttsstudios` and no other network (curl 2026-11-02). Facebook Page approved to create under the latarencejbutts login (DECISIONS 2026-11-01); Etsy shops on the latarencejbutts Etsy account (DECISIONS 2026-10-31); Tumblr dropped; Sketchfab deferred. | Add footer links only as each account becomes real | Principal accounts; posting needs per-batch OK |
+| Email | hello@/support@ routing state: **unverified** this pass (last recorded 2026-10-16: bouncing; Resend CNAMEs `send`/`rsend` now exist on the zone). | Check MX/routing | Setup sheet row "buttsstudios.com email" |
+
+## Open ledger rows (studios) — `python3 ~/latarence/coordination/fixledger/fixledger.py show <ID>`
+- `SHOP-OBJECTS-NAMING-20261102` blocked: private storefront cannot be pushed from the public mdo3d repo (guard).
+- Fast-forward of `origin/main` to the live `460352d` (recorded above; not a ledger row yet, Bridge action).
 
 ## Open Principal decisions (JARVIS ids, `~/jarvis/JARVIS QUESTIONS.md`)
-- **ST1** home line under "Made of Story." · **AP1** apparel identity pick · **L1** governing law + address (+ apparel returns, Draft badges) · **SH1** shops "Coming soon" vs off · **BR1–BR3** Brace name / platforms / classroom · **R1, R2** Runwae hoodies · §1b GOs: games, Card Battle rules.
-- Resolved 10-16: subdomain naming (Butts Studios Film / Animation), GLB game clash (renamed Glowgrid), pregenerated titles (Coming soon), sections style (approved).
+- **L1** governing law + address · **BR1–BR3** Brace name / platforms / classroom · **AP1** apparel identity pick ·
+  shop naming word "Objects" and nav word "Services"/"Work" are Bridge picks he may change (DECISIONS 2026-11-02).
 
 ## Recent (newest first)
-- 2026-10-16: Brace picked as the new game (name/competitor/monetization report done; JARVIS BR1–3, setup rows); Glowgrid rename + next-level passes on cards / puzzle / Glowgrid / hub (staged captures); Card Battle Firestore rules GO staged; GLB + Runwae photo prompt folders and Runwae teaser prompts in ~/Downloads; Runwae release notes recorded (notes only). CoS seat opened (Principal 10-16, `Organization/Chief-of-Staff/README.md`).
-- 2026-10-16: Principal naming + restyle round: **Butts Studios Film / Butts Studios Animation** everywhere (pages, bar labels, legal seller names, site Video page); pregenerated works removed for honest Coming soon (film: The Last Signal, Echoes of Tomorrow, Neon Dreams, Tiffany AI promo; animation: Project Alpha, Brand Motion Kit, Cosmos VR; The Signal: The Resonance, The Silence on novels + Books page). Film, animation and the client page redesigned from scratch in the Studios system (16:9 timecode frames, real Little Things slate, work-with-us paths). Style branches: film `3d0c177`, animation `7d3ad15`, clients `b49dd2a`, novels `d090de3`. Preview `staged/sections_preview/index.html`. Not deployed.
-- 2026-10-16: dead-control fixes on clients / novels / GLB (style branches; staged, not deployed); sections go gets an MX gate.
-- 2026-10-16: JARVIS 10-15 answers applied: storyline combination withdrawn; drafts store terms + Stripe named in terms/refunds/privacy; Talon type cover; #109 prices confirmed; apparel stereotype identities drafted; subdomain branding rule logged.
-- 2026-10-16: sections + subdomains audit; the shared Studios section style is staged on all 8 subdomain repos plus the front pages (not deployed). Issues found: film lists invented works; animation has placeholders; the clients login and the novels newsletter are non-functional; the in-game "free games" copy is fixed on the branch.
-- 2026-10-15/16: legal seller names = project names; games premium bypass + honest copy; no .99 prices; site polish; section landings; full footer; Runwae v5 storefront; merch = cart + Stripe only, Huntington Applied merch first.
+- 2026-11-02: nav About / Releases / Work / Shop shipped from `fix/studios-work-organize-20261102@460352d` (CLI deploy);
+  all six leftover subdomains (novels, cards, puzzle, glb, games, portal) removed from DNS and Vercel; hero strip removed;
+  shop naming (Apparel · Accessories · Objects, no "planned") committed local-only in mdo3d; docs reconciled (FS-50/54/59).
+- 2026-10-28: URL rule (paths, not subdomains); `/contact` page; Studio · Work · Shop header on main (`3aa4821`);
+  Runwae Apparel redesign direction (luxury, no ancient motif); waitlist-only rule for every shop.
+- 2026-10-16/17: legal pages live; Glowgrid rename; Brace chosen; sections style staged (now superseded by the path-based site).
+
+## Archive: snapshot of 2026-10-17 (superseded; kept for history)
+Rows: `~/latarence/coordination/P0_SPRINT_2026-10-16.md` (XE-*); ships: `~/latarence/coordination/MANUAL_SHIP_QUEUE.md`.
+That snapshot described the sections/subdomain style branches (`style/studios-sections-2026-10-16`), the 8 live subdomains,
+`portfolio`/`partnerships`/`slate` pages and site revision `3629c2b`. All of that is superseded by the path-based site above:
+the subdomains are removed, those pages are retired (404 by design), and the live revision is `460352d`.
+Still-true items from it: Brace report `staged/new_game_2026-10-16/`; product-shot library
+`~/latarence/coordination/product_shots/manifest.json`; messaging rule "never combine good design with made of story"
+(`design/MESSAGING.md`); apparel playbook `~/mdo3d/projects/external/runwae-apparel/APPAREL_PLAYBOOK.md`.

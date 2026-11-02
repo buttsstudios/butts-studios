@@ -22,6 +22,8 @@ STATIC_PAGES = {
     'games.html': '/games',
     'channels.html': '/channels',
     'work.html': '/work',
+    # 2026-11-02: nav is About / Releases / Work / Shop; /releases = the studio's own titles, /work = made for others.
+    'releases.html': '/releases',
     'how-we-work.html': '/how-we-work',
     'terms.html': '/terms',
     'privacy.html': '/privacy',
@@ -59,8 +61,8 @@ LEGACY_PATHS = [
     '/titles/talon.html', '/titles/the-little-things.html', '/titles/us-against-the-world.html',
     '/titles/runwae-and-glb.html', '/titles/the-channels.html', '/slate', '/titles/the-channels', '/the-signal',
     '/refund', '/channels.html',
-    # STUDIOS-WORK-PAGE-1 (2026-10-28): folded into /work (filters #current #books #video #games #client #design);
-    # sources kept as data in scripts/sources/. No forwarding: these 404.
+    # STUDIOS-WORK-PAGE-1 (2026-10-28), reorganized 2026-11-02: folded into /releases (own titles) and /work (made for
+    # others); sources kept as data in scripts/sources/. No forwarding: these 404.
     '/titles', '/portfolio', '/partnerships', '/titles/runwae-and-glb',
 ]
 

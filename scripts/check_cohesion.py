@@ -9,8 +9,8 @@ Proves, over every site page (archived client originals under site/work/ excepte
 - copy rules: no "AHL" / "Anne Huntington", no "free"; GLB only on the apparel pages;
 - CSS rules: border-radius <= 4px (50% only on round elements), no one-sided accent stripes (2px+ single-edge borders);
 - /contact exists and is in the URL map and sitemap.
-- header exactly Studio · Work · Shop (so no Partnerships tab, and a Shop tab on every page); footer Work · Studio · Shop;
-  /work has the seven filters with :target anchors, no Runwae/GLB in Current work, a portfolio link to #design;
+- header exactly About · Releases · Work · Shop (Principal 2026-11-02; no Partnerships/Services tab, a Shop tab on every page);
+  footer Releases · Studio · Shop; /releases has the four filters (All, Books, Video, Games) with hash anchors and no Runwae/GLB;
   no page (archives included) links a retired page (/titles, /portfolio, /partnerships, /slate, /titles/runwae-and-glb).
 
   python3 scripts/check_cohesion.py      # exit 1 on any problem
@@ -26,13 +26,13 @@ import url_map as U  # noqa: E402
 SITE = U.SITE
 HOSTS = set(U.RETIRED_HOSTS) | set(getattr(U, 'PENDING_REMOVAL_HOSTS', []))
 GLB_OK = {'work.html', 'titles/the-little-things.html'}
-# STUDIOS-WORK-PAGE-1 (2026-10-28): header Studio · Work · Shop; /work filters; retired pages 404 and are never linked.
-NAV_WANT = [('/', 'Studio'), ('/work', 'Work'), ('/shop', 'Shop')]
-FOOT_WANT = [('Work', [('/work', 'All work'), ('/books', 'Books'), ('/video', 'Video'), ('/games', 'Games')]),
-             ('Studio', [('/how-we-work', 'How we work'), ('/contact', 'Contact'), ('https://www.instagram.com/buttsstudios/', 'Instagram')]),
+# 2026-11-02 (Principal: "releases (internal) and work (clients)"): header About · Releases · Work · Shop; /releases filters;
+# retired pages 404 and are never linked.
+NAV_WANT = [('/', 'About'), ('/releases', 'Releases'), ('/work', 'Work'), ('/shop', 'Shop')]
+FOOT_WANT = [('Releases', [('/releases', 'All releases'), ('/books', 'Books'), ('/video', 'Video'), ('/games', 'Games')]),
+             ('Studio', [('/work', 'Work'), ('/how-we-work', 'How we work'), ('/contact', 'Contact'), ('https://www.instagram.com/buttsstudios/', 'Instagram')]),
              ('Shop', [('/shop', 'Shop')])]
-WORK_FILTERS = [('#all', 'All'), ('#current', 'Current work'), ('#books', 'Books'), ('#video', 'Video'), ('#games', 'Games'),
-                ('#client', 'Client work'), ('#design', 'Design')]
+RELEASE_FILTERS = [('#all', 'All'), ('#books', 'Books'), ('#video', 'Video'), ('#games', 'Games')]
 RETIRED_LINK = re.compile(r'href="(?:https://buttsstudios\.com)?(/titles|/portfolio|/partnerships[^"]*|/slate[^"]*|/titles/runwae-and-glb[^"]*|/portfolio\.html|/partnerships\.html)"')
 
 
@@ -65,27 +65,27 @@ def main():
         if n:
             links = re.findall(r'<a href="([^"]+)"(?: aria-current="page")?>([^<]+)</a>', n.group(0).split('<nav>', 1)[-1])
             if links != NAV_WANT:
-                problems.append('%s: header nav %s, want Studio · Work · Shop' % (rel, ' · '.join(l for _, l in links)))
+                problems.append('%s: header nav %s, want About · Releases · Work · Shop' % (rel, ' · '.join(l for _, l in links)))
         if f:
             cols = [(h, re.findall(r'<a href="([^"]+)"[^>]*>([^<]+)</a>', body))
                     for h, body in re.findall(r'<nav class="ff-col[^"]*" aria-label="[^"]+"><h4>([^<]+)</h4>(.*?)</nav>', f.group(0), re.S)]
             if cols != FOOT_WANT:
-                problems.append('%s: footer columns %s, want Work · Studio · Shop' % (rel, [c for c, _ in cols]))
+                problems.append('%s: footer columns %s, want Releases · Studio · Shop' % (rel, [c for c, _ in cols]))
         for m in RETIRED_LINK.finditer(s):
             problems.append('%s: links the retired page %s' % (rel, m.group(1)))
-        if rel == 'work.html':
-            wk = re.search(r'<nav class="wk-filters"[^>]*>(.*?)</nav>', s, re.S)
-            got = [(h, l.strip()) for h, l in re.findall(r'<a href="(#[a-z]+)">([^<]+)<small>', wk.group(1))] if wk else []
-            if got != WORK_FILTERS:
-                problems.append('work.html: filters %s, want %s' % (got, WORK_FILTERS))
-            for c in [h[1:] for h, _ in WORK_FILTERS]:
+        if rel == 'releases.html':
+            wk = re.search(r'<nav class="wk-filters[^"]*"[^>]*>(.*?)</nav>', s, re.S)
+            got = [(h, l.strip()) for h, l in re.findall(r'<a href="(#[a-z]+)"[^>]*>([^<]+)<small>', wk.group(1))] if wk else []
+            if got != RELEASE_FILTERS:
+                problems.append('releases.html: filters %s, want %s' % (got, RELEASE_FILTERS))
+            for c in [h[1:] for h, _ in RELEASE_FILTERS]:
                 if 'id="%s"' % c not in s:
-                    problems.append('work.html: no :target anchor #%s' % c)
-            for card in re.findall(r'<a class="wk-card[^"]*\bc-current\b[^"]*"[^>]*>.*?</a>', s, re.S):
+                    problems.append('releases.html: no hash anchor #%s' % c)
+            for card in re.findall(r'<a class="wk-card[^"]*"[^>]*>.*?</a>', s, re.S):
                 if re.search(r'Runwae|\bGLB\b', card):
-                    problems.append('work.html: Runwae/GLB in Current work')
-            if 'href="#design">Check out the portfolio' not in s:
-                problems.append('work.html: no "Check out the portfolio" link to #design')
+                    problems.append('releases.html: Runwae/GLB among the releases')
+        if rel == 'work.html' and 'What we have made' not in s:
+            problems.append('work.html: no "What we have made" section')
         t = re.search(r'<title>(.*?)</title>', s, re.S)
         t = t.group(1).strip() if t else ''
         if rel == 'index.html':

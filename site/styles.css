@@ -428,6 +428,7 @@ main p, main li { overflow-wrap: break-word; }
 .wk-filters a { font: 600 13px/1 var(--sans, inherit); letter-spacing: .08em; text-transform: uppercase; color: var(--fg); text-decoration: none; border: 1px solid var(--line); border-radius: 2px; padding: 11px 14px; }
 .wk-filters a small { font-size: 11px; color: var(--muted); margin-left: 6px; letter-spacing: 0; }
 .wk-filters a:hover { border-color: var(--fg); }
+.wk-t { display: block; height: 0; scroll-margin-top: 24px; }
 .wk-controls { display: grid; gap: 14px; margin-bottom: 40px; }
 .wk-controls[hidden] { display: none; }
 .wk-types a { font-size: 12px; color: var(--muted); }

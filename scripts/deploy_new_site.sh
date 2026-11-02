@@ -9,7 +9,7 @@
 #   bash ~/buttsstudios/scripts/deploy_new_site.sh --go     # deploy to production, verify, print rollback
 set -euo pipefail
 GO=${1:-}
-ROOT="$HOME/buttsstudios"
+ROOT="${ROOT:-$HOME/buttsstudios}"   # override to deploy from another checkout or worktree
 SRC="$ROOT/site"
 ORG_ID="team_WMhVBeGTHA1CgDK9llwAmQd9"
 # 2026-10-25: the domains moved to project butts-studios-website (Bridge deploy de2d76ggs); old "website" project prj_J7pK4Ph2b6AVt03X6Pl7w0rNrU8W no longer serves them.
@@ -83,7 +83,7 @@ echo "deployed: $URL"
 
 sleep 20
 ok=1
-for p in / /work /games /channels /books /video /video/film /video/animation /titles/the-signal /contact /how-we-work /portfolio/chief /titles/talon /shop /sitemap.xml /favicon.svg; do
+for p in / /releases /work /games /channels /books /video /video/film /video/animation /titles/the-signal /contact /how-we-work /portfolio/chief /titles/talon /shop /sitemap.xml /favicon.svg; do
   code=$(curl -s -o /dev/null -w '%{http_code}' "https://buttsstudios.com$p")
   echo "  $code  https://buttsstudios.com$p"; [ "$code" = 200 ] || ok=0
 done

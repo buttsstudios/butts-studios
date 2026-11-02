@@ -168,6 +168,7 @@ def build():
     links = ['<a href="#all" data-type="all">All <small>%d</small></a>' % len(items)]
     links += [f'<a href="#{t}" data-type="{t}">{label} <small>{sum(1 for i in items if i["type"] == t)}</small></a>'
               for t, label in TYPES]
+    targets = "".join(f'<span class="wk-t" id="{c}"></span>' for c in ["all", "books", "video", "games"])
     how = (SOURCES / "how-it-works.html").read_text()
     main = f'''<main>
   <section class="wrap hero">
@@ -179,6 +180,7 @@ def build():
   </section>
 
   <section class="wrap section wk">
+    {targets}
     <div class="wk-controls" hidden>
       <nav class="wk-filters wk-types" aria-label="Kind of work">
         {"".join(links)}

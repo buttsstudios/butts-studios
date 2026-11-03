@@ -71,12 +71,20 @@ Rules: parts of the brand are **paths** (DECISIONS 2026-10-28); **Butts Studios 
 
 ## Open Principal decisions (JARVIS ids, `~/jarvis/JARVIS QUESTIONS.md`)
 - **L1** governing law + address · **BR1–BR3** Brace name / platforms / classroom · **AP1** apparel identity pick ·
-  shop naming word "Objects" and nav word "Services"/"Work" are Bridge picks he may change (DECISIONS 2026-11-02).
+  the shop word "Objects" is a Bridge pick he may change (one constant); the nav words About / Releases / Work / Shop are his
+  (DECISIONS 2026-11-02). Open: is "Releases" right for titles still in Development; "Coming soon" vs "buy a working version"
+  on the books page; whether the lab's product-site designs stay under Work.
 
 ## Recent (newest first)
 - 2026-11-02: nav About / Releases / Work / Shop shipped from `fix/studios-work-organize-20261102@460352d` (CLI deploy);
   all six leftover subdomains (novels, cards, puzzle, glb, games, portal) removed from DNS and Vercel; hero strip removed;
-  shop naming (Apparel · Accessories · Objects, no "planned") committed local-only in mdo3d; docs reconciled (FS-50/54/59).
+  docs reconciled (FS-50/54/59).
+- 2026-11-03 (04:01Z): shop naming **live** on `/shop` (Apparel · Accessories · Objects; no "planned", prices on unreleased
+  pieces say "at release"; footer mirrors this site). Deployed to `shop-buttsstudios` by
+  `~/latarence/coordination/studios_collection_2027/deploy_shop_naming.sh` from mdo3d branch
+  `fix/studios-shop-naming-live-20261102` (cut from the live shop lineage `3c0cf8a`; local only, the public repo's pre-push
+  guard blocks the private storefront). `/shop/collection-2027.html` is 404 by design. Rollback:
+  `vercel promote https://shop-buttsstudios-qnacj293a-buttsstudios-projects.vercel.app --scope buttsstudios-projects --yes`.
 - 2026-10-28: URL rule (paths, not subdomains); `/contact` page; Studio · Work · Shop header on main (`3aa4821`);
   Runwae Apparel redesign direction (luxury, no ancient motif); waitlist-only rule for every shop.
 - 2026-10-16/17: legal pages live; Glowgrid rename; Brace chosen; sections style staged (now superseded by the path-based site).

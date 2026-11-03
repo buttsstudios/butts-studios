@@ -1,6 +1,6 @@
 # Butts Studios — Status (rolling snapshot, kept true by the Butts Studios CoS)
 
-*Last updated: 2026-11-02 17:50Z (studios-surge-1: FS-50 / FS-54 / FS-59 reconciliation; every claim below was checked
+*Last updated: 2026-11-03 (Bridge, after the Studios surge deploys; earlier: studios-surge-1 FS-50 / FS-54 / FS-59 reconciliation; every claim below was checked
 with a curl or a git/file check at that time unless marked "unverified"). Direction (verbatim, dated):
 `~/latarence/docs/DECISIONS.md` (2026-10-28 URL rule and subdomain cleanup; 2026-11-02 nav, shop naming, no subdomains).
 Older direction: `~/latarence/coordination/dispatch/2026-10-07_STUDIOS_new_site.md`. Seat: `Organization/Chief-of-Staff/README.md`.*
@@ -9,18 +9,30 @@ Older direction: `~/latarence/coordination/dispatch/2026-10-07_STUDIOS_new_site.
 - **Live** = answers on buttsstudios.com right now (curl 200). **Built** = committed on a pushed branch, not deployed.
   **Retired** = removed on purpose (404 by design, no forwarding; DECISIONS 2026-10-28).
 
-## Source and deployment (FS-59 reconciliation, 2026-11-02)
-- **Live revision:** `origin/fix/studios-work-organize-20261102` @ `460352d` (About / Releases / Work / Shop). Deployed
-  2026-11-02 ~17:09Z with `scripts/deploy_new_site.sh --go` (live `last-modified: Mon, 02 Nov 2026 17:09:08 GMT`,
-  server Vercel). Bridge handoff: `~/latarence/coordination/BRIDGE_INBOX.md` 2026-11-02 "SHIPPED + VERIFIED LIVE".
-- **origin/main** = `3aa4821` (Studio · Work · Shop header, 2026-10-28). It is an **ancestor** of `460352d`
-  (`git merge-base --is-ancestor origin/main 460352dd` → yes); main is exactly two commits behind (`bab4c27`, `460352d`)
-  and can be fast-forwarded. **Open:** fast-forward main to `460352d` (Bridge; this seat does not push main).
-- **Deploy path:** this site is **CLI-deployed, not git-deployed**. The Vercel project is `butts-studios-website`
-  (team `buttsstudios-projects`); it is not linked to the GitHub repo `buttsstudios/butts-studios`, so prod deployments
-  carry no git ref. The deployed SHA is recorded only in the Bridge handoff and here. Rollback target is in that handoff.
-- **Local checkout** `~/buttsstudios` sits on `fix/studios-work-page-2026-10-28` @ `3aa4821` with other people's
-  uncommitted work; agents work in `~/.wt/<name>` worktrees (see `AGENTS.md`), never in that tree.
+## Source and deployment (updated 2026-11-03)
+- **Live revision:** `origin/main` @ `fa91d41` (About / Releases / Work / Shop plus the Studios surge fixes). Deployed in two steps on
+  2026-11-02 with `scripts/deploy_new_site.sh --go` (first `6494694`: a11y, SEO, legal-text and subdomain-reference fixes; then `fa91d41`:
+  security headers and the `/releases` layout-shift fix). Both printed VERIFIED LIVE and were re-checked by hand. **main now equals live**
+  (earlier it lagged the live revision `460352d` by two commits).
+- **Rollback:** `vercel rollback https://butts-studios-website-3ojtpyt3q-buttsstudios-projects.vercel.app --scope team_WMhVBeGTHA1CgDK9llwAmQd9`
+  (the deployment before the headers deploy; the one before that is `butts-studios-website-icgongrbb-buttsstudios-projects.vercel.app`).
+- **Deploy path:** CLI-deployed, not git-deployed. The Vercel project is `butts-studios-website`; it is linked to the repo
+  `buttsstudios/butts-studios-website` (not `butts-studios`), so pushing to this repo's main deploys nothing. The CLI upload stages
+  the site folder, runs the pre-flight checks (url_map, site_links, cohesion, launch_ready) and moves pages to clean paths.
+- **Subdomains:** none. novels, cards, puzzle, glb, games and portal were removed from Cloudflare DNS and from Vercel on 2026-11-02 (records
+  backed up in `~/latarence/coordination/evidence/2026-11-02/studios-subdomains/`); the mail records (`send`, `rsend`), `www` and `_domainconnect` stay.
+- **Backends behind the paths** (from `site/vercel.json`): `/games/glowgrid` -> `glb-game`, `/games/cards` -> `butts-cards`,
+  `/games/sliding-numbers` -> `butts-puzzle`, `/shop` -> `shop-buttsstudios`. They are live, not orphans. Real orphans: `butts-games`, `portal`,
+  `the-signal-novel` (still serves the old pre-order page at its `*.vercel.app` address; JARVIS STUDIOS-INFRA D3).
+- **Game repos:** `glb-game` main `ddacc32` is live (stylesheet path, Glowgrid naming, hello@ contact, working legal links). Branches
+  `fix/subdomain-refs-20261102` on `butts-cards`, `butts-puzzle`, `butts-games` are built with static checks only; they need a Next build and a
+  browser smoke on xps before they go to main (those repos auto-deploy and the games sell a paid unlock).
+- **Shops** (GLB, Runwae Apparel, `/shop`; one storefront in the MDO3 repo, local only by guard): the Studios shop shows no planning wording;
+  GLB and Runwae still do until `~/shipshops.sh` is run (Principal's line, JARVIS STUDIOS-SURGE item 8).
+- **Checks that gate a deploy:** `scripts/check_cohesion.py`, `check_site_links.py`, `check_url_map.py`, `check_removed_hosts.py`,
+  `check_a11y_seo.py`, `check_security_headers.py`, `check_browser_a11y.py` (Playwright; xps only). Run them on xps, not on the laptop.
+- **Open for the Principal:** JARVIS `STUDIOS-SURGE` (legal defaults, "nothing is on sale" vs the paid games, Glowgrid How to play, infra, palette, storefront guard);
+  SETUP_TODO `[CF-STUDIOS-EDIT]`, `[STUDIOS-SHOP-MAIL]`, `[STUDIOS-FIREBASE-KEY]`. Detail: `~/latarence/coordination/studios_surge_2026-11-02/README.md`.
 
 ## URL map (live, path-based; no subdomains)
 | Path | State | Checked |

@@ -9,13 +9,14 @@ Older direction: `~/latarence/coordination/dispatch/2026-10-07_STUDIOS_new_site.
 - **Live** = answers on buttsstudios.com right now (curl 200). **Built** = committed on a pushed branch, not deployed.
   **Retired** = removed on purpose (404 by design, no forwarding; DECISIONS 2026-10-28).
 
-## Source and deployment (FS-59 reconciliation, 2026-11-02)
-- **Live revision:** `origin/fix/studios-work-organize-20261102` @ `460352d` (About / Releases / Work / Shop). Deployed
-  2026-11-02 ~17:09Z with `scripts/deploy_new_site.sh --go` (live `last-modified: Mon, 02 Nov 2026 17:09:08 GMT`,
-  server Vercel). Bridge handoff: `~/latarence/coordination/BRIDGE_INBOX.md` 2026-11-02 "SHIPPED + VERIFIED LIVE".
-- **origin/main** = `3aa4821` (Studio · Work · Shop header, 2026-10-28). It is an **ancestor** of `460352d`
-  (`git merge-base --is-ancestor origin/main 460352dd` → yes); main is exactly two commits behind (`bab4c27`, `460352d`)
-  and can be fast-forwarded. **Open:** fast-forward main to `460352d` (Bridge; this seat does not push main).
+## Source and deployment (FS-59 reconciliation 2026-11-02; refreshed 2026-11-03)
+- **Live revision:** three production deployments on 2026-11-02 (Vercel project `butts-studios-website`): 17:08Z
+  `icgongrbb` (the first About / Releases / Work / Shop deploy, from `460352d`, `scripts/deploy_new_site.sh --go`), then
+  17:53Z `3ojtpyt3q` and 18:18Z `176zlacpi` (later redeploys by other lanes). The newest is live; the pre-restructure
+  rollback target is `7lh0w7u9x` (2026-10-28). Bridge handoff: `~/latarence/coordination/BRIDGE_INBOX.md` 2026-11-02
+  "SHIPPED + VERIFIED LIVE". Re-check what is live with the Vercel API (`/v6/deployments?projectId=prj_wqttHAzUSkMszhjoDdxylm3etb1p`).
+- **origin/main** = `fa91d41` (2026-11-02) and **contains** `bab4c27` and `460352d` (merged by the surge integration);
+  nothing is left to fast-forward. Pushing main stays with the Bridge/Principal approval.
 - **Deploy path:** this site is **CLI-deployed, not git-deployed**. The Vercel project is `butts-studios-website`
   (team `buttsstudios-projects`); it is not linked to the GitHub repo `buttsstudios/butts-studios`, so prod deployments
   carry no git ref. The deployed SHA is recorded only in the Bridge handoff and here. Rollback target is in that handoff.
@@ -59,12 +60,20 @@ Rules: parts of the brand are **paths** (DECISIONS 2026-10-28); **Butts Studios 
 
 ## Open Principal decisions (JARVIS ids, `~/jarvis/JARVIS QUESTIONS.md`)
 - **L1** governing law + address · **BR1–BR3** Brace name / platforms / classroom · **AP1** apparel identity pick ·
-  shop naming word "Objects" and nav word "Services"/"Work" are Bridge picks he may change (DECISIONS 2026-11-02).
+  the shop word "Objects" is a Bridge pick he may change (one constant); the nav words About / Releases / Work / Shop are his
+  (DECISIONS 2026-11-02). Open: is "Releases" right for titles still in Development; "Coming soon" vs "buy a working version"
+  on the books page; whether the lab's product-site designs stay under Work.
 
 ## Recent (newest first)
 - 2026-11-02: nav About / Releases / Work / Shop shipped from `fix/studios-work-organize-20261102@460352d` (CLI deploy);
   all six leftover subdomains (novels, cards, puzzle, glb, games, portal) removed from DNS and Vercel; hero strip removed;
-  shop naming (Apparel · Accessories · Objects, no "planned") committed local-only in mdo3d; docs reconciled (FS-50/54/59).
+  docs reconciled (FS-50/54/59).
+- 2026-11-03 (04:01Z): shop naming **live** on `/shop` (Apparel · Accessories · Objects; no "planned", prices on unreleased
+  pieces say "at release"; footer mirrors this site). Deployed to `shop-buttsstudios` by
+  `~/latarence/coordination/studios_collection_2027/deploy_shop_naming.sh` from mdo3d branch
+  `fix/studios-shop-naming-live-20261102` (cut from the live shop lineage `3c0cf8a`; local only, the public repo's pre-push
+  guard blocks the private storefront). `/shop/collection-2027.html` is 404 by design. Rollback:
+  `vercel promote https://shop-buttsstudios-qnacj293a-buttsstudios-projects.vercel.app --scope buttsstudios-projects --yes`.
 - 2026-10-28: URL rule (paths, not subdomains); `/contact` page; Studio · Work · Shop header on main (`3aa4821`);
   Runwae Apparel redesign direction (luxury, no ancient motif); waitlist-only rule for every shop.
 - 2026-10-16/17: legal pages live; Glowgrid rename; Brace chosen; sections style staged (now superseded by the path-based site).

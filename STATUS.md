@@ -27,8 +27,11 @@ Older direction: `~/latarence/coordination/dispatch/2026-10-07_STUDIOS_new_site.
 - **Game repos:** `glb-game` main `ddacc32` is live (stylesheet path, Glowgrid naming, hello@ contact, working legal links). Branches
   `fix/subdomain-refs-20261102` on `butts-cards`, `butts-puzzle`, `butts-games` are built with static checks only; they need a Next build and a
   browser smoke on xps before they go to main (those repos auto-deploy and the games sell a paid unlock).
-- **Shops** (GLB, Runwae Apparel, `/shop`; one storefront in the MDO3 repo, local only by guard): the Studios shop shows no planning wording;
-  GLB and Runwae still do until `~/shipshops.sh` is run (Principal's line, JARVIS STUDIOS-SURGE item 8).
+- **Shops** (GLB = girlslovebutts.com, Runwae Apparel, `/shop`; one storefront in the MDO3 repo, local only by guard): redeployed 2026-11-03 on the
+  Principal's go (`~/shipshops.sh`, mdo3d worktree `studios-qualifiers` @9e215a8, 126 tests on xps). Live: 0 planning/future qualifiers ("planned for a future
+  release", "planned price", "Collection 2027"), no purchase wording, Waitlist / Reserve and "Concept render" captions intact, `sitemap.xml` 200 on all three.
+  They stay in preview mode (robots Disallow, noindex) until the live flip, which the policy gate blocks until a mailing address, governing law and a working
+  contact inbox exist. Rollbacks: `~/latarence/coordination/MANUAL_SHIP_QUEUE.md`.
 - **Checks that gate a deploy:** `scripts/check_cohesion.py`, `check_site_links.py`, `check_url_map.py`, `check_removed_hosts.py`,
   `check_a11y_seo.py`, `check_security_headers.py`, `check_browser_a11y.py` (Playwright; xps only). Run them on xps, not on the laptop.
 - **Open for the Principal:** JARVIS `STUDIOS-SURGE` (legal defaults, "nothing is on sale" vs the paid games, Glowgrid How to play, infra, palette, storefront guard);
